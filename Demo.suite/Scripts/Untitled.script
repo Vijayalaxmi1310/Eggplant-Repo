@@ -1,0 +1,13 @@
+﻿log ocrVersion()
+set pattern to <not preceded by characters,"Maturity",not followed by characters>
+click text:pattern
+
+
+click text:<not preceded by characters,"Maturity",not followed by characters>
+click text:<not preceded by characters,"Maturity",not followed by " State">
+
+
+moveTo text:<not preceded by 1 to 12 characters then "Change Notice">
+
+
+log EveryImageLocation(text:"Change Notice",waitFor:10)
