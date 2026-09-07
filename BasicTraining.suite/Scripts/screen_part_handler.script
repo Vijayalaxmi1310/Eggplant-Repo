@@ -1,0 +1,56 @@
+﻿function ScreenPart Portion
+	// Set up an easy-to-maintain property list that stores the necessary multipliers for the specified screen portion parameter value
+	set screenPortions to {
+		TopHalf: [[0,0],[1,.5]],
+		realapp:[[0.01,0.07],[0.98,0.995]],
+		
+		BottomHalf: [[0,.5],[1,1]],
+		
+		LeftHalf: [[0,0],[.5,1]],
+		
+		RightHalf: [[.5,0],[1,1]], 
+		
+		HorizontalMiddle: [[0,.25],[1,.75]],
+		
+		VerticalMiddle:[[.25,0],[.75,1]],
+		
+		TopLeftQuadrant:[[0,0],[.5,.5]],
+		
+		Header:[[0,.1],[1,.25]],
+		
+		TopRightQuadrant:[[.5,0],[1,.5]],
+		
+		BottomLeftQuadrant:[[0,.5],[.5,1]],
+		
+		BottomRightQuadrant:[[.5,.5],[1,1]],
+
+		Center:[[.25,.20],[.75,.75]],
+		HalfOfTopHalf: [[0,0],[1,.25]],
+
+		HalfOfLeftHalf: [[0,0],[.25,1]],
+
+		HalfOfRightHalf: [[.75,0],[1,1]],
+
+		QuarterOfTopHalf: [[0,0],[1,.15]],
+
+		LeftHalfOfTopLeftQuadrant:[[0,0],[.25,.5]],
+
+		RightHalfOfTopLeftQuadrant:[[0,.25],[.45,.5]],
+
+		RightHalfOfTopRightQuadrant:[[.75,0],[1,.5]],
+
+		RightHalfOfBottomLeftQuadrant:[[.25,.45],[.45,1]],
+
+		LeftHalfOfBottomLeftQuadrant:[[0,.45],[.25,1]],
+
+		LeftHalfOfBottomRightQuadrant:[[.5,.45],[.75,1]],
+
+		RightHalfOfBottomRightQuadrant:[[.75,.45],[1,1]],
+	}
+	set multiplier to screenPortions.(Portion) // Retrieves the value for the key in the property list. The name of the key is passed as a parameter into the function.
+	// Error handling is needed in the event that an unrecognized parameter is passed to the function
+	if multiplier is empty then
+		throw "Parameter error", Portion && "is not a recognized screen portion."
+	end if
+	return (the remoteScreenSize,the remotescreenSize) * multiplier
+End ScreenPart

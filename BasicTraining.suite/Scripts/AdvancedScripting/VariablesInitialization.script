@@ -1,0 +1,53 @@
+﻿---------- Using PUT command to create/declare a variable -----------------
+
+Put "Vijayalaxmi Kummari" into Username
+Log Username
+
+------- Using SET command to create/declare a variable -----------------------
+
+Set Password to "Rest@1234"
+Log Password
+
+
+----------- Creating a List using Set & Put Commands ---------------
+put ["1","2","3","4","Vijay123","Lakshmi","Eggplant"] into myList
+
+insert "6" after item 5 of myList
+log myList
+repeat with each item of myList
+	if it is "Vijay123" 
+		put "Parimal123" into item repeatIndex() of myList
+	end if
+end repeat
+
+log myList
+put "Parimal123" into item 5 of myList
+log myList
+log last item of myList
+log any item of myList
+
+repeat with each value of myList
+	log value
+end repeat
+
+put myList is a list
+
+
+set List to ["Vijaya","12","Laxmi","13","Kummari","14"] 
+log List
+
+Set Numbers to 1..100
+log the second item of Numbers
+
+Set Alphabets to "A".."Z"
+log each item of Alphabets
+repeat with each item of Numbers
+	log it
+	if repeatIndex()>10
+		exit repeat
+	end if
+end repeat
+
+set userDetails to {username:"Vijaya",password:"Lakshmi"}
+
+log userDetails.username

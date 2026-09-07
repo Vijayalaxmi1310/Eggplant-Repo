@@ -1,0 +1,4 @@
+﻿nopCommerceUtils.launchWebApp  "chrome","demo.nopcommerce.com","Welcome to our store"
+nopCommerceUtils.navigateMenu "Books","Sort By"
+nopCommerceUtils.navigateMenu "Gift Cards","Sort By"
+

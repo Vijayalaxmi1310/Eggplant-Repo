@@ -1,0 +1,156 @@
+﻿Click text:<"Risks", not followed by whitespace character then not followed by characters>,waitFor:10
+click text:<"Risks",not followed by spacebar then not followed by characters>
+
+
+click text:<"Door_Lock A", not followed by characters>
+click text:"Door_Lock A"
+click text:<not preceded by whitespace then "Door_Lock A" then not followed by whitespace then not followed by characters>
+
+click text:<"Door_Lock A" then not followed by whitespace>,searchRectangle:(4,99,403,898)
+
+
+click text:<"Create",not followed by whitespace then not followed by characters>
+
+click text:<"Maturity" then not followed by whitespace then not followed by characters>
+
+set 
+click text:<"Door_Lock A" then not followed by whitespace then not followed by characters>
+(*
+function GetValues myData, myKey:[]
+	put myKey as a propertylist into myKey
+	
+	repeat with each key of myKey
+		return myData.(myKey)
+	end repeat
+	
+end GetValues
+
+set myData to {v1:["v11","v12"], v2:["v21"], v3:["v33"]}
+
+set result to GetValues(myData, "v2")
+
+Log result
+repeat with each value of result
+	log value
+end repeat
+
+
+---------------
+function SelectValues myData
+
+repeat with each key myKey of myData
+
+set myValues to myData.(myKey)
+log myValues
+
+repeat with each item theValue in myValues
+	Log "Key: " & myKey & " Value: " & theValue
+	log theValue
+end repeat
+
+end repeat
+
+end SelectValues
+
+set myData to {v1:["v11","v12"], v2:["v21"], v3:["v33"]}
+
+log SelectValues( myData)
+
+(*
+
+
+-----
+function SelectValues myData, myKey
+	set myValues to myData.(myKey)
+	
+	repeat with each item theValue in myValues
+		#Click text:theValue
+		log theValue
+	end repeat
+end SelectValues
+
+
+set myData to {v1:["v11","v12"], v2:["v21"], v3:["v33"]}
+
+put SelectValues(myData,"v2") into values
+log values
+
+*)
+
+(*function GetValuesForKey pData, pKey
+	if pKey is not among the keys of pData then
+		return []
+	end if
+	
+	set result to pData.(pKey)
+	
+	if result is a list then
+		return result
+	else
+		return [result]
+	end if
+end GetValuesForKey
+
+
+set valueMap to {
+	v1:["v11","v12"],
+	v2:"v21",
+	v3:["v31","v32","v33"]
+} as a propertyList
+
+
+log the values of "v1" of valuesMaps
+
+log GetValuesForKey(valueMap, "v1")
+-- ["v11","v12"]
+
+log GetValuesForKey(valueMap, "v2")
+-- ["v21"]
+
+log GetValuesForKey(valueMap, "v3")
+-- ["v31","v32","v33"]*)
+
+
+
+set myData to {
+	v1:["v11","v12"],
+	v2:["v21"],
+	v3:["v33"]
+}
+
+getProductConfigValues {v1:["v11","v12"],v2:["v21"],v3:["v33"]}
+
+
+
+
+
+to handle getProductConfigValues myData
+	set myKeys to keys of myData
+	
+	repeat with each item myKey in myKeys
+		
+		Log "Current Key: " & myKey
+		
+		-- Click the textbox for the key
+		log myKey
+		
+		put imageLocation(text:myKey) into myKeyCord
+		set the searchRectangle to [[myKeyCord.x-30,myKeyCord.y+5],[myKeyCord.x+400,myKeyCord.y+30]]
+		wait 5
+		click text: "Type to"
+		
+		-- Get values for this key
+		set myValues to myData.(myKey)
+		
+		repeat with each item myValue in myValues
+			
+			Log "Current Value: " & myValue
+			typetext myValue,returnKey
+			wait 1
+			if imageFound(text:myvalue) then Log "Variant Values added"
+			
+		end repeat
+		
+	end repeat
+end getProductConfigValues
+*)

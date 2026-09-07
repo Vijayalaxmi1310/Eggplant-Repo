@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		326,
+		771,
+		66,
+		58
+	],
+	"lastmodifieddate": 1682486628.6370001,
+	"createddate": 1682486628.6370001,
+	"name": "topLeft_NP",
+	"lastfounddate": 1682486719.2020001,
+	"ocrcapturestring": "Online IX . . - . .",
+	"lastfoundlocation": [
+		326,
+		771,
+		66,
+		58
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5911,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[3,3]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "topLeft_NP.png",
+				"connectionname": "Partner-SUT-3",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					326,
+					771,
+					66,
+					58
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Online IX . . - . ."
+			}
+	]
+}

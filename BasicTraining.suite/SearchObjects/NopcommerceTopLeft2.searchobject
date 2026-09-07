@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		331,
+		921,
+		70,
+		49
+	],
+	"lastmodifieddate": 1781071202.7319999,
+	"createddate": 1781071202.7319999,
+	"name": "NopcommerceTopLeft2",
+	"lastfounddate": 1783588470.352,
+	"ocrcapturestring": "Online",
+	"lastfoundlocation": [
+		331,
+		921,
+		70,
+		49
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[3,5]",
+					"Tolerance": "_43",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "NopcommerceTopLeft.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"connectionserverid": "192.168.1.81",
+				"capturerect": [
+					331,
+					921,
+					70,
+					49
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "Online"
+			}
+	]
+}

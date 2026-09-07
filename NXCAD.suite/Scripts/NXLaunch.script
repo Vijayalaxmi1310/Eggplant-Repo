@@ -1,0 +1,306 @@
+﻿
+function getSearchRect Portion
+	//set up an easy-to-maintain property list that stores the necessary multipliers for the specified screen portion parameter value
+	Set screenPortions to {
+		bottomRightHiddenIcon: [1382,874,1919,1079],
+		toolBarArea:[0,26,1608,153],
+		logoutPopupArea:[646,259,1308,698],
+		topHalfScreen:[20,5,1919,537],
+		threeDXTextArea:[0,1,352,55],
+		topleftSmallCorner:[6,6,237,141]
+	}
+	set multiplier to screenPortions.(Portion) //retrives the value for the key in the property list. the name of the key is passes as a parameter into the function.
+	//test
+	// Error handling is needed in the event that an unrecognized parameter is passes to the function
+	set searchRectangle to screenPortions.(Portion)
+	return searchRectangle 
+End getSearchRect
+
+
+(**
+@launchNXApp -
+@Author : Himaja
+**)
+to launchNXApp expectation:"3DEXPERIENCE",SR:getsearchrect(topHalfScreen)
+	try
+		//typetext windowsKey,d
+		wait 3
+		
+		LaunchApp.launchRunWindow
+		wait 2
+		
+		typetext <<cmd /c start /max "" "C:\Program Files\Dassault Systemes\B425xcadconnectors\win_b64\UENC\bin\upsnx.bat">>
+		wait 5
+		typetext returnkey
+		
+		if ImageFound(text:"3DEXPERIENCE",searchRectangle:getsearchrect(threeDXTextArea), waitfor :120)
+			common.success "Nx Design App is launched and Maximized"
+		else
+			common.error "Unable to launch NX Design App",yes
+		end if
+		
+		//LaunchApp.cleanUpCMD
+		(*wait 5
+		typetext windowsKey,upArrow
+		wait 5
+		if ImageFound(text:"3DEXPERIENCE",searchRectangle:common.commonScreenPart(TopLeftQuadrant),waitfor:60)
+			click FoundImageLocation()
+			common.success "Nx Design App is Maximized"
+		else
+			common.error "Nx Design App is not Maximized",yes
+		end if
+		*)
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end launchNXApp
+
+//Author:Himaja
+
+to killNxApp
+	try
+		
+		//NXLaunch.logOutNXApp
+		LaunchApp.cleanUpCMD
+		typetext windowskey,"r"
+		waitfor 40, text:"Type the name",SearchRectangle:config().SUT.runWindow
+		wait 3
+		//typetext <<cmd /c taskkill /C:\Siemens\NX2506\NXBIN\ugraf.exe>>
+		TypeText "cmd /c taskkill /F /IM ugraf.exe"
+		wait 5
+		typetext returnkey
+		typetext controlKey,0
+		
+		(*repeat until not imagefound(text:"3DEXPERIENCE",searchRectangle:getsearchrect(topHalfScreen),waitfor:2)
+			if repeatindex() >= 10
+				exit repeat
+			end if
+		end repeat*)
+		Repeat
+			If  ImageFound(text:"3DEXPERIENCE",searchRectangle:getsearchrect(threeDXTextArea),waitfor:4) is false Then
+				Exit Repeat -- Image disappeared
+				
+			End If
+			If RepeatIndex() >= 10 Then
+				
+				LogWarning "Timeout waiting for 3DEXPERIENCE image to disappear"
+				
+				Exit Repeat
+				
+			End If
+		End Repeat
+		
+		LaunchApp.launchRunWindow
+		wait 3
+		TypeText "cmd /c taskkill /F /IM ENOUUGLOpen.exe"
+		wait 5
+		typetext returnkey
+		typetext controlKey,0
+		
+	catch exception
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	end try
+end killNxApp
+
+(**
+@HandlerName: launch3dxDesignLauncher
+@Author : Himaja
+@HandlerDescription : 
+**)
+to launch3dxDesignLauncher
+	try
+		
+		if imageFound(imageName:"icons/homeRolesIcon", waitFor: 40)
+			// Click the compass icon
+			click FoundImageInfo()
+		else
+			common.error "User not in Home page",yes
+		end if
+		
+		wait 3
+		
+		common.ClickBtnByImage "icons/bt_searchApp", 20,common.commonScreenPart(TopLeftQuadrant),yes
+		wait 3
+		typetext  "Design With NX"
+		wait 3
+		common.ClickBtnByText "Design With NX",15,configEnovia().searchRectangles.threeDSearchAppArea,yes
+		//common.navigate  "Design With NX", configEnovia().searchRectangles.threeDSearchAppArea
+		
+		CommonEnoviaContd.handleAccessOtherAppsPopup
+		
+		repeat until not ImageFound(text:"3DEXPERIENCE",searchRectangle:getSearchRect(bottomRightHiddenIcon), waitfor:7)
+			if repeatindex() >= 5
+				exit repeat
+			end if
+		end repeat
+		// Code if download packager popup is shown 
+		if imagefound(text:"Download 3DEXPERIENCE Launcher",searchRectangle:getSearchRect(topHalfScreen), waitfor:15)
+			click FoundImageLocation()
+			wait 6
+			if  imagefound(text:"blank",searchRectangle:getSearchRect(topleftSmallCorner), waitfor:30)
+				Common.closeTab
+			end if
+			if imagefound(text:"Welcome to the 3DEXPERIENCE Launcher",searchRectangle:getSearchRect(topHalfScreen), waitfor:30)
+				put FoundImageLocation() into textLoc
+				(*	Put textLoc + [-70,-220] into loc1
+				Put textLoc + [402,655] into loc2
+				*)
+				Put textLoc + [-70,-220] into loc1
+				Put textLoc + [600,655] into loc2
+				common.ClickBtnByText "Cancel",15,[loc1,loc2],yes
+				//else
+				
+			end if
+			
+			common.navigate  "Design With NX", configEnovia().searchRectangles.threeDSearchAppArea
+			
+			CommonEnoviaContd.handleAccessOtherAppsPopup
+			
+			repeat until  ImageFound(text:"3DEXPERIENCE",searchRectangle:getSearchRect(bottomRightHiddenIcon), waitfor:4)
+				if repeatindex() >= 6
+					exit repeat
+				end if
+			end repeat
+		end if
+		//--------------------------------------------------------
+		validateAdapterClientStartup
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end launch3dxDesignLauncher
+
+
+(**
+@HandlerName: validateAdapterClientStartup
+@Author : Himaja
+@HandlerDescription : 
+**)
+to validateAdapterClientStartup
+	try 
+	(*typetext WindowsKey, "b"
+		
+		typetext Enter*)
+		common.navigate "icons/bt_hiddenIconDisabled",getSearchRect(bottomRightHiddenIcon)
+		put EveryImageLocation(Image: "icons/threeDxIcon_BottomRight", searchrectangle:getSearchRect(bottomRightHiddenIcon),waitfor:60) into locs
+		log locs
+		if number of items of locs is 2
+			wait 3
+			Moveto item 1 of locs
+			wait 4
+			log readtext(getSearchRect(bottomRightHiddenIcon))
+			common.success "PLM Collaborative Services Adapter Client is launched "
+		else
+			common.error "PLM Collaborative Services Adapter Client is not launched",yes
+			
+		end if
+		if imagefound(image:"icons/bt_hiddenIconEnabled",searchrectangle:getSearchRect(bottomRightHiddenIcon),waitfor:30)
+			click FoundImageLocation()
+			wait 3
+		end if
+		
+		Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end validateAdapterClientStartup
+
+
+(**
+@HandlerName: openNXAppAndLogin
+@Author : Himaja
+@HandlerDescription : 
+**)
+to openNXAppAndLogin isClicktaskBarIcon:"yes"
+	try
+		if isClicktaskBarIcon is yes
+			common.ClickBtnByImage  "icons/nx_taskBarIcon", 20,common.commonScreenPart(BottomHalf),yes
+		end if
+		
+		if ImageFound(text:"3DEXPERIENCE",searchRectangle:common.commonScreenPart(TopLeftQuadrant),waitfor:60)
+			//click FoundImageLocation()
+			wait 4
+			common.ClickBtnByText "3DEXPERIENCE",5,common.commonScreenPart(TopLeftQuadrant),yes
+			common.success "Clicked on 3DEXPERIENCE App"
+		else
+			common.error "Unable to click on 3DEXPERIENCE App",yes
+		end if
+		
+		if ImageFound(Image:"icons/bt_NxLogin",searchRectangle:getSearchRect(toolBarArea),waitfor:60)
+			click FoundImageLocation()
+			if ImageFound(Image:"icons/bt_NxLogout",searchRectangle:getSearchRect(toolBarArea),waitfor:60)
+				common.success "Login Successfull"
+			else
+				common.error "Login clicked and couldnot be logged in",yes
+			end if
+			(*else if ImageFound(Image:"icons/bt_NxLogout",searchRectangle:getSearchRect(toolBarArea),waitfor:60)
+			common.success "Already login to NX"*)
+		else
+			common.error "Login not found",yes
+		end if
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+End try
+end openNXAppAndLogin
+
+(**
+@HandlerName: logOutNXApp
+@Author : Himaja
+@HandlerDescription : 
+**)
+to logOutNXApp
+	try
+		
+		if ImageFound(Image:"icons/bt_NxLogin",searchRectangle:getSearchRect(toolBarArea),waitfor:7)
+			//common.error "logout not found",yes
+			common.success "Application is already logged out."
+		else if ImageFound(Image:"icons/bt_NxLogout",searchRectangle:getSearchRect(toolBarArea),waitfor:7)
+			click FoundImageLocation()
+			if imagefound(text:"3DEXPERIENCE Logout",waitfor:30,searchrectangle:getSearchRect(logoutPopupArea))
+				typetext returnKey
+			else
+				common.error "3DEXPERIENCE Logout not found",yes
+			end if
+			if ImageFound(Image:"icons/bt_NxLogin",searchRectangle:getSearchRect(toolBarArea),waitfor:60)
+				common.success "Logout Successfull"
+			else
+				common.error "Logout clicked and couldnot be logged out",yes
+			end if
+		else
+			common.success "App is not open to logout"
+		end if
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end logOutNXApp
+
+
+(**
+@HandlerName: switchTo3DX
+@Author : Himaja
+@HandlerDescription : 
+**)
+to switchTo3DX
+	try
+		
+		if ImageFound(text:"3DEXPERIENCE",searchRectangle:[4,4,1458,63],waitfor:40, dpi:"144", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes")
+			//click FoundImageLocation()
+			wait 4
+			set the TextStyle to { dpi:"144", EnableAggressiveTextExtraction:"Yes", EnhanceLocalContrast:"Yes"}
+			common.ClickBtnByText "3DEXPERIENCE",5,[4,4,1458,63],yes
+			common.success "Clicked on 3DEXPERIENCE App"
+		else
+			common.error "Unable to click on 3DEXPERIENCE App",yes
+		end if
+		set the TextStyle to empty
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end switchTo3DX

@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		0,
+		2,
+		284,
+		46
+	],
+	"lastmodifieddate": 1783675535.4590001,
+	"createddate": 1783675535.4590001,
+	"name": "nopCommerce",
+	"lastfounddate": 1783675579.5679998,
+	"ocrcapturestring": "Y H: nopCommerce demo store. Reg X",
+	"lastfoundlocation": [
+		0,
+		2,
+		284,
+		46
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Y H: nopCommerce demo store. Reg X",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[142,23]",
+					"Tolerance": "_73",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					0,
+					2,
+					284,
+					46
+				],
+				"name": "nopCommerce.png"
+			}
+	]
+}

@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		200,
+		279,
+		140,
+		37
+	],
+	"lastmodifieddate": 1682399745.8150001,
+	"createddate": 1682399745.8150001,
+	"name": "LOGIN_NP",
+	"lastfounddate": 1682400047.9070001,
+	"ocrcapturestring": "LOG IN",
+	"lastfoundlocation": [
+		1188,
+		724,
+		140,
+		37
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "LOG IN",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[70,18]",
+					"Tolerance": "_52",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					200,
+					279,
+					140,
+					37
+				],
+				"name": "LOGIN_NP.png"
+			}
+	]
+}

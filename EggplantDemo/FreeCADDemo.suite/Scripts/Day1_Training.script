@@ -1,0 +1,41 @@
+﻿--- This is the first script
+---- MouseAction
+--- Image Based approach to launch an application
+DoubleClick imageName:"FreeCADIcon"
+typetext windowsKey,upArrow
+
+--wait commands
+WaitFor 40, text:"New File"
+
+Log "Application launched successfully"
+
+
+Click text:"File",waitFor:20
+wait 5
+click text:"New Document",waitFor:20
+
+RightClick text:"File"
+
+
+
+
+
+
+log EveryImageLocation(text:"File",caseSensitive:Yes)
+
+
+Run "CoreUtils/BrowserUtils/launchWebApp"
+
+
+Run "ApplicationUtils/FreeCADUtils"
+
+
+Drag "FreeCADIcon"
+Drop [117,484]
+
+MoveTo "FreeCADIcon"
+
+
+
+-- ecommerce
+

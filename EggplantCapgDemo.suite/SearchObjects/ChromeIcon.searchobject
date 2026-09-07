@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		25,
+		418,
+		25,
+		27
+	],
+	"lastmodifieddate": 1780984523.072,
+	"createddate": 1780984523.072,
+	"name": "ChromeIcon",
+	"lastfounddate": 1780985605.4190001,
+	"ocrcapturestring": "o",
+	"lastfoundlocation": [
+		25,
+		418,
+		25,
+		27
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 57549,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[12,13]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"epgw_path": "C:\\Program Files\\Eggplant\\Eggplant.app\\Resources\\epgw\\x64\\bin\\epgw.exe",
+					"Type": "Single System"
+				},
+				"name": "ChromeIcon.png",
+				"connectionname": "SingleSystem",
+				"type": 1,
+				"connectionserverid": "127.0.0.1",
+				"capturerect": [
+					25,
+					418,
+					25,
+					27
+				],
+				"connectiontype": "Single System",
+				"capturedocrtext": "o"
+			}
+	]
+}

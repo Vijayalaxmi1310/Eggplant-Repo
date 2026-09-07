@@ -1,0 +1,76 @@
+{
+	"originalcapturelocation": [
+		29,
+		108,
+		26,
+		41
+	],
+	"lastmodifieddate": 1768541463.4960001,
+	"createddate": 1678947512.885,
+	"name": "ChromeIcon",
+	"lastfounddate": 1749637067.927,
+	"ocrcapturestring": "0",
+	"lastfoundlocation": [
+		560,
+		1169,
+		13,
+		20
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5913,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[13,20]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "ChromeIcon/ChromeIcon.png",
+				"connectionname": "Partner-SUT-5",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					29,
+					108,
+					26,
+					41
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "0"
+			},
+		{
+				"connectionportnum": 5925,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[6,9]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "ChromeIcon/ChromeIcon7.png",
+				"connectionname": "CloudSUT-1",
+				"type": 1,
+				"capturerect": [
+					560,
+					1169,
+					13,
+					20
+				],
+				"connectiontype": "rdp",
+				"connectionserverid": "tcsesuts.eggplantlab.com"
+			}
+	]
+}

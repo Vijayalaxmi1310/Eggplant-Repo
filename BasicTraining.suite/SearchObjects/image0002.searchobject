@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1681187746.51,
+	"ocrcapturestring": "J",
+	"originalcapturelocation": [
+		0,
+		0,
+		16,
+		37
+	],
+	"createddate": 1681187746.51,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "J",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_1",
+					"HotSpot": "[8,18]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Precise to Pixel"
+				},
+				"type": 1,
+				"capturerect": [
+					0,
+					0,
+					16,
+					37
+				],
+				"name": "image0002.png"
+			}
+	],
+	"name": "image0002"
+}

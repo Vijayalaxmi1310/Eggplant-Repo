@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		284,
+		33,
+		61,
+		24
+	],
+	"lastmodifieddate": 1682398062.6859999,
+	"createddate": 1682398012.7539999,
+	"name": "Password/Newtab_transientelement",
+	"lastfounddate": 1682398138.437,
+	"ocrcapturestring": "New tab",
+	"lastfoundlocation": [
+		282,
+		35,
+		61,
+		24
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5905,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[30,12]",
+					"Tolerance": "_57",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "Newtab_transientelement.png",
+				"connectionname": "Partner-SUT-4",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					284,
+					33,
+					61,
+					24
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "New tab"
+			}
+	]
+}

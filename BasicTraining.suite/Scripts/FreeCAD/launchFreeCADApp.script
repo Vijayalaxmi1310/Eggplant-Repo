@@ -1,0 +1,53 @@
+﻿--- Using Images to Capture the Icon to launch the application (Doubleclick,click,waitCommands,Log Commands)
+
+
+--- Using windows shortcuts to launch the application instead of Images (typetext commands,CaptureScreen command)
+
+
+
+
+--- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*Steps
+Launch FreeCAD.
+typetext windowsKey,upArrow
+Wait until the Home screen is displayed.
+verify "Welcome to FreeCAD" and then click on "Done"
+Verify the main window appears. --- Verify "Parametric Part" text appears
+Click File. --- menu
+Select New.
+Verify that an Unnamed document is created.
+Verify the Model tree displays the new document.
+Save the document as TrainingDemo.FCStd.
+Close FreeCAD.*)

@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		70,
+		34,
+		30,
+		32
+	],
+	"lastmodifieddate": 1682314827.1619999,
+	"createddate": 1682314827.1619999,
+	"name": "RefreshIcon",
+	"lastfounddate": 1682314859.066,
+	"ocrcapturestring": "c",
+	"lastfoundlocation": [
+		70,
+		34,
+		30,
+		32
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5915,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[106,14]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "RefreshIcon.png",
+				"connectionname": "Partner-SUT-6",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					70,
+					34,
+					30,
+					32
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "c"
+			}
+	]
+}

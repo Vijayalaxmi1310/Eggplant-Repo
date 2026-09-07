@@ -1,0 +1,4 @@
+﻿to connectSUT
+	connect "81 SUT"
+	log ConnectionInfo()
+end connectSUT

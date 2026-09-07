@@ -1,0 +1,12 @@
+﻿Set FirstName to "Vijaya"
+Set LastName to "Laxmi"
+
+
+---- Using Single & to concatenate the string wihtout a space ----------------
+Log FirstName&LastName
+
+----- Using double && to concatenate the strings with a space ---------------
+Log FirstName&&LastName
+
+-------- Using triple &&& to create them as a alist
+Log FirstName&&&LastName

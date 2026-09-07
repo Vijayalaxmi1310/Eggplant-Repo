@@ -1,0 +1,321 @@
+﻿set sendShiftForCaps to no
+
+launchTeamcenterAWC "chrome","http://localhost:3000/"
+userLoginAWC "test1","test1"
+navigateToTile "Explorer"
+
+--- Expand home and select the folder
+selectFolder "EGGPLANT_AWC"
+--- Create EBOM
+createEBOM "TopAssemblyNode"
+
+---- Open EBOM
+openEBOM 
+--- Select EBOM & Create Childs for EBOM
+createChildstoEBOM
+click text:"TopAssemblyNode",searchRectangle:getSearchRect("objectPrimaryArea")
+--- Open Changes Screen
+openChangesInNewWindow
+createChangeNotice "TestECN"
+openECN
+-- Add participants to Analyst "test1"
+addParticipantToAnalyst
+
+--- go to EBOM and copy the child items along with EBOM
+copyChildItems
+
+--- add childs to Changes Solution Items
+addParticipantsToSolutionItems
+verifyChildsAdded
+--- Submit it to workflow
+submitToWorkflow
+releaseTask
+# navigating to first window tab in browser
+# verify the task is released for EBOM
+verifyTaskReleaseInEBOM
+
+
+
+
+
+
+to getsearchRect Portion
+	set screenPortions to {
+		primaryArea: [51,152,986,1041],
+		secondaryArea: [982,154,1920,1042],
+		navigationBar: [0,92,48,1035],
+		commandBar: [1799,157,1913,315],
+		sideBarOpen: [1790,155,1919,310],
+		objectPrimaryArea:[50,150,991,1043],
+		objectSecondaryArea:[983,157,1915,1036],
+		addChildArea:[1547,158,1913,1038],
+		submenuSideBar:[1678,153,1815,325],
+		createCNArea:[1452,153,1916,1040],
+		listofECN:[48,153,527,1034],
+		ECNtabArea:[45,126,1123,180],
+		AddParticipantsWindow:[1432,185,1919,1034],
+		Addchangesummary:[619,330,1897,978],
+		OverviewmenuOptions:[1796,186,1914,343],
+		OverviewsubmenuOptions:[1667,242,1810,395],
+		SubmittoWorkflowWindow:[1354,185,1920,1039]
+	
+	}
+	set searchRectangle to screenPortions.(Portion)
+	return searchrectangle
+end getSearchRect
+
+to handle launchTeamcenterAWC
+	typetext windowsKey,r
+	typetext browserName&&appURL,returnKey
+	waitFor 40, text:"SIEMENS"
+end launchTeamcenterAWC
+
+
+to handle userLoginAWC username,password
+	click text:"User Name",waitFor:30
+	Typetext controlKey,a
+	TypeText "test1"
+	click text:"Password",waitFor:30
+	Typetext controlKey,a
+	TypeText "test1"
+	wait 0.5 
+	Click text:"Login"
+	if ImageFound(text:"Change your password",waitFor:10)
+		click text:"OK"
+	end if
+	if ImageFound(imageName:"profileIcon.png", waitFor:30)
+		log "User Loged in Sussecfully"
+	end if
+end userLoginAWC
+
+
+to handle navigateToTile tileName
+	click text:tileMenu,waitFor:10
+	waitFor 70,text:"Description"
+end navigateToTile
+
+
+to handle selectFolder folderName
+	if not imageFound(text:folderName,searchrectangle:getSearchRect("primaryArea")) then 
+		wait 2
+		click text:"Home",searchrectangle:getSearchRect("primaryArea"),hotspot:[-45,3]
+
+	end if 
+	click text:folderName,searchRectangle:getSearchRect("primaryArea")
+end selectFolder
+
+
+to handle createEBOM eBOMName
+	click imageName:"metaBalls"
+	click text:"New",searchRectangle:getSearchRect("sideBarOpen"),waitFor:30
+	click text:"Add",searchRectangle:getSearchRect("submenuSideBar"),waitFor:30
+	
+	wait 0.5
+	typetext "Item"
+	wait 3
+	typetext returnKey
+	click text:"Name",hotspot:[0,50],searchRectangle:getSearchRect("addChildArea"),waitFor:5
+	typetext controlKey,a
+	typetext eBOMName
+	click imageName:"AddButton",searchRectangle:getSearchRect("addChildArea"),waitFor:5
+end createEBOM
+
+
+to handle openEBOM
+	wait 2
+	click imageName:"SummaryExpand",waitFor:10
+	#if imageFound(imageName:"openObject",waitFor:10) then click FoundImageLocation()
+	waitFor 40, text:"Where Used"
+	click text:"Content"
+	WaitFor 40, text:"Element"
+end openEBOM
+
+
+to handle createChildstoEBOM
+	repeat 2 times
+		click text:"TopAssemblyNode",searchRectangle:getSearchRect("objectPrimaryArea")
+		wait 0.5
+		
+		-- Add Child Items to EBOM
+		click text:"Add",waitFor:10,searchRectangle:getSearchRect("objectPrimaryArea")
+		click text:"Child",waitFor:10,searchRectangle:getSearchRect("objectPrimaryArea")
+		WaitFor 30, text:"Add Child"
+		
+		repeat until imageFound(text:"Name:",searchRectangle:getSearchRect("addChildArea"),waitFor:5)
+			scrollWheelUp 2
+			if repeatIndex()>3
+				Log "Required field is not found"
+				ScrollWheelDown 2
+			end if
+		end repeat
+		click foundImageLocation()
+		typetext "Child1"
+		wait 1
+		click imageName:"AddButton"
+		
+		wait 3
+	end repeat
+end createChildstoEBOM
+
+
+to handle openChangesInNewWindow
+	typetext controlKey,l
+	typetext altKey,returnKey
+	#click text:"Explorer",searchRectangle:getSearchRect("navigationBar")
+	--- Navigate to Changes
+	click Imagename:"ChangesIcon"
+end openChangesInNewWindow
+
+
+to handle createChangeNotice ecnName
+	waitFor 30,imageName:"CreateChangeIcon"
+	click foundImageLocation()
+	-- Create ECN
+	click text:"Change Notice",waitFor:5
+	wait 5
+	
+	click item 1 of everyImageLocation(text:"Change Notice",searchRectangle:getSearchRect("createCNArea"))
+	(*click text:<not preceded by "Manufacturing ","Change Notice", not followed by characters>
+click text:<not preceded by 1 to 12 characters,"Change Notice",not followed by characters>*)
+	waitFor 30, text:"Properties"
+	click text:"ECN Number",hotspot:[60,2],searchRectangle:getSearchRect("createCNArea")
+	typetext controlKey,a
+	typetext controlKey,c
+	put RemoteClipboard() into ECNNumber
+	log ECNNumber
+	click text:"Synopsis",hotspot:[60,1],searchRectangle:getSearchRect("createCNArea")
+	typetext ecnName
+	wait 1
+	click imagename:"EcnCreateButton",searchRectangle:getSearchRect("createCNArea")
+	if imageFound(text:ecnName&quote&&"was added to Changes") then Log "ECN Creation Done"
+	wait 4
+end createChangeNotice
+
+
+to handle openECN ecnName
+	click text:ecnName,SearchRectangle:getsearchRect("listofECN")
+	click imagename:"openECNIcon"
+	waitfor 40,text:"Change Notice Revision"
+end openECN
+
+
+to handle addParticipantToAnalyst
+	click text:"Participants",SearchRectangle:getsearchRect("ECNtabArea")
+	put imageLocation(text:"Analyst") into ECNAnalyst
+	
+	set the searchRectangle to [[ECNAnalyst.x-50,ECNAnalyst.y+05],[ECNAnalyst.x+1900,ECNAnalyst.y+100]]
+
+	click imagename:"AddParticipantsIcon"
+	set the SearchRectangle to empty
+	click text:"Find in this content",SearchRectangle:getsearchRect("AddParticipantsWindow")
+	TypeText "test1"
+	click imagename:"SearchParticipantsIcon"
+	click text:"Engineering",SearchRectangle:getsearchRect("AddParticipantsWindow")
+	click imagename:"AddButton",SearchRectangle:getsearchRect("AddParticipantsWindow")
+end addParticipantToAnalyst
+
+
+to handle copyChildItems
+	Typetext controlkey,1
+	wait 3
+	click text:"TopAssemblyNode",SearchRectangle:getsearchRect("primaryArea")
+	keydown controlKey
+	click item 1 of EveryImageLocation(text:"Child",searchrectangle:(52,252,356,351))
+	click item 2 of EveryImageLocation(text:"Child",searchrectangle:(52,252,356,351))
+	wait 1
+	RightClick MouseLocation()
+	click text:"Copy",SearchRectangle:getsearchRect("primaryArea")
+	wait 1
+	set the SearchRectangle to empty
+end copyChildItems
+
+
+to handle addParticipantsToSolutionItems
+	TypeText controlkey, 2
+	WaitFor 40 , text:"Affected Items"
+	click FoundImageLocation()
+	put imageLocation(text:"Solution Items",waitfor:30) into SI
+	
+	set the searchRectangle to [[SI.x-50,SI.y+05],[SI.x+1900,SI.y+100]]
+	wait 4
+	
+	click imagename:"AddParticipantsIcon"
+	set the SearchRectangle to empty
+	click text:"Palette",SearchRectangle:(1527,185,1920,1033)
+	click imagename:"AddButton",SearchRectangle:(1527,185,1920,1033)
+end addParticipantsToSolutionItems
+
+
+to handle verifyChildsAdded
+	click text :"Overview"
+	click text :"TopAssemblyNode",SearchRectangle:getsearchRect("Addchangesummary"),hotSpot:[-45,7]
+	if ImageFound(text:"child", waitFor:10,SearchRectangle:getsearchRect("Addchangesummary"))
+		log "childs are added sucessfully"
+	end if
+end verifyChildsAdded
+
+
+to handle submitToWorkflow
+	click imageName:"ellipsisIcon" -- in the overview tab
+	click text:"Manage",SearchRectangle:getsearchRect("OverviewmenuOptions")
+	click text:"Submit to Workflow",waitFor:10,searchRectangle:getSearchRect("OverviewsubmenuOptions")
+	WaitFor 30, text:"Assignments"
+	click text:"All",SearchRectangle:getsearchRect("SubmittoWorkflowWindow")
+	
+	--- copy the coordinates for Submit to Workflow window" and add it in getSearchRect function
+	
+	repeat until imageFound(text:"References",SearchRectangle:getsearchRect("SubmittoWorkflowWindow"),waitFor:3)
+		scrollWheelDown 3
+		-- OR
+		#typetext downArrow
+		-- OR
+		# use scroll bar image to scroll
+	end repeat
+	click text:"Add",SearchRectangle:getsearchRect("SubmittoWorkflowWindow")--OR 
+	waitFor 30,text:"Search"
+	if imageFound(text:"Clipboard",SearchRectangle:getsearchRect("SubmittoWorkflowWindow")) and if imageFound(text:"TopAssemblyNode",SearchRectangle:getsearchRect("SubmittoWorkflowWindow"))
+		Log "Added to clipboard"
+	end if
+	
+	click imageName:"AddButton",SearchRectangle:getsearchRect("SubmittoWorkflowWindow")
+	if imageFound(text:"TopAssemblyNode",waitFor:20,searchRectangle:getSearchRect("SubmittoWorkflowWindow"))
+		Log "Targets are added successfully"
+	end if
+	wait 2
+	click text:"All",SearchRectangle:getsearchRect("SubmittoWorkflowWindow")
+	click text:"Template:",hotspot:[2,20],SearchRectangle:getsearchRect("SubmittoWorkflowWindow"),ignoreSpaces:off
+	typetext "ECN Release for Demo"
+	wait 2
+	typetext returnKey
+	click imagename:"SubmitButton",waitFor:20,searchRectangle:getSearchRect("SubmittoWorkflowWindow")
+	wait 5
+end submitToWorkflow
+
+
+to handle releaseTask
+	TypeText controlkey,r
+	wait 4
+	if not imageFound(text:"Comments",waitFor:5)
+		click text:"Task to Perform",hotspot:[-10,1]
+	end if
+	put imageLocation(text:"Task to Perform") into tasksP
+	set the searchRectangle to [[tasksP.x-60,tasksP.y+10],[tasksP.x+800,tasksP.y+500]]
+	wait 4
+	click text:"Comments"
+	typetext "Task Completed"
+	click imagename :"CompleteButton"
+	set the SearchRectangle to empty
+	put imageLocation(text:"Release Status") into RS
+	
+	put readText([RS.x+35,RS.y-5],[RS.x+120,RS.y+5]) into status
+	log status
+	assert that status contains "TCM Released"
+end releaseTask
+
+
+to handle verifyTaskReleaseInEBOM
+	typetext controlKey,1
+	wait 3
+	typetext controlKey,r
+	if ImageFound(text:"TCM Released", waitFor:10,SearchRectangle:getsearchRect("secondaryArea")) then Log "TCM Released for EBOM"
+end verifyTaskReleaseInEBOM

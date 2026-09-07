@@ -1,0 +1,251 @@
+﻿
+to getSearchRect  Portion
+	set screenPortions to {
+		primaryArea: [100, 150, 900, 750],
+		secondaryArea: [920, 150, 1320, 750],
+		navigationBar: [0, 0, 1366, 80],
+		commandBar: [0, 700, 1366, 760],
+		objectPrimaryArea:[],
+		objectSecondaryArea:[],
+		addChildArea:[],
+		createCNArea:[]
+
+	}
+	set searchRectangle to screenPortions.(Portion)
+	return searchRectangle
+end getSearchRect
+
+
+log password
+--- Expand home and select the folder
+click text:"Home",searchRectangle:getSearchRect("primaryArea"),hotspot:[-150,3]
+click text:"EGGPLANT_AWC",searchRectangle:getSearchRect("primaryArea")
+
+
+click imageName:"metaBolls"
+click text:"New",searchRectangle:getSearchRect("sideBar"),waitFor:5
+click text:"Add",searchRectangle:getSearchRect("sideBar"),waitFor:5
+wait 0.5
+typetext "Item"
+wait 3
+typetext returnKey
+click text:"Name",hotspot:[0,50]
+typetext controlKey,a
+typetext "TopAssemblyNode"
+click imageName:"AddButton"
+set validateMsg to "TopAssemblyNode"&quote&&"was added"
+log validateMsg
+if imageFound(text:"TopAssemblyNode"&quote&&"was added")
+	Log "EBOM Creation Done"
+end if
+
+
+put center of RemoteScreenRectangle() to centerArea
+Drag text: "Model Definition"
+Drop centerArea
+
+
+
+put windowsFilePath of documents folder
+
+
+
+
+---- Open EBOM
+moveTo text:"TopAssemblyNode",hotspot:[100,0]
+if imageFound(imageName:"openObject",waitFor:10) then click FoundImageLocation()
+waitFor 40, text:"Where Used"
+click text:"Content"
+WaitFor 40, text:"Element"
+--- Select EBOM & Create Childs for EBOM
+repeat 2 times
+	click text:"TopAssemblyNode",searchRectangle:getSearchRect("objectPrimaryArea")
+	wait 0.5
+	
+	-- Add Child Items to EBOM
+	click text:"Add",waitFor:10,searchRectangle:getSearchRect("objectPrimaryArea")
+	click text:"Child",waitFor:10,searchRectangle:getSearchRect("objectPrimaryArea")
+	WaitFor 30, text:"Add Child"
+	
+	repeat until imageFound(text:"Name:",searchRectangle:getSearchRect("addChildArea"),waitFor:5)
+		scrollWheelUp 2
+		if repeatIndex()>3
+			Log "Required field is not found"
+			ScrollWheelDown 2
+		end if
+	end repeat
+	click foundImageLocation()
+	typetext "Child1"
+	wait 1
+	click imageName:"AddButton"
+	
+	wait 3
+end repeat
+
+typetext controlKey,t
+typetext "http://localhost:3000",returnKey
+#click text:"Explorer",searchRectangle:getSearchRect("navigationBar")
+--- Navigate to Changes
+click text:"Changes",searchRectangle:getSearchRect("navigationBar")
+
+waitFor 30,text:"Create Change",multiline:Yes,ignoreNewLines:Yes
+click foundImageLocation()
+-- Create ECN
+click text:"Change Notice",waitFor:5
+wait 5
+
+click text:<not preceded by 1 to 12 characters,"Change Notice",not followed by characters>,searchRectangle:getSearchRect("createCNArea")
+waitFor 30, text:"Properties"
+click text:"ECN Number",hotspot:[60,2],searchRectangle:getSearchRect("createCNArea")
+typetext controlKey,a
+typetext controlKey,c
+put RemoteClipboard() into ECNNumber
+log ECNNumber
+click text:"Synopsis",hotspot:[60,1],searchRectangle:getSearchRect("createCNArea")
+typetext "TestECN"
+wait 1
+click text:"Create",searchRectangle:getSearchRect(""),searchRectangle:getSearchRect("createCNArea")
+if imageFound(text:"TestECN"&quote&&"was added to Changes") then Log "ECN Creation Done"
+wait 4
+typetext controlKey,w
+
+
+
+
+to runValues var1
+	set global var1 to var1
+	log global var1
+end runValues
+
+
+to logValues
+	log global var1
+end logValues
+
+
+
+runValues "Hello"
+logValues
+
+set variantValues to ["128gb", "512gb"]
+
+
+to callListValues variantValues
+	Put variantValues as a list into variantValues
+	repeat with each value of variantValues
+		click text:"Title",hotspot:[70,1]
+		typetext value
+		click text:"Add"
+	end repeat
+end callListValues
+
+callListValues ["128gb", "512gb"]
+
+
+
+repeat with each value of variantValues
+	
+end repeat
+
+
+
+
+
+
+
+to CreateObject objType,objName,objDesc:""
+
+	//set global variantName to variantName
+	
+	click imageName:"AddVariant",SearchRectangle:(2,369,1912,1028),waitfor:40
+	
+	Click text:objType, waitFor:20
+	
+	WaitFor 10, text:"Classifications"
+	put imageLocation(text:"Classifications") into cls
+	set the searchRectangle to [[cls.x-500,cls.y-30],[cls.x+150,cls.y+400]]
+	wait 5
+	
+	
+	Click text:"Title", hotspot:[350,2]
+
+	//TypeText controlKey, "a"
+	
+	TypeText  objName
+	
+	if ImageFound(text:"Show More", waitFor:5)
+		
+		Click text:"Show More"
+		
+		Click text:"Description", hotspot:[200,10]
+
+		
+		
+		TypeText objDesc
+		
+	else
+		
+		Click text:"Description", hotspot:[200,10]
+
+		TypeText objDesc
+		
+	end if
+	
+	if ImageFound(imageName:"CreateButton/CreateButton_disabled", waitFor:5)
+		
+		log "Not all mandatory attributes are filled. Create button is disabled"
+		
+	else
+		
+		click imagename:"CreateButton/CreateButton_enabled"
+		
+	end if
+	
+end CreateObject
+
+log ocrVersion()
+
+
+put "OG1" into optionGroup
+
+Click description:"the purple color button"
+
+
+repeat with each obj of objectName
+	put x of imageLocation(text:obj) into xCoord
+	log xCoord
+end repeat
+
+
+
+click imageLocation(text:objectName)+[x,0]
+
+set objectNames to ["Checkbox 1","Checkbox 2"]
+
+repeat with each obj of objectNames
+	put y of imageLocation(text:obj) into objcoord
+	click [365,objCoord]
+end repeat
+
+
+
+put x of center of imageRectangle(text:"Red") into centerOfVal
+log centerOfVal
+
+(*put left of imageRectangle(text:"Red") into leftOfRed
+log leftOfRed
+
+log mouseLocation()*)
+set list to ["Red","Yellow","Blue"]
+repeat with each val of list
+	put left of Imagerectangle(text:val) into leftOfVal
+	#put y of center of ImageRectangle(text:val) into centerOfVal
+	click [leftVal,0]
+end repeat
+
+
+Set the searchRectangle to "SearchArea".ScreenPart("TopRightQuadrant")
+
+wait 5
+
+WaitFor 30, text:"Free",searchRectangle:"SearchArea".ScreenPart("TopRightQuadrant")

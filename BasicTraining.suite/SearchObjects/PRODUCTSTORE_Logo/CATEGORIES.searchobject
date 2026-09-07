@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		414,
+		583,
+		160,
+		28
+	],
+	"lastmodifieddate": 1768544000.7839999,
+	"createddate": 1679296586.941,
+	"name": "PRODUCTSTORE_Logo/CATEGORIES",
+	"lastfounddate": 1718358775.1339998,
+	"ocrcapturestring": "CATEGORIES",
+	"lastfoundlocation": [
+		414,
+		567,
+		160,
+		28
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "CATEGORIES",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[80,14]",
+					"Tolerance": "_70",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					414,
+					583,
+					160,
+					28
+				],
+				"name": "PRODUCTSTORE_Logo/CATEGORIES.png"
+			}
+	]
+}

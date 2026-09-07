@@ -1,0 +1,6 @@
+﻿SendMail to:"vijayalaxmi.kummari@ideabytes.com", subject:"TestMail", message:"Test message"
+
+--- will not work if the mail MFA 
+
+
+SendMail to:"vijayalaxmi.kummari@non.keysight.com", subject:"Mail from EPF", message:"Ignore it just for testing purpose"

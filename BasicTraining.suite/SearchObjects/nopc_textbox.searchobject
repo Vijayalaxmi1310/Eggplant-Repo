@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		747,
+		542,
+		425,
+		55
+	],
+	"lastmodifieddate": 1782898770.437,
+	"createddate": 1782898770.437,
+	"name": "nopc_textbox",
+	"lastfounddate": 1782899487.9159999,
+	"ocrcapturestring": "*",
+	"lastfoundlocation": [
+		747,
+		652,
+		425,
+		55
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[212,27]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "nopc_textbox.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"connectionserverid": "192.168.1.81",
+				"capturerect": [
+					747,
+					542,
+					425,
+					55
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "*"
+			}
+	]
+}

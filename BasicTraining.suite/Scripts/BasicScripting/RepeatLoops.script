@@ -1,0 +1,102 @@
+﻿---- Repeat loop using the number of times ----------------
+
+Repeat 4 times
+	click text:"Phones"
+	wait 1
+	click text:"Laptops"
+	wait 1
+	click text:"Monitors"
+End repeat
+
+
+repeat 2 times
+	click text:"Phones"
+	click text:"Laptops"
+end repeat
+
+repeat 5 times
+	log repeatIndex()
+	if repeatIndex()>3
+		Logwarning "Exceeded"
+		exit repeat
+	end if
+end repeat
+-----Repeat the statements in the specified time ----------------
+
+Repeat for 10 seconds 
+	log repeatIndex()
+	Log "Executing the statements under 10 seconds"
+End repeat
+
+------ Repeat the statements until some condition met-------------
+Connect "81 SUT"
+typetext windowsKey,r
+typetext "chrome demo.nopcommerce.com",return
+repeat until ImageFound(text:"HTC One M9", waitFor:5)
+	ScrollWheelDown 4
+	if repeatIndex()>2
+		LogError "the image is not displayed on the screen"
+	end if
+end repeat
+click text:"HTC One M8"
+
+
+repeat 6 times
+	typetext upArrow
+end repeat
+
+----- Repeating the code execution for the specified amount of time
+
+repeat 10 seconds
+	click text:"Computers",waitFor:0
+end repeat
+
+
+
+ScrollWheelDown 5
+
+click ImageLocation(text:"HTC One M9",waitFor:2)
+
+Repeat until imageFound(text:"HTC One M9",waitFor:1)
+	ScrollWheelDown 5
+	if repeatIndex()>5
+		LogError "the product not found"
+		exit repeat
+	end if
+End repeat
+wait 3
+click ImageLocation(text:"HTC One M9",waitFor:2)
+
+
+
+
+repeat until imageFound(text:"Random",waitFor:0)
+	ScrollWheelDown 2
+	if repeatIndex()>3
+		LogWarning "Random text not found on the screen"
+		exit repeat
+	end if	
+end repeat
+
+
+
+
+MoveTo text:"Phones"
+typetext downArrow
+
+
+
+
+repeat 3 times
+	click imageName:"scrollDownArrow"
+end repeat
+
+
+repeat until imageFound(text:"")
+	click imageName:"ScrollDownArrow"
+end repeat
+
+
+
+
+

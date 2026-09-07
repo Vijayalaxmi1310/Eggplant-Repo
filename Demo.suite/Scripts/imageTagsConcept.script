@@ -1,0 +1,73 @@
+﻿put GetImagesByTag("Chrome") into tImages
+
+Log tImages
+
+------------------------------------------------------------------------------
+-- GetImagesByTag
+--
+-- Returns all images associated with the specified EPF tag.
+--
+-- Example:
+-- put GetImagesByTag("GCP_APIs")
+------------------------------------------------------------------------------
+to GetImagesByTag pTag
+	
+	global pImages
+	put [] into pImages
+	
+	put SuiteInfo().ImagesFolder into tRootFolder
+	ScanFolderForTag tRootFolder, pTag
+	return pImages
+end GetImagesByTag
+
+
+------------------------------------------------------------------------------
+-- ScanFolderForTag
+--
+-- Recursively scans the Images folder and its subfolders looking for
+-- .imageinfo files containing the specified tag.
+------------------------------------------------------------------------------
+to ScanFolderForTag pFolder, pTag
+	
+	global pImages
+	--------------------------------------------------
+	-- Process imageinfo files in current folder
+	--------------------------------------------------
+	put files of pFolder into tFiles
+	repeat with each item tFile in tFiles
+		if tFile contains ".imageinfo" then
+			put file tFile into tContents
+			log tContents
+			if quote & pTag & quote is in tContents then
+				--------------------------------------------------
+				-- Build EPF image reference
+				--------------------------------------------------
+				put filePath of tFile into tImageName
+				replace SuiteInfo().ImagesFolder with "" in tImageName
+				replace "\" with "/" in tImageName
+				replace "//" with "/" in tImageName
+				if tImageName begins with "/" then
+					delete char 1 of tImageName
+				end if
+				delete ".imageinfo" from tImageName
+				--------------------------------------------------
+				-- Add image to results
+				--------------------------------------------------
+				insert tImageName into pImages
+				Log "Tag Match Found:" && tImageName
+			end if
+		end if
+	end repeat
+	
+	--------------------------------------------------
+	-- Process subfolders recursively
+	--------------------------------------------------
+	put folders of pFolder into tFolders
+	repeat with each item tFolder in tFolders
+		ScanFolderForTag tFolder, pTag
+		
+	end repeat
+	
+end ScanFolderForTag
+
+

@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		903,
+		301,
+		142,
+		21
+	],
+	"lastmodifieddate": 1768548100.3559999,
+	"createddate": 1682399091.411,
+	"name": "Digitaldownloads",
+	"lastfounddate": 1682487140.878,
+	"ocrcapturestring": "Digital downloads",
+	"lastfoundlocation": [
+		903,
+		301,
+		142,
+		21
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Digital downloads",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[76,10]",
+					"Tolerance": "_50",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					903,
+					301,
+					142,
+					21
+				],
+				"name": "Digitaldownloads.png"
+			}
+	]
+}

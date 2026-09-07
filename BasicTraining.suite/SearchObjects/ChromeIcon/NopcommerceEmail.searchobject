@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		1023,
+		534,
+		52,
+		26
+	],
+	"lastmodifieddate": 1681185813.96,
+	"createddate": 1681185802.391,
+	"name": "ChromeIcon/NopcommerceEmail",
+	"lastfounddate": 1682400048.0380001,
+	"ocrcapturestring": "Email:",
+	"lastfoundlocation": [
+		1023,
+		534,
+		52,
+		26
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5905,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[127,11]",
+					"Tolerance": "_54",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "NopcommerceEmail.png",
+				"connectionname": "Partner-SUT-4",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					1023,
+					534,
+					52,
+					26
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Email:"
+			}
+	]
+}

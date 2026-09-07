@@ -1,0 +1,13 @@
+﻿(* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  Script generated:  2026-07-10 14:46:40
+  From session:  nopcommerceTCapture
+  Captured on:  2026-07-10 14:41:55
+  From server:  81SUT
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *)
+
+DoubleClick "chromeIcon_01"
+TypeText "demo.nopcommerce.com",returnKey
+Click Text:"Books",waitFor:20
+Click Text:"First Prize Pies",waitFor:10
+Click "addtoCartButton_nopc",waitFor:40
+Click "ShoppingcartLink_nopc",waitFor:20

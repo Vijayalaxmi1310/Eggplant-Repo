@@ -1,0 +1,43 @@
+﻿click imageLocation(imageName:"ChromeIcon_171")
+
+set EggplantFunctional to imageLocation(imageName:"ChromeIcon_171")+[2,100] -- Using hotspot reference setting Variable Location on Eggplant Functional Icon
+
+DoubleClick EggplantFunctional -- Clicking on Eggplant Functional Location using EggplantFunctional variable
+
+log imageLocation(imageName:"ChromeIcon_171")
+
+
+
+moveTo imageLocation(text:"Electronics")
+
+click text:""
+
+click imageName:""
+
+put ImageLocation("ChromeIcon_171") into chromeIcon
+log chromeIcon
+
+click imageName:"SearchIcon_Firefox"
+typetext "demo.nopcommerce.com",returnKey
+
+click text:"Search",hotspot:[200,1]
+
+enterValues
+
+
+to handle launchURL
+
+end launchURL
+
+to handle enterValues labelName,value
+	click text:labelName,hotspot:[60,1]
+	typetext controlKey,a
+	typetext value
+end enterValues
+
+
+enterValues "First name","First User"
+enterValues "Last name","Last User"
+enterValues "Email","test@gmail.com"
+
+

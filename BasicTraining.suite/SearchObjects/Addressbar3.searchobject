@@ -1,0 +1,32 @@
+{
+	"lastmodifieddate": 1682398851.602,
+	"originalcapturelocation": [
+		106,
+		36,
+		223,
+		31
+	],
+	"createddate": 1682398851.602,
+	"testlocationdata": [
+		{
+				"name": "Addressbar.png",
+				"type": 1,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[74,18]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"capturerect": [
+					106,
+					36,
+					223,
+					31
+				]
+			}
+	],
+	"name": "Addressbar3"
+}

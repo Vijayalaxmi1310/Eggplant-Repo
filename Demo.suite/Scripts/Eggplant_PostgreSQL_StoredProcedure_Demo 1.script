@@ -1,0 +1,176 @@
+﻿-- =========================================
+-- EGGPLANT + POSTGRESQL DATABASE AUTOMATION DEMO
+-- Demonstrates how Eggplant can:
+-- 1. Reset database state
+-- 2. Create a stored procedure
+-- 3. Execute stored procedures
+-- 4. Validate database results
+-- =========================================
+
+log "EGGPLANT DATABASE AUTOMATION DEMO"
+put -
+
+-- Reset database to a known baseline state
+put resetUsers() into resetResult
+log "Reset Result:" && resetResult
+put -
+
+-- Install or update stored procedure used for inserting users
+put installInsertUserProcedure() into procedureInstallResult
+log "Procedure Install Result:" && procedureInstallResult
+put -
+
+-- Fetch current users before test execution
+log "Initial Users"
+put getAllUsers() into initialUsers
+log initialUsers
+put -
+
+-- Create new test data using stored procedure
+log "Creating Test User"
+put createUser("David","david@test.com") into createUserResult
+log "Create User Result:" && createUserResult
+put -
+
+-- Verify database state after insert
+log "Users After Insert"
+put getAllUsers() into usersAfterInsert
+log usersAfterInsert
+put -
+
+-- Validate backend value using a DB function
+log "Validating User Email"
+put getUserEmail("John") into emailValidationResult
+log emailValidationResult
+put -
+
+-- ------------------------------------------------
+-- Handler: getDBConnection
+-- Purpose: Returns database connection configuration
+-- used by all DB operations in this script.
+-- Uses ODBC DSN to connect to PostgreSQL.
+-- ------------------------------------------------
+to getDBConnection
+	set dbConfig to {
+		type:"odbc",
+		DSN:"MyPsql",
+		user:"postgres",
+		password:"admin"
+	}
+	return dbConfig
+end getDBConnection
+
+
+-- ------------------------------------------------
+-- Handler: executeDBQuery
+-- Purpose: Generic database execution utility.
+-- Executes any SQL query and returns the result.
+-- Includes logging and basic error handling.
+-- ------------------------------------------------
+to executeDBQuery sqlQuery
+	put getDBConnection() into myDB
+	
+	log "Executing SQL:" && sqlQuery
+	
+	try
+		put executeSQL(myDB, sqlQuery) into result
+		--log "Result:" && result
+		return result
+	catch err
+		logError "DB ERROR:" && err
+		throw err
+	end try
+end executeDBQuery
+
+
+-- ------------------------------------------------
+-- Handler: resetUsers
+-- Purpose: Calls database stored procedure to reset
+-- the users table to a known baseline state.
+-- Useful for preparing test environments.
+-- ------------------------------------------------
+to resetUsers
+	put executeDBQuery("CALL reset_users();") into result
+	return result
+end resetUsers
+
+
+-- ------------------------------------------------
+-- Handler: installInsertUserProcedure
+-- Purpose: Creates or replaces a stored procedure
+-- in PostgreSQL used for inserting users.
+-- This demonstrates that Eggplant can also create
+-- database objects dynamically.
+-- ------------------------------------------------
+to installInsertUserProcedure
+
+	set sql to {{
+CREATE OR REPLACE PROCEDURE insert_user(
+p_name TEXT,
+p_email TEXT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+INSERT INTO users(name,email)
+VALUES(p_name,p_email);
+END;
+$$;
+}}
+	
+	executeDBQuery(sql)
+	
+end installInsertUserProcedure
+
+
+-- ------------------------------------------------
+-- Handler: createUser
+-- Purpose: Calls the stored procedure insert_user
+-- to create a new user record in the database.
+-- Used for test data setup.
+-- ------------------------------------------------
+to createUser name,email
+	put "CALL insert_user('" & name & "','" & email & "');" into sql
+	executeDBQuery(sql)
+end createUser
+
+
+-- ------------------------------------------------
+-- Handler: getUserEmail
+-- Purpose: Retrieves a user's email address from
+-- the database using a PostgreSQL function.
+-- Demonstrates backend validation.
+-- ------------------------------------------------
+to getUserEmail name
+
+	put executeDBQuery("SELECT get_user_email('" & name & "');") into result
+	
+	if result is not empty then
+		put (item 1 of result).get_user_email into email
+		log "Email for" && name && ":" && email
+	else
+		logWarning "User not found:" && name
+	end if
+	
+	return result
+	
+end getUserEmail
+
+
+-- ------------------------------------------------
+-- Handler: getAllUsers
+-- Purpose: Retrieves all user records from the
+-- database and logs them in a readable format.
+-- Useful for verifying database state.
+-- ------------------------------------------------
+to getAllUsers
+
+	put executeDBQuery("SELECT * FROM users;") into users
+	
+	repeat with each user in users
+		log "User:" && user.name && "| Email:" && user.email
+	end repeat
+	
+	return users
+	
+end getAllUsers

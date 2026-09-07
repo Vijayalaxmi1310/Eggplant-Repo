@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		416,
+		270,
+		173,
+		61
+	],
+	"lastmodifieddate": 1768548055.687,
+	"createddate": 1682487158.6719999,
+	"name": "ComputersTopLeft",
+	"lastfounddate": 1682487377.415,
+	"ocrcapturestring": "Computers",
+	"lastfoundlocation": [
+		416,
+		270,
+		173,
+		61
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5911,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[10,5]",
+					"Tolerance": "_50",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "ComputersTopLeft.png",
+				"connectionname": "Partner-SUT-3",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					416,
+					270,
+					173,
+					61
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Computers"
+			}
+	]
+}

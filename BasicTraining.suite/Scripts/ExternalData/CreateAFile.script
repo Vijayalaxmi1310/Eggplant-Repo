@@ -1,0 +1,8 @@
+﻿------- Creating a File from Eggplant Functional ------------------
+
+Put "Welcome to Eggplant. Happy Scripting" into file "C:\Users\vijayalaxmi.kummari\OneDrive - Ideabytes\Desktop\CreatedFromEPF.txt"
+
+log file "C:\Users\vijayalaxmi.kummari\OneDrive - Ideabytes\Desktop\CreatedFromEPF.txt"
+
+
+Put "Again welcome to Eggplant. Happy Scripting" into file "C:\Users\vijayalaxmi.kummari\OneDrive - Ideabytes\Desktop\CreatedFromEPF.txt"

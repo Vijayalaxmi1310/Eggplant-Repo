@@ -1,0 +1,37 @@
+﻿to launchAppl
+	typetext windowsKey,r
+	typetext "firefox demoblaze.com",return
+	WaitFor 60, text:"Product Store"
+end launchAppl
+
+
+to verifyHomepage
+	if ImageFound(text:"Samsung galaxy s6", waitFor:40)
+		LogSuccess "Home page verified"
+	end if
+end verifyHomepage
+
+to SelectCategory
+	Log "select the category from the list"
+end SelectCategory
+
+to selectPhones
+	click text:"Phones"
+	
+end selectPhones
+
+
+to selectLaptops
+	click text:"Laptops"
+end selectLaptops
+
+
+to selectMonitors
+	click text:"Monitors"
+end selectMonitors
+
+
+to clickCart
+	click text:"Cart"
+end clickCart
+

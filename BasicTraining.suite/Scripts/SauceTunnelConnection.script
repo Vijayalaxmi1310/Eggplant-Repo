@@ -1,0 +1,10 @@
+﻿Connect {
+	name:"SauceTunnel1",
+	type:"SauceLabs",
+	tunnelName:"Vijayalaxmi_K_sauceTunnel",
+	tunnelOwner:"Vijayalaxmi_K",
+	
+	apiKey:"6935c73b-0db5-43da-9164-07a7ab47cf05",
+	dataCenter:"eu-central",
+	user:"Vijayalaxmi_K",
+}

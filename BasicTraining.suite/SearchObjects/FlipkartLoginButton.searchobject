@@ -1,0 +1,77 @@
+{
+	"originalcapturelocation": [
+		1114,
+		115,
+		66,
+		26
+	],
+	"lastmodifieddate": 1768543955.483,
+	"createddate": 1680689662.3710001,
+	"name": "FlipkartLoginButton",
+	"lastfounddate": 1680690492.1069999,
+	"ocrcapturestring": "Login",
+	"lastfoundlocation": [
+		1114,
+		115,
+		66,
+		26
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5925,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[33,13]",
+					"Tolerance": "_62",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "FlipkartLoginButton/FlipkartLoginButton.png",
+				"connectionname": "Partner-SUT-9",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					1114,
+					115,
+					66,
+					26
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Login"
+			},
+		{
+				"connectionportnum": 5925,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[33,13]",
+					"Tolerance": "_1",
+					"Discrepancy": "_0",
+					"SearchType": "Precise to Pixel"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "FlipkartLoginButton/FlipkartLoginButton_new.png",
+				"connectionname": "Partner-SUT-9",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					1114,
+					115,
+					66,
+					26
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Login"
+			}
+	]
+}

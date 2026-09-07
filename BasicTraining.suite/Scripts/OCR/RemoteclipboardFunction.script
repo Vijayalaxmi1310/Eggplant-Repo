@@ -1,0 +1,26 @@
+﻿---- Use of remoteclipboard function ------
+typetext controlKey,l -- To go to addressbar
+typetext controlKey,c  -- To copy the text in the address bar
+put RemoteClipboard() into URL  -- Stores the content which we copied from the SUT temporarily
+log URL
+assert that URL contains "https://demo.nopcommerce.com/jewelry"
+
+
+
+------------
+put "Vijaya" into firstName
+click text:"First name",hotspot:[80,5]
+wait 1
+typetext controlKey,a
+wait 1
+typetext controlKey,c
+wait 1
+put RemoteClipboard() into actualValue
+log actualValue
+assert that firstName contains actualValue
+
+
+
+
+
+

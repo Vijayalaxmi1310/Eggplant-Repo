@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		717,
+		207,
+		114,
+		29
+	],
+	"lastmodifieddate": 1682397724.0549998,
+	"createddate": 1682397724.0549998,
+	"name": "Username_logindb",
+	"lastfounddate": 1718359110.539,
+	"ocrcapturestring": "Username:",
+	"lastfoundlocation": [
+		708,
+		191,
+		114,
+		29
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5905,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[80,68]",
+					"Tolerance": "_62",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "Username_logindb.png",
+				"connectionname": "Partner-SUT-4",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					717,
+					207,
+					114,
+					29
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Username:"
+			}
+	]
+}

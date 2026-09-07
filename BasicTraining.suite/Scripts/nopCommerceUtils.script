@@ -1,0 +1,30 @@
+﻿to launchWebApp browserName,appURL,toValidate
+	typetext windowsKey,r
+	typetext browserName&&appURL,returnKey
+	if imageFound(text:"Verify you are human",waitFor:5) then click FoundImageLocation()
+	WaitFor 50, text:toValidate
+end launchWebApp
+
+launchWebApp "chrome","demo.nopcommerce.com","Welcome to our store"
+wait 2
+launchWebApp "firefox","demoblaze.com","Product Store"
+
+
+
+
+to navigateMenu
+	params menuName,toVerify
+	click text:menuName,waitFor:20
+	WaitFor 40, text:toVerify
+	
+end navigateMenu
+
+set the searchRectangle to screenpartFunction.ScreenPart("RightHalf")
+click text:"Log in"
+click text:"Shopping cart"
+set the searchRectangle to empty
+
+
+
+click text:"Register",searchRectangle:screenpartFunction.ScreenPart("RightHalf")
+click text:"Computers"

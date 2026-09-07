@@ -1,0 +1,18 @@
+{
+  "launchTeamcenterApplication": {
+    "scope": "sensetalk",
+    "prefix": [
+      "launchTeamcenterApplication"
+    ],
+    "body": [
+      "typetext windowsKey,r",
+      "if imageFound(text:\"Type the name\",waitFor:20)",
+      "\tLog \"Run Window Opened\"",
+      "end if",
+      "typetext \"chrome http://localhost:3000\",returnKey",
+      "wait 3",
+      "if imageFound(text:\"SIEMENS\",waitFor:30) then Log \"Teamcenter application launched\""
+    ],
+    "description": ""
+  }
+}

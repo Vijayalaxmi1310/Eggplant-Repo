@@ -1,0 +1,118 @@
+﻿--- Reading the data in a range from excel sheet -------------
+to readDatafromExcel ExcelFileName,SheetName,RowNum,ColNum
+
+	set MyExcelFile to Workbook(ResourcePath(ExcelFileName))
+	set MySheet to worksheet(MyExcelFile,SheetName)
+	put MySheet.cellRange (RowNum,ColNum) into Global RowData
+	Log Global RowData
+	
+end readDatafromExcel
+
+
+readDatafromExcel "ResponsiveList.xlsx","Sheet0","A2","F6"
+repeat with each item of Global RowData
+	log it
+end repeat
+
+readDatafromExcel "ResponsiveList.xlsx","2","A1","F6"
+repeat with each item of Global RowData
+	log it
+end repeat
+
+readDatafromExcel "ResponsiveList.xlsx","Sheet0","A2","F6"
+put item 1 of Global RowData into RandyData
+log RandyData
+put item 1 of RandyData into Name
+log Name
+
+
+set MyExcelFile to Workbook(ResourcePath("ResponsiveList.xlsx"))
+set MySheet to worksheet(MyExcelFile,"studentDetails")
+set studentData to MySheet.cellRange("1")
+log studentData
+
+
+
+set myExcelFile to WorkBook(ResourcePath("ResponsiveList.xlsx"))
+set mySheet to worksheet(MyExcelFile, "Sheet0")
+-- cell,cellRange
+put mySheet.cellRange("A2","F6") into allData
+log allData
+
+put the first item of allData into Headers
+
+
+
+repeat with line 3 of allData
+	log it
+end repeat
+
+
+-------- Reading the data from a particular cell --------------------
+
+set MyExcelFile to Workbook(ResourcePath("ResponsiveList.xlsx"))
+set MySheet to worksheet(MyExcelFile,"Sheet0")
+Log MySheet.cell("C3")  -- Row number 3 and column number 2   (One way of reading the particular cell)
+log cell("C3") of MySheet
+
+---(Another way of reading the particular cell data using cell function name)
+set MyExcelFile to Workbook(ResourcePath("TestData1.xlsx"))
+set MySheet to worksheet(MyExcelFile,"Sheet1")
+put cell("B2") of MySheet into UserName
+log Username
+
+
+----------- Write data to particular cell ---------------------------
+set MyExcelFile to Workbook(ResourcePath("ExcelInteractionsFile.xlsx"))
+set MySheet to worksheet(MyExcelFile,"Sheet1")
+put "Vijayalaxmi" into MySheet.cell(4,3)  -- Row number 3 and column number 4
+log MySheet.Cell("C4")
+
+
+------------ Update Excel data for a Particular Cell --------------------------
+set MyExcelFile to Workbook(ResourcePath("ExcelInteractionsFile.xlsx"))
+set MySheet to worksheet(MyExcelFile,"Sheet1")
+put "Updated" into MySheet.cell(3,2)
+Log MySheet.cell(3,2)
+
+
+---------- Delete Excel data from a Particular Cell ---------------------------------
+set MyExcelFile to Workbook(ResourcePath("ExcelInteractionsFile.xlsx"))
+set MySheet to worksheet(MyExcelFile,"Sheet1")
+put "" into MySheet.cell(4,2) -- Row number 4 and Column Number 2
+
+
+
+Demoblaze_TC
+
+
+
+set myExcelDB to {type:"excel", file:"C:\Projects\TestFiles\States.xlsx", writable: Yes} -- Set the specified variable, myExcelDB, to store the contents of the referenced Excel file and establish a writable SenseTalk connection
+
+
+
+set myExcelDB to {type:"excel", file:resourcePath("ExcelInteractionsFile.xlsx")} -- set the specified variable, myExcelDB, to store the contents of the referenced Excel file
+put the records of myExcelDB into testData -- fetch all records from the myExcelDB variable and place them into the states variable
+log testData
+put the record of myExcelDB where username is "Username1"
+
+log the username of the records of myExcelDB where flag is "No"
+put states joined by return
+
+put file "C:\Users\vijayalaxmi.kummari\OneDrive - Ideabytes\Desktop\testData.txt" as propertyList into wifiDetails
+
+log wifiDetails.wifiName
+log wifiDetails.wifiPassword
+
+
+put {wifiName:"FirstWifi",wifiPassword:"#%#%#gtuit"} into wifiDetails
+log wifiDetails.wifiName
+
+
+
+set myExcelDB to {type:"excel", file:resourcePath("ResponsiveList.xlsx"), writable: Yes} -- Set the specified variable, myExcelDB, to store the contents of the referenced Excel file and establish a writable SenseTalk connection
+put the records of myExcelDB into testData
+log testData
+put the record of myExcelDB where color is "Purple"
+
+

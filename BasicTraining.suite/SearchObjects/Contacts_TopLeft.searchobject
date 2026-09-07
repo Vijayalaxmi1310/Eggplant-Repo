@@ -1,0 +1,98 @@
+{
+	"originalcapturelocation": [
+		0,
+		177,
+		77,
+		92
+	],
+	"lastmodifieddate": 1680172214.6199999,
+	"createddate": 1680172111.5840001,
+	"name": "Contacts_TopLeft",
+	"lastfounddate": 1680172113.03,
+	"ocrcapturestring": "Not a tap th",
+	"lastfoundlocation": [
+		0,
+		177,
+		77,
+		92
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5900,
+				"deleted": true,
+				"domelements": [
+					{
+							"elementName": "ContactsButton",
+							"elementScale": 1,
+							"elementType": "Button",
+							"elementLocation": "{x = 9; y = 578; width = 93; height = 62}"
+						},
+					{
+							"elementName": "FavoritesButton",
+							"elementScale": 1,
+							"elementType": "Button",
+							"elementLocation": "{x = 111; y = 578; width = 93; height = 62}"
+						},
+					{
+							"elementName": "HistoryButton",
+							"elementScale": 1,
+							"elementType": "Button",
+							"elementLocation": "{x = 222; y = 578; width = 93; height = 62}"
+						},
+					{
+							"elementName": "DownloadsButton",
+							"elementScale": 1,
+							"elementType": "Button",
+							"elementLocation": "{x = 327; y = 578; width = 93; height = 62}"
+						},
+					{
+							"elementName": "Wifi Indicator",
+							"elementScale": 1,
+							"elementType": "Checkpoint",
+							"elementLocation": "{x = 4; y = 3; width = 82; height = 22}"
+						},
+					{
+							"elementName": "Clock",
+							"elementScale": 1,
+							"elementType": "Checkpoint",
+							"elementLocation": "{x = 174; y = 4; width = 78; height = 20}"
+						},
+					{
+							"elementName": "Battery Indicator",
+							"elementScale": 1,
+							"elementType": "Checkpoint",
+							"elementLocation": "{x = 382; y = 3; width = 42; height = 24}"
+						},
+					{
+							"elementName": "Screen Text",
+							"elementScale": 1,
+							"elementType": "Checkpoint",
+							"elementLocation": "{x = 12; y = 198; width = 326; height = 60}"
+						}
+				],
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[3,4]",
+					"Tolerance": "_73",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"Type": "Testplant Tutorial"
+				},
+				"name": "Contacts_TopLeft.png",
+				"connectionname": "Tutorial Connection",
+				"type": 1,
+				"connectionserverid": "TutorialSUT",
+				"capturerect": [
+					0,
+					177,
+					77,
+					92
+				],
+				"capturedocrtext": "Not a tap th"
+			}
+	]
+}

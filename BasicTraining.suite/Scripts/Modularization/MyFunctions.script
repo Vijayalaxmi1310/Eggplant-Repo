@@ -1,0 +1,79 @@
+﻿--- to handler is generic handler with the combination of On and Function Handler --------------------
+to greetTheUser
+	log "Welcome to SenseTalk. Happy Scripting!!!!!"
+end greetTheUser
+
+
+greetTheUser
+greetTheUser
+
+to handle welcomeTheUser
+	LogSuccess "Welcomed the user"
+end welcomeTheUser
+
+
+to handle launchWebApp
+	
+end launchWebApp
+
+
+greetTheUser
+welcomeTheUser
+
+
+--- On Handler - Command handler to declare the values ---------------
+On addToTotal 
+	params newAmount
+	add newAmount to global Total
+	return global Total
+End addToTotal
+
+addToTotal 300
+log the result
+
+
+---- Function handler to return the values ---------------
+Function Multiplier
+	params  Num1,Num2
+	put Num1*Num2 into Num3
+	return Num3
+End Multiplier
+
+log Multiplier (4,6)
+
+put Multiplier(4,5) into Total
+log Total
+
+to launchApplication
+	params browserType,URL
+	typetext windowsKey,r
+	typetext browserType&&URL,return
+end launchApplication
+
+greetTheUser
+welcomeTheUser
+
+
+addToTotal "500"
+log the result
+
+
+Multiplier "12","15"
+
+put Multiplier("5","8") into Total
+log Total
+
+
+log Multiplier(10,10)
+
+
+launchApplication "chrome","demoblaze.com"
+
+launchApplication "chrome","flipkart.com"
+
+
+
+
+
+
+

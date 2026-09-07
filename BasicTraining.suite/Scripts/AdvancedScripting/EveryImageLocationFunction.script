@@ -1,0 +1,22 @@
+﻿typetext windowsKey,r
+typetext "chrome https://formfacade.com/website/google-forms-question-types-checkboxes-multi-select.html",return
+repeat until ImageFound(text:"How can I include", waitFor:10)
+	ScrollWheelDown 4
+	
+end repeat
+WaitFor 30, text:"Once you have added"
+
+put EveryImageLocation("formfacadecheckbox") into checkboxes
+log the number of items of checkboxes
+repeat with each checkbox of checkboxes
+	click checkbox
+end repeat
+
+
+put EveryImageLocation(text:"Computers")
+
+
+click item 4 of EveryImageLocation(text:"Computers")
+
+click imageLocation(imageName:"ShowClipboard")
+log FoundImageInfo()

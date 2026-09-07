@@ -1,0 +1,22 @@
+﻿DoubleClick imageName:"firefoxBrowser"
+
+DoubleClick imageName: "fiefoxIcon"
+
+
+
+
+-- Manual steps: Open Run Window, Verified that run is opened, entered chrome in the textbox, clicked on enterKey / OK button
+
+TypeText windowsKey, "r" -- Open run window
+
+WaitFor 30, text:"Type the name" --- verify the run window opened
+
+TypeText "Chrome",returnKey
+
+
+
+
+
+
+
+

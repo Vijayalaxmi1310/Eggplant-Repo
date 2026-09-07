@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		1282,
+		782,
+		66,
+		58
+	],
+	"lastmodifieddate": 1768547808.7090001,
+	"createddate": 1682486660.3309999,
+	"name": "bottomRight_NP",
+	"lastfounddate": 1682486719.6659999,
+	"ocrcapturestring": "min site.",
+	"lastfoundlocation": [
+		1282,
+		782,
+		66,
+		58
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5911,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[67,60]",
+					"Tolerance": "_40",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "bottomRight_NP.png",
+				"connectionname": "Partner-SUT-3",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					1282,
+					782,
+					66,
+					58
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "min site."
+			}
+	]
+}

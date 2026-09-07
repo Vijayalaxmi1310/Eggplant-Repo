@@ -1,0 +1,13 @@
+﻿open process "c:/windows/system32/cmd.exe#1"
+
+Log openProcesses()
+
+write "dir" & return to process "c:/windows/system32/cmd.exe#1"
+
+read 16 lines from process "c:/windows/system32/cmd.exe#1" into output
+
+put ""
+
+Log output
+
+close process "c:/windows/system32/cmd.exe#1"

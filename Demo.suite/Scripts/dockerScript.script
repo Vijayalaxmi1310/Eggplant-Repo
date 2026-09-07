@@ -1,0 +1,8 @@
+﻿if ImageFound(text:"OrangeHRM", waitFor:10) then Log "Orange HRM application launched successfully"
+click text:"Username"
+typetext "Admin"
+
+
+Connect "171 SUT"
+
+

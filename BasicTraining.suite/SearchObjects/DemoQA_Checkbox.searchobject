@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		530,
+		312,
+		35,
+		23
+	],
+	"lastmodifieddate": 1768548093.464,
+	"createddate": 1682419652.2779999,
+	"name": "DemoQA_Checkbox",
+	"lastfounddate": 1682422327.2709999,
+	"ocrcapturestring": "□",
+	"lastfoundlocation": [
+		530,
+		312,
+		35,
+		23
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[17,11]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "DemoQA_Checkbox.png",
+				"connectionname": "192.168.1.171",
+				"type": 1,
+				"connectionserverid": "192.168.1.171",
+				"capturerect": [
+					530,
+					312,
+					35,
+					23
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "□"
+			}
+	]
+}

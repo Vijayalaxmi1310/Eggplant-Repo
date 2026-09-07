@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1749636303.6069999,
+	"ocrcapturestring": "X",
+	"originalcapturelocation": [
+		1875,
+		5,
+		45,
+		30
+	],
+	"createddate": 1749636303.6069999,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "X",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_45",
+					"HotSpot": "[22,19]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					1875,
+					5,
+					45,
+					30
+				],
+				"name": "image0009.png"
+			}
+	],
+	"name": "image0009"
+}

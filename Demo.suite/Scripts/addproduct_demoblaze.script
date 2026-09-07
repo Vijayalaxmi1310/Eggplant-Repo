@@ -1,0 +1,7 @@
+﻿connectSUT sutName
+demoblazeUtils.launchWebApp
+demoblazeUtils.verifyHomePage
+demoblazeUtils.navigatePhones
+demoblazeUtils.selectMobile
+demoblazeUtils.addtoCart
+demoblazeUtils.closeBrowser

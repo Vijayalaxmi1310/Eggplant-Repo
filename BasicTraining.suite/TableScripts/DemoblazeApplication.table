@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?><TableScript xmlns="http://www.testplant.com/xmlns/TableScript/2014">
+<Lines>
+<Line><Action
+  >TypeText</Action
+><Arguments
+  >windowsKey,r</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >TypeText</Action
+><Arguments
+  >"chrome demoblaze.com",return</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >WaitFor</Action
+><Arguments
+  >40, text:"PRODUCT STORE"</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >ImageFound</Action
+><Arguments
+  >text:"Samsung galaxy s6"</Arguments
+><ExpectedValueExpression
+  >[True or False]</ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >Click</Action
+><Arguments
+  >text:"Samsung galaxy s6"</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >ImageFound</Action
+><Arguments
+  >text:"Add to cart"</Arguments
+><ExpectedValueExpression
+  >[True or False]</ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >Click</Action
+><Arguments
+  >text:"Add to cart"</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >TypeText</Action
+><Arguments
+  >altKey,f4</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+</Lines>
+</TableScript>

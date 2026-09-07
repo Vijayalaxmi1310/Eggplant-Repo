@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		57,
+		37,
+		35,
+		30
+	],
+	"lastmodifieddate": 1718101266.8200002,
+	"createddate": 1718101266.8200002,
+	"name": "RefreshIcon_Edge",
+	"lastfounddate": 1718101522.4960001,
+	"ocrcapturestring": "o",
+	"lastfoundlocation": [
+		57,
+		37,
+		35,
+		30
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[17,15]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown VNC"
+				},
+				"name": "RefreshIcon_Edge.png",
+				"connectionname": "IB-171",
+				"type": 1,
+				"connectionserverid": "192.168.1.171",
+				"capturerect": [
+					57,
+					37,
+					35,
+					30
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "o"
+			}
+	]
+}

@@ -1,1 +1,4 @@
-﻿{EPVersionNumber = 202604021025; Schedules = (); ScriptMetaData = {}; SuiteEncodedTextKey = "baCdu0I0`1.2W],s"; helpedSuitesInfo = (); helperSuitesInfo = (); }
+﻿{EPVersionNumber = 202608040826; Schedules = (); ScriptMetaData = {}; SuiteEncodedTextKey = "baCdu0I0`1.2W],s"; SuiteVariables = "{
+ password:\"string\",
+ suiteName:\"firstEggplant Suite\"
+}"; Tags = (Chrome); helpedSuitesInfo = ({filePath = "../OneDrive - Ideabytes/BasicTraining.suite"; }); helperSuitesInfo = (); }

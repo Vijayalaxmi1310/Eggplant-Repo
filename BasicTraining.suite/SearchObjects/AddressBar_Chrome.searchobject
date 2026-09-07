@@ -1,0 +1,40 @@
+{
+	"lastmodifieddate": 1768547755.2119999,
+	"lastfoundlocation": [
+		98,
+		481,
+		70,
+		30
+	],
+	"originalcapturelocation": [
+		266,
+		47,
+		70,
+		30
+	],
+	"createddate": 1749636300.974,
+	"lastfounddate": 1764910841.7410002,
+	"testlocationdata": [
+		{
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[35,14]",
+					"Tolerance": "_1",
+					"Discrepancy": "_0",
+					"SearchType": "Precise to Pixel"
+				},
+				"type": 1,
+				"capturerect": [
+					266,
+					47,
+					70,
+					30
+				],
+				"name": "AddressBar_Chrome.png"
+			}
+	],
+	"name": "AddressBar_Chrome"
+}

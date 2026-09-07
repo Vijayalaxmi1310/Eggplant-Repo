@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		803,
+		516,
+		148,
+		51
+	],
+	"lastmodifieddate": 1768547789.536,
+	"createddate": 1749638107.033,
+	"name": "AddToCart_New",
+	"lastfounddate": 1749638109.3530002,
+	"ocrcapturestring": "Add to cart",
+	"lastfoundlocation": [
+		803,
+		516,
+		148,
+		51
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 62586,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[76,25]",
+					"Tolerance": "_47",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"Type": "Single System"
+				},
+				"name": "AddToCart_New.png",
+				"connectionname": "OwnSUT",
+				"type": 1,
+				"connectionserverid": "127.0.0.1",
+				"capturerect": [
+					803,
+					516,
+					148,
+					51
+				],
+				"connectiontype": "Single System",
+				"capturedocrtext": "Add to cart"
+			}
+	]
+}

@@ -1,0 +1,106 @@
+﻿
+to getSearchRect  Portion
+	set screenPortions to {
+		primaryArea: [100, 150, 900, 750],
+		secondaryArea: [920, 150, 1320, 750],
+		navigationBar: [0, 0, 1366, 80],
+		commandBar: [0, 700, 1366, 760],
+		objectPrimaryArea:[],
+		objectSecondaryArea:[],
+		addChildArea:[],
+		createCNArea:[]
+
+	}
+	set searchRectangle to screenPortions.(Portion)
+	return searchRectangle 
+end getSearchRect
+
+
+--- Expand home and select the folder
+click text:"Home",searchRectangle:getSearchRect("primaryArea"),hotspot:[-150,3]
+click text:"EGGPLANT_AWC",searchRectangle:getSearchRect("primaryArea")
+
+
+click imageName:"metaBolls"
+click text:"New",searchRectangle:getSearchRect("sideBar"),waitFor:5
+click text:"Add",searchRectangle:getSearchRect("sideBar"),waitFor:5
+wait 0.5
+typetext "Item"
+wait 3
+typetext returnKey
+click text:"Name",hotspot:[0,50]
+typetext controlKey,a
+typetext "TopAssemblyNode"
+click imageName:"AddButton"
+set validateMsg to "TopAssemblyNode"&quote&&"was added"
+log validateMsg
+if imageFound(text:"TopAssemblyNode"&quote&&"was added")
+	Log "EBOM Creation Done"
+end if
+
+
+---- Open EBOM
+moveTo text:"TopAssemblyNode",hotspot:[100,0]
+if imageFound(imageName:"openObject",waitFor:10) then click FoundImageLocation()
+waitFor 40, text:"Where Used"
+click text:"Content"
+WaitFor 40, text:"Element"
+--- Select EBOM & Create Childs for EBOM
+repeat 2 times
+	click text:"TopAssemblyNode",searchRectangle:getSearchRect("objectPrimaryArea")
+	wait 0.5
+	
+	-- Add Child Items to EBOM
+	click text:"Add",waitFor:10,searchRectangle:getSearchRect("objectPrimaryArea")
+	click text:"Child",waitFor:10,searchRectangle:getSearchRect("objectPrimaryArea")
+	WaitFor 30, text:"Add Child"
+	
+	repeat until imageFound(text:"Name:",searchRectangle:getSearchRect("addChildArea"),waitFor:5)
+		scrollWheelUp 2
+		if repeatIndex()>3
+			Log "Required field is not found"
+			ScrollWheelDown 2
+		end if
+	end repeat
+	click foundImageLocation()
+	typetext "Child1"
+	wait 1
+	click imageName:"AddButton"
+	
+	wait 3
+end repeat
+
+typetext controlKey,t
+typetext "http://localhost:3000",returnKey
+#click text:"Explorer",searchRectangle:getSearchRect("navigationBar")
+--- Navigate to Changes
+click text:"Changes",searchRectangle:getSearchRect("navigationBar")
+
+waitFor 30,text:"Create Change",multiline:Yes,ignoreNewLines:Yes
+click foundImageLocation()
+-- Create ECN
+click text:"Change Notice",waitFor:5
+wait 5
+
+click text:<not preceded by 1 to 12 characters,"Change Notice",not followed by characters>,searchRectangle:getSearchRect("createCNArea")
+waitFor 30, text:"Properties"
+click text:"ECN Number",hotspot:[60,2],searchRectangle:getSearchRect("createCNArea")
+typetext controlKey,a
+typetext controlKey,c
+put RemoteClipboard() into ECNNumber
+log ECNNumber
+click text:"Synopsis",hotspot:[60,1],searchRectangle:getSearchRect("createCNArea")
+typetext "TestECN"
+wait 1
+click text:"Create",searchRectangle:getSearchRect(""),searchRectangle:getSearchRect("createCNArea")
+if imageFound(text:"TestECN"&quote&&"was added to Changes") then Log "ECN Creation Done"
+wait 4
+typetext controlKey,w
+
+
+
+
+
+
+
+

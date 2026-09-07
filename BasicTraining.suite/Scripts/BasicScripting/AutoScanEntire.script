@@ -1,0 +1,59 @@
+﻿(*** Autosnippet script "AutoScanEntire" generated 2023-03-20 by admin. Keep this comment for use with Eggplant AI. ***)
+(* Already generated snippets can be edited in the script below *)
+(* To customize the snippet generation templates, affecting snippets generated in the future,
+go to Eggplant > Preferences... > Script > General > Customize *)
+
+
+(* Autosnippets for Checkpoint "Demoblaze_logo" *)
+
+to handle Demoblaze_logo_Validate duration
+	if duration is not a number then set duration to 8
+	WaitFor duration, imageName:"PRODUCTSTORE_Logo/Demoblaze_logo"
+end Demoblaze_logo_Validate
+
+to handle Demoblaze_logo_IsFound duration
+	if duration is not a number then set duration to 8
+	return imageFound(imageName:"PRODUCTSTORE_Logo/Demoblaze_logo", waitFor:duration)
+end Demoblaze_logo_IsFound
+
+-----------------------------------
+
+
+(* Autosnippets for Checkpoint "CATEGORIES" *)
+
+to handle CATEGORIES_Validate duration
+	if duration is not a number then set duration to 8
+	WaitFor duration, imageName:"PRODUCTSTORE_Logo/CATEGORIES"
+end CATEGORIES_Validate
+
+to handle CATEGORIES_IsFound duration
+	if duration is not a number then set duration to 8
+	return imageFound(imageName:"PRODUCTSTORE_Logo/CATEGORIES", waitFor:duration)
+end CATEGORIES_IsFound
+
+-----------------------------------
+
+Connect ""
+
+
+(* Autosnippets for Button "Phones" (using OCR) *)
+
+to handle Phones_Click
+
+	Click Text:"Phones", waitFor:8
+end Phones_Click
+
+-----------------------------------
+
+
+(* Autosnippets for Button "Laptops" (using OCR) *)
+
+to handle Laptops_Click
+	Click Text:"Laptops", waitFor:8
+end Laptops_Click
+
+-----------------------------------
+
+
+(*** End of Autosnippet script AutoScanEntire.script ***)
+

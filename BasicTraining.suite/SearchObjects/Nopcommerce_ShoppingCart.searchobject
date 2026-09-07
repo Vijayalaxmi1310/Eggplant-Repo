@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		1440,
+		117,
+		77,
+		17
+	],
+	"lastmodifieddate": 1682398854.1729999,
+	"createddate": 1682398854.1729999,
+	"name": "Nopcommerce_ShoppingCart",
+	"lastfounddate": 1682398922.99,
+	"ocrcapturestring": "Shopping cart",
+	"lastfoundlocation": [
+		1440,
+		117,
+		77,
+		17
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Shopping cart",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[37,13]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					1440,
+					117,
+					77,
+					17
+				],
+				"name": "Nopcommerce_ShoppingCart.png"
+			}
+	]
+}

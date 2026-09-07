@@ -1,0 +1,25 @@
+﻿----------- Using RepeatIndex() to validate the repeat loop ------------
+set myFirstList to ["Vijaya","Laxmi","Sudhakar","Sarojini","Frencho","Camillie","Zordan","Surath"]
+
+repeat with each item of myFirstList
+	log it
+	if repeatIndex()>5
+		logError "repeat loop exceeded"
+		exit all
+	end if
+end repeat
+
+
+-------- Logical comparisions using is a keyword ------------------
+set Var to "%"
+if Var is a letter
+	Log "Its a letter"
+else if Var is a number
+	Log "Its a number"
+else
+	Log "Its neither number nor letter"
+end if
+
+
+------
+assert that "Shaw" contains "w"

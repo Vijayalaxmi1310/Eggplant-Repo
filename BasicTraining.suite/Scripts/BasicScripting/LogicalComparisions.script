@@ -1,0 +1,22 @@
+﻿Put 10+10 = 26
+
+Put "a" is a letter
+
+
+
+put "1" is a digit
+
+put 5 is between 1 and 3
+
+
+
+assert that "String" contains "S"
+
+
+put "5" is in 1 to 5
+
+
+put "Vijaya" into firstName
+log firstName
+
+

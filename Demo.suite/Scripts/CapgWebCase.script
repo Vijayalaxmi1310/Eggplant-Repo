@@ -1,0 +1,52 @@
+﻿click imageName:"3Dots" -- in the overview tab
+click text:"Submit to Workflow",waitFor:10,searchRectangle:getSearchRect("")
+WaitFor 30, text:"Assignments"
+click text:"All"
+--- copy the coordinates for Submit to Workflow window" and add it in getSearchRect function
+click text:"Template",hotspot:[2,60]
+typetext "ECN Release for Demo"
+wait 2
+typetext returnKey
+repeat until imageFound(text:"References",waitFor:3)
+	scrollWheelDown 3
+	-- OR
+	typetext downArrow
+	-- OR
+	# use scroll bar image to scroll
+end repeat
+click text:"Add" --OR 
+waitFor 30,text:"Search"
+if imageFound(text:"Clipboard") and if imageFound(text:"TopAssemblyNode")
+	Log "Added to clipboard"
+end if
+
+click imageName:"AddButton"
+if imageFound(text:"TopAssemblyNode",waitFor:20,searchRectangle:getSearchRect("SubmittoWorkflowWindow"))
+	Log "Targets are added successfully"
+end if
+wait 2
+click text:"Submit",waitFor:20,searchRectangle:getSearchRect("SubmittoWorkflowWindow")
+wait 5
+if not imageFound(text:"Comments",waitFor:5)
+	click text:"Tasks to Perform",hotspot:[-60,1]
+end if
+put imageLocation(text:"Tasks to Perform") into tasksP
+set the searchRectangle to [[tasksP.x-60,tasksP.y+10],[tasksP.x+200,tasksP.y+400]]
+wait 4
+click text:"Comments"
+typetext ""
+click text:"Complete"
+put imageLocation(text:"Release Status") into RS
+
+put readText([RS.x+30,RS.y-5],[RS.x+70,RS.y+5]) into status
+assert that status contains "TCM Released"
+# navigating to first window tab in browser
+
+typetext controlKey,1
+wait 3
+typetext controlKey,r
+repeat until imageFound(text:"Release Status",waitFor:2)
+	DragAndDrop "scrollBarImage",[10,1]
+end repeat
+if ImageFound(text:"TCM Released", waitFor:10) then Log "TCM Released for EBOM"
+

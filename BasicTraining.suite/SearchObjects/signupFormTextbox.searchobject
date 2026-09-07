@@ -1,0 +1,46 @@
+{
+	"lastmodifieddate": 1783502413.365,
+	"lastfoundlocation": [
+		1122,
+		364,
+		489,
+		60
+	],
+	"originalcapturelocation": [
+		715,
+		227,
+		489,
+		60
+	],
+	"createddate": 1783502413.365,
+	"lastfounddate": 1783675958.3179998,
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[244,30]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "signupFormTextbox.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"capturerect": [
+					715,
+					227,
+					489,
+					60
+				],
+				"connectiontype": "RDP",
+				"connectionserverid": "192.168.1.81"
+			}
+	],
+	"name": "signupFormTextbox"
+}

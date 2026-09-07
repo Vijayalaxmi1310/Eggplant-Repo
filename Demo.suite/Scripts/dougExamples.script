@@ -1,0 +1,14 @@
+set balance to 45
+set availableBalance to balance
+
+set deposit to 350
+add deposit to balance
+put "Balance"&& balance
+
+set maxAvailable to minimum(deposit,100)
+
+
+add deposit but no more than 100 to availableBalance
+
+put "available balance is "& availableBalance
+

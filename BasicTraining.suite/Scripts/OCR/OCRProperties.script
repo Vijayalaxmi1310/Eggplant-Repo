@@ -1,0 +1,119 @@
+﻿---- OCR Properties ---------------------
+
+--- (SearchRectangle Property) ---------------
+click {text:"Electronics",searchRectangle:[422,272,1303,336]}
+click text:"Cell phones"
+
+click {text:"Search",searchRectangle:[362,274,1538,338],waitFor:2}
+--- SearchRectangle Global Property -------------------
+
+set the searchRectangle to ["nopCommerceLogoTopLeft","SearchstoreBottomRight"]
+wait 2
+if ImageFound(text:"Search store", waitFor:20)
+	click FoundImageLocation()
+	typetext "Samsung"
+end if
+
+
+set the searchRectangle to []
+click text:"Computers"
+
+
+click text:"email",caseSensitive:Yes
+typetext "test@gmail.com"
+
+
+----- More OCR Properties like caseSensitive, Contrast On, Language, etc.,-------------------------------
+
+moveTo text:"phones",searchRectangle:screen_part_handler.ScreenPart("HorizontalMiddle")
+wait 5
+moveTo text:"phones",caseSensitive:On,searchRectangle:screen_part_handler.ScreenPart("HorizontalMiddle")
+wait 4
+
+click text:"Search store"
+typetext "Samsung galaxy"
+Click {Text:"SEARCH", contrastColor:[58,163,255], contrast:"On", WaitFor:88, contrastTolerance:"45"}
+
+----------- OCR with Hotspot -------------------
+
+click text:"Search keyword",hotspot:[100,1]
+typetext "Samsung",return
+
+wait 3
+
+---- Other way ---------
+click ImageLocation(text:"Search keyword")+[100,1]
+typetext controlKey,a
+typetext "Samsung",return
+
+
+--- By default eggplant does not have any caseSensitive
+
+
+Click text:"register"
+
+if ImageFound(text:"Log in",searchRectangle:[405,274,1552,338],waitFor:0)
+	wait 1
+	Click text:"Log in",searchRectangle:[405,274,1552,338]
+else
+	LogError "Not found"
+	
+end if
+
+
+set the SearchRectangle to ["ComputersTopLeft","GiftCardsBottomRight"]
+wait 2
+click text:"Apparel"
+set the searchRectangle to []
+wait 2
+Click text:"Log in"
+
+set the searchRectangle to [1321,282,1494,343]
+click text:"Gift Cards"
+set the searchRectangle to []
+click text:"password",caseSensitive:Yes,waitFor:0
+
+
+click text:"First name",hotspot:[80,5]  --- with hotspot keyword
+typetext "Vijayalaxmi"
+
+
+click ImageLocation(text:"Last name")+[80,5]
+typetext "Kummari"
+
+
+
+
+
+
+click text:"Desktops",caseSensitive:Yes,searchRectangle:(292,408,573,891)
+
+
+Click text:"SEARCH",waitFor:3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

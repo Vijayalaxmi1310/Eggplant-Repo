@@ -1,0 +1,33 @@
+{
+	"lastmodifieddate": 1768547893.1630001,
+	"originalcapturelocation": [
+		19,
+		508,
+		42,
+		32
+	],
+	"createddate": 1718358346.5180001,
+	"testlocationdata": [
+		{
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[19,19]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					19,
+					508,
+					42,
+					32
+				],
+				"name": "Chrome_171.png"
+			}
+	],
+	"name": "Chrome_171"
+}

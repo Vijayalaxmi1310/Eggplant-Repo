@@ -1,0 +1,76 @@
+﻿(*
+Connect {
+	serverID: "127.0.0.1",
+	name: "Vijaya Own SUT",
+	username:"vijayalaxmi.kummari@ideabytes.com",
+	password:"myPassword",
+	type:"Single System",
+}
+
+put version().archive
+Connect {
+	serverID: "127.0.0.1",
+	name: "single system",
+	username:empty,
+	password:empty,
+	type:"Single System",
+}
+*)
+
+
+#Connect "81 SUT"
+
+wait 3
+
+typetext windowsKey,r
+typetext "chrome demoblaze.com",returnKey
+wait until imageFound(text:"Product Store")
+Log "Application launched successfully"
+click text:"Samsung galaxy s6"
+waitFor 40,text:"Product description"
+click text:"Add to cart"
+if ImageFound(text:"Product added", waitFor:20) then click text:"OK"
+
+
+Log "Product is added to cart successfully"
+typetext altKey,F4
+
+
+
+
+
+
+
+
+
+to somethingElse
+	log "something else"
+	log messageType()
+end somethingElse
+
+function funHand
+	log "executing function handler"
+end funHand
+
+log funHand()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*if imageFound(text:"Windows cannot access") then click text:"OK"
+wait 4*)

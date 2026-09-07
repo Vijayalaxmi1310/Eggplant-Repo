@@ -1,0 +1,7 @@
+﻿#connectSUT "192.168.1.171"
+demoblazeUtils.launchWebApp
+demoblazeUtils.verifyHomePage
+demoblazeUtils.navigatePhones
+demoblazeUtils.selectMobile
+demoblazeUtils.addtoCart
+demoblazeUtils.closeBrowser

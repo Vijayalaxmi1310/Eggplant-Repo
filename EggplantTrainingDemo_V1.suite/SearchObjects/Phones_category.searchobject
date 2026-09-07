@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		410,
+		626,
+		87,
+		34
+	],
+	"lastmodifieddate": 1782728330.3889999,
+	"createddate": 1782728330.3889999,
+	"name": "Phones_category",
+	"lastfounddate": 1782728368.4759998,
+	"ocrcapturestring": "Phones",
+	"lastfoundlocation": [
+		410,
+		626,
+		87,
+		34
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[43,17]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "Phones_category.png",
+				"connectionname": "171 SUT",
+				"type": 1,
+				"connectionserverid": "192.168.1.171",
+				"capturerect": [
+					410,
+					626,
+					87,
+					34
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "Phones"
+			}
+	]
+}

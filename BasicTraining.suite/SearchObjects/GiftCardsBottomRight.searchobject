@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		1321,
+		282,
+		173,
+		61
+	],
+	"lastmodifieddate": 1682487179.0570002,
+	"createddate": 1682487179.0570002,
+	"name": "GiftCardsBottomRight",
+	"lastfounddate": 1682487770.4390001,
+	"ocrcapturestring": "Gift Cards",
+	"lastfoundlocation": [
+		1321,
+		282,
+		173,
+		61
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5911,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[175,57]",
+					"Tolerance": "_50",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "GiftCardsBottomRight.png",
+				"connectionname": "Partner-SUT-3",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					1321,
+					282,
+					173,
+					61
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Gift Cards"
+			}
+	]
+}

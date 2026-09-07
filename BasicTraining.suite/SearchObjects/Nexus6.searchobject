@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		1272,
+		715,
+		87,
+		22
+	],
+	"lastmodifieddate": 1718358660.9400001,
+	"createddate": 1718358660.9400001,
+	"name": "Nexus6",
+	"lastfounddate": 1749636402.4429998,
+	"ocrcapturestring": "Nexus 6",
+	"lastfoundlocation": [
+		1273,
+		768,
+		87,
+		22
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Nexus 6",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[58,18]",
+					"Tolerance": "_73",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					1272,
+					715,
+					87,
+					22
+				],
+				"name": "Nexus6.png"
+			}
+	]
+}

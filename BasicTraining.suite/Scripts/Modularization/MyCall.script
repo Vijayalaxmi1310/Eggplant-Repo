@@ -1,0 +1,11 @@
+﻿---- Callinng the To handler ---------------
+Run "Modularization/MyFunctions".greetTheUser --- One way
+
+Run "Modularization/MyFunctions"'s greetTheUser --- Another way
+
+
+--- Calling On Command Handler ------------------
+Run "Modularization/MyFunctions".addToTotal 300
+log global Total
+
+

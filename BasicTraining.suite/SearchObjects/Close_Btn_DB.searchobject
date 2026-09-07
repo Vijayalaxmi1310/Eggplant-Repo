@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		323,
+		342,
+		75,
+		38
+	],
+	"lastmodifieddate": 1768547924.497,
+	"createddate": 1718359058.951,
+	"name": "Close_Btn_DB",
+	"lastfounddate": 1718359110.171,
+	"ocrcapturestring": "Close",
+	"lastfoundlocation": [
+		1024,
+		461,
+		75,
+		38
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Close",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[37,19]",
+					"Tolerance": "_62",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					323,
+					342,
+					75,
+					38
+				],
+				"name": "Close_Btn_DB.png"
+			}
+	]
+}

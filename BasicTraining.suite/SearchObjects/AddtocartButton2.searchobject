@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		825,
+		512,
+		102,
+		19
+	],
+	"lastmodifieddate": 1768547795.092,
+	"createddate": 1681824839.3280001,
+	"name": "AddtocartButton2",
+	"lastfounddate": 1749638109.359,
+	"ocrcapturestring": "Add to cart",
+	"lastfoundlocation": [
+		825,
+		530,
+		102,
+		19
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Add to cart",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[47,14]",
+					"Tolerance": "_47",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					825,
+					512,
+					102,
+					19
+				],
+				"name": "AddtocartButton.png"
+			}
+	]
+}

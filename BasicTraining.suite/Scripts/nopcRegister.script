@@ -1,0 +1,119 @@
+(*** Autosnippet script "nopcRegister" generated 2026-07-10 by vijayalaxmi.kummari. Keep this comment for use with Eggplant AI. ***)
+(* Already generated snippets can be edited in the script below *)
+(* To customize the snippet generation templates, affecting snippets generated in the future,
+go to Eggplant > Preferences... > Script > General > Customize *)
+
+
+(* Autosnippets for Button "RegisterLink" *)
+
+to handle RegisterLink_Click
+    Click imageName:"RegisterLink", waitFor:8
+end RegisterLink_Click
+
+-----------------------------------
+
+
+(* Autosnippets for Checkpoint "Your Personal" (using OCR) *)
+
+to handle Your_Personal_Validate duration
+    if duration is not a number then set duration to 8
+    WaitFor duration, Text:"Your Personal"
+end Your_Personal_Validate
+
+to handle Your_Personal_IsFound duration
+    if duration is not a number then set duration to 8
+    return imageFound(Text:"Your Personal", waitFor:duration)
+end Your_Personal_IsFound
+
+-----------------------------------
+
+
+(* Autosnippets for RadioButton "Female" (using OCR) *)
+
+to handle Female_Select
+	// Assumes the hot spot has been set over the radio button or 
+	// that clicking on the center of the radio button label will select the radio button.
+	
+	Click Text:"Female", waitFor:8
+end Female_Select
+
+-----------------------------------
+
+
+(* Autosnippets for Field "firstNameLabel" *)
+
+to handle firstNameLabel_EnterText theValue, terminator
+    // Assumes the hot spot has been set over the text field
+	// and that the field is already empty.
+	
+	// Click the location of the hot spot.
+	Click imageName:"firstNameLabel", waitFor:8
+	//Type theValue and optional terminator (such as 'return' or 'tab') into the field.
+    TypeText theValue, terminator
+end firstNameLabel_EnterText
+
+to handle firstNameLabel_ReadText
+    // Assumes the hot spot has been set over the text field.
+	
+    // Use OCR to read the text around that hot spot point.
+    set theText to readText(imageLocation(imageName:"firstNameLabel"))
+    // Any additional cleanup of the text could be done here before returning the value, such as:
+    // set theText to trim(theText) -- remove leading/trailing whitespace
+    return theText
+end firstNameLabel_ReadText
+
+-----------------------------------
+
+
+(* Autosnippets for Field "lastNameLabel" *)
+
+to handle lastNameLabel_EnterText theValue, terminator
+    // Assumes the hot spot has been set over the text field
+	// and that the field is already empty.
+	
+	// Click the location of the hot spot.
+	Click imageName:"lastNameLabel", waitFor:8
+	//Type theValue and optional terminator (such as 'return' or 'tab') into the field.
+    TypeText theValue, terminator
+end lastNameLabel_EnterText
+
+to handle lastNameLabel_ReadText
+    // Assumes the hot spot has been set over the text field.
+	
+    // Use OCR to read the text around that hot spot point.
+    set theText to readText(imageLocation(imageName:"lastNameLabel"))
+    // Any additional cleanup of the text could be done here before returning the value, such as:
+    // set theText to trim(theText) -- remove leading/trailing whitespace
+    return theText
+end lastNameLabel_ReadText
+
+-----------------------------------
+
+
+(* Autosnippets for Field "EmailLabel" *)
+
+to handle EmailLabel_EnterText theValue, terminator
+    // Assumes the hot spot has been set over the text field
+	// and that the field is already empty.
+	
+	// Click the location of the hot spot.
+	Click imageName:"EmailLabel", waitFor:8
+	//Type theValue and optional terminator (such as 'return' or 'tab') into the field.
+    TypeText theValue, terminator
+end EmailLabel_EnterText
+
+to handle EmailLabel_ReadText
+    // Assumes the hot spot has been set over the text field.
+	
+    // Use OCR to read the text around that hot spot point.
+    set theText to readText(imageLocation(imageName:"EmailLabel"))
+    // Any additional cleanup of the text could be done here before returning the value, such as:
+    // set theText to trim(theText) -- remove leading/trailing whitespace
+    return theText
+end EmailLabel_ReadText
+
+-----------------------------------
+
+
+(*** End of Autosnippet script nopcRegister.script ***)
+

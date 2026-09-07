@@ -1,0 +1,47 @@
+{
+	"lastmodifieddate": 1768541418.4289999,
+	"lastfoundlocation": [
+		96,
+		37,
+		303,
+		25
+	],
+	"originalcapturelocation": [
+		96,
+		37,
+		303,
+		25
+	],
+	"createddate": 1678955139.148,
+	"lastfounddate": 1682398725.122,
+	"testlocationdata": [
+		{
+				"connectionportnum": 5913,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[151,12]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "AddressBar/AddressBar1.png",
+				"connectionname": "Partner-SUT-5",
+				"type": 1,
+				"capturerect": [
+					96,
+					37,
+					303,
+					25
+				],
+				"connectiontype": "rdp",
+				"connectionserverid": "3.8.94.207"
+			}
+	],
+	"name": "AddressBar/AddressBar1"
+}

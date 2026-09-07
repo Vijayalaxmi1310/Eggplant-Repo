@@ -1,0 +1,47 @@
+﻿------ To print neutral messages in the console -----------
+
+Log "Printing Simple Message in the Console"
+
+wait 2
+------ To print success messages in the console ----------
+
+LogSuccess "Message displayed successfully in the console"
+
+LogSuccess "Successful execution of the command"
+
+wait 2
+----- To Print warning messages in the console -------------
+
+LogWarning "It is warning it does not fail the script"
+
+wait 2
+----- To fail the script and print error messages in the console --------
+
+if ImageFound(text:"Samsung galaxy s7",waitFor:0)
+	Log "Product found"
+else
+	LogError "Product not found"
+end if
+
+
+Log "Test Message"
+
+LogError "Error Message"
+LogWarning "Warning Mesage"
+
+
+
+
+
+
+
+----- 4 types --
+-- Log  (Blue color)
+-- LogSuccess  (Green color)
+-- LogWarning (Orange color)
+
+-- LogError ( Red color ) -- Popup with error
+
+
+
+#(Duration:"9.778", Errors:"1", Exceptions:"0", StartTime:"2026-06-10 11:01:30 +0530", Successes:"1", TestCase:"BasicScripting/LogCommands.script", Warnings:"1")

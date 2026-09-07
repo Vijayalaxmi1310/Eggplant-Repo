@@ -1,0 +1,55 @@
+﻿to launchWebApp
+	typetext windowsKey,r
+	waitFor 40,text:"Type the name"
+	typetext "chrome demoblaze.com",returnKey
+	
+end launchWebApp
+
+
+to verifyHomePage
+	if ImageFound(text:"Product Store", waitFor:40) then 
+		log "Demoblaze application launched successfully"
+	else
+		LogError "Application not launched"
+	end if
+end verifyHomePage
+
+
+to navigatePhones
+	click text:"Phones"
+end navigatePhones
+
+
+to navigateLaptops
+	click text:"Laptops"
+end navigateLaptops
+
+
+to navigateMonitors
+	click text:"Monitors"
+end navigateMonitors
+
+
+to selectMobile
+	click text:"Samsung Galaxy s6"
+end selectMobile
+
+
+to selectLaptops
+	click text:"Sony vaio i5"
+end selectLaptops
+
+
+to selectMonitors
+	click text:"Apple monitor 24"
+end selectMonitors
+
+
+to addtoCart
+	click text:"Add to cart"
+end addtoCart
+
+
+to closeBrowser
+	typetext altKey,f4
+end closeBrowser

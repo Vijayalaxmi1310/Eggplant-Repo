@@ -1,0 +1,58 @@
+﻿(*put {grant_type: "client_credentials", username: "vijayalaxmi", password: "Ideabytes@123", client_id: "client:dai:api:integration:48ea913d-b9d5-4d4e-98d0-e6840c0fbe9f", client_secret:"6nNvHFmwfzznog4I2Y7vJXRGMLBf0iQf"} into postData
+
+put "http://localhost:8000/auth/realms/eggplant/protocol/openid-connect/token" into authUrl
+
+post postData to url authUrl// Access the resource using the access token
+#log the JSONValue of it
+put the access_token of the JSONValue of it into Global accessToken
+put the refresh_token of the JSONValue of it into Global refreshToken
+#log "AccessToken" && Global accessToken
+put "Bearer " before Global accessToken
+log Global accessToken*)
+
+(*
+put GetListOfModels().responseBody into APIResponse
+log APIResponse*)
+
+-- Get Access Token for 
+
+put {grant_type: "client_credentials", username: "vijayalaxmi.kummari@ideabytes.com", password: "Eggplant@12345", client_id: "client:dai:api:integration:a8048546-b4ed-45fb-852d-29d0b2d8037d", client_secret:"wgkz8eCiX2m6MRQGNFLKXKQHVPgPqI9H"} into postData
+
+put "http://localhost:8000/auth/realms/eggplant/protocol/openid-connect/token" into authUrl
+
+post postData to url authUrl// Access the resource using the access token
+#log the JSONValue of it
+put the access_token of the JSONValue of it into Global accessToken
+put the refresh_token of the JSONValue of it into Global refreshToken
+#log "AccessToken" && Global accessToken
+put "Bearer " before Global accessToken
+log Global accessToken
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(*put "xxxxxx" into username
+put "xxxxxx" into password
+put "client:dai:agent:integration" into clientId
+put "xxxxxxx-xxxxxxx-xxxx-xxxxxxxxxxx" into clientSecret //ENTER YOUR SECRET ID HERE
+put "http://10.208.18.122:8000/auth/realms/eggplant/protocol/openid-connect/token" into authUrl// Post the credentials to the auth server. This will return the access token
+put {grant_type: "client_credentials", username: username, password: password, client_id: clientId, client_secret:clientSecret} into postData
+post postData to url authUrl// Access the resource using the access token
+put the access_token of the JSONValue of it into Global accessToken
+log Global accessToken*)

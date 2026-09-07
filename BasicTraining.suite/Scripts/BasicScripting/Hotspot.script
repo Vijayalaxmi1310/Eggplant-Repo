@@ -1,0 +1,99 @@
+﻿click text:"Sign up",ignoreSpaces:YES
+WaitFor 30, text:"Username"
+click text:"username",hotspot:[2,60]
+wait 3
+typetext "TestingUser"
+click text:"Password",hotspot:[2,60]
+wait 3
+typetext "Password@123"
+
+---- Hotspot Using Images -----------
+click text:"Log in",ignoreSpaces:Yes
+WaitFor 30, text:"Username"
+click imageName:"Username"
+wait 3
+typetext "TestingUser"
+click imageName:"Password"
+wait 3
+typetext "Password@123"
+
+
+--- ImageCollections--------------
+Rightclick imageName:"ChromeIcon"
+
+click text:"Favorites"
+
+
+Click "Samsunggalaxys6Mobile"
+
+DoubleClick "ChromeIcon"
+
+
+
+Click imageName:"Username_logindb", waitFor:5
+typetext "Testuser123"
+Click imageName:"Password/Password_logindb", waitFor:5
+TypeText "Password@123"
+
+
+
+-----
+MoveTo imageName:"NewTabIcon", waitFor:5
+if ImageFound("Newtab_transientelement")
+	LogSuccess "New tab text is found on the screen"
+end if
+
+if ImageFound("DBProductStore")
+	LogSuccess "In the footer it is displaying the Icon"
+end if
+
+
+
+Click text:"First name",hotspot:[90,2]
+typetext "Test User"
+
+
+click imageName:"lastNameLabel_Nopcommerce"
+typetext "last name"
+
+
+click imageName:"firstNameTexbox"
+typetext controlKey,a
+typetext "Vijayalaxmi"
+
+
+
+click text:"Last name",hotspot:[130,0]
+typetext controlKey,a
+typetext "last name of the user"
+
+
+
+
+
+click text:"Username",hotspot:[0,45]
+typetext "userName_db"
+click text:"Password",hotspot:[0,45]
+typetext "password"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

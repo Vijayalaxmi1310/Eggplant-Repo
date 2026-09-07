@@ -1,0 +1,3 @@
+﻿to logSuiteFolder
+	log suiteInfo().imagesFolder
+end logSuiteFolder

@@ -1,0 +1,15 @@
+﻿(*
+-- test1
+-- test2
+Run "AdvancedScripting/ConcatenatingValues"
+Run "AdvancedScripting/AccessingLists"
+Run "AdvancedScripting/RandomFunction"
+Run "AdvancedScripting/VariablesInitialization"
+*)
+
+
+set listOfScripts to ["AdvancedScripting/ConcatenatingValues","AdvancedScripting/AccessingLists","AdvancedScripting/RandomFunction","AdvancedScripting/VariablesInitialization"]
+
+repeat with each testScript of listOfScripts
+	RunWithNewResults testScript
+end repeat

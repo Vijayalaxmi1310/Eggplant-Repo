@@ -1,0 +1,75 @@
+﻿typetext windowsKey,r
+WaitFor 30, text:"Type the name"
+Typetext "chrome demoblaze.com",returnKey
+WaitFor 40, text:"Product Store"
+Log "Application Launched Successfully"
+
+Doubleclick ImageLocation("ChromeIcon")
+click imageLocation(text:"Ask Google")
+click text:"Ask Google"
+
+click text:"Samsung galaxy s6",caseSensitive:Yes
+
+log EveryImageLocation(text:"Samsung galaxy s6",caseSensitive:Yes)
+
+click item 1 of everyImageLocation(text:"Samsung galaxy s6",caseSensitive:Yes)
+
+--- Mouse commands
+
+Doubleclick imageName:"Phones_category"
+click text:"Nokia lumia 1520"
+RightClick text:"Add to cart"
+click text:"Open link in new tab"
+
+Drag "chromeIcon"
+Drop [37,762]
+
+
+set options to ["Open","Send to My Phone","Copy","Add to Favorites"]
+repeat with each item of options
+	rightclick "FirefoxIcon"
+	if imageFound(text:it) then rightClick it
+	typetext windowsKey,downArrow
+end repeat
+
+RightClick imageName:"ChromeIcon", waitFor:10
+Click text:"Open"
+typetext windowsKey,downArrow
+RightClick "ChromeIcon"
+click text:""
+
+set list to ["Home","Desktop","Documents","Downloads"]
+repeat with each item of list
+	click text:it
+end repeat
+
+
+TypeText "test"
+TypeText tabKey
+TypeText windowsKey, "r"
+typetext windowsKey,s
+
+-- wait commands
+
+
+doubleclick "ChromeIcon"
+waitFor 10, {text:"Ask Google"}
+WaitForAll 40, {text:""}, {text:""}
+
+click text:"Ask Google"
+wait 4
+typetext "Amazon.in",returnKey
+
+BeginTestCase "launchApplication"
+DoubleClick "ChromeIcon"
+typetext "demoblaze.com",returnKey
+WaitFor 30, text:"Product Store"
+EndTestCase "launchApplication"
+put the result into logStatus
+log logStatus
+
+
+
+
+
+

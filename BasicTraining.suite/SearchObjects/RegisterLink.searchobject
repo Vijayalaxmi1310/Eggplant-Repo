@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1783675536.0440001,
+	"ocrcapturestring": "Register",
+	"originalcapturelocation": [
+		1187,
+		101,
+		50,
+		17
+	],
+	"createddate": 1783675536.0440001,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Register",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_43",
+					"HotSpot": "[25,8]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					1187,
+					101,
+					50,
+					17
+				],
+				"name": "RegisterLink.png"
+			}
+	],
+	"name": "RegisterLink"
+}

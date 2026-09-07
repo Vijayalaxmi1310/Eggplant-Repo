@@ -1,0 +1,14 @@
+﻿(* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  Script generated:  2023-03-20 12:36:41
+  From session:  TurboCapture
+  Captured on:  2023-03-20 12:34:01
+  From server:  Partner-SUT-5
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *)
+
+DoubleClick "ChromeIcon"
+Click (Image:"AddressBar", WaitFor:5)
+TypeText "demoblaze.com",Return
+Typetext WindowsKey,upArrow
+Click (Image:"Samsunggalaxys6Mobile", WaitFor:5)
+Click Text:"Add to cart"
+Click "Ok_button"

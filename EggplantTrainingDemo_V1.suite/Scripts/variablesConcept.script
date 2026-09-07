@@ -1,0 +1,37 @@
+﻿put "Admin" into userName
+log userName
+
+set userName to "Admin"
+log userName
+
+
+set mobileNo to "999999999"
+log mobileNo
+
+
+set salary to 5000
+log salary
+
+
+set empList to ["laxmi","sreekanth","praveen"]
+insert "Jana" after empList
+insert "Hana" after item 2 of empList
+log the number of items of empList
+log any item of empList
+repeat with each item of empList
+	log it
+end repeat
+
+
+log item 2 of empList
+
+
+set firstName to "Vijaya"
+set lastName to "Lakshmi"
+
+log firstName&lastName
+log "-"
+log firstName&&lastName
+
+
+log random(50)

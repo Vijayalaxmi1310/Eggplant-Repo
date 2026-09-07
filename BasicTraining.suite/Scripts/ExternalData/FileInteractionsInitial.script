@@ -1,0 +1,45 @@
+﻿--- To access the file within in a suite resources folder ------------
+
+put file resourcePath("TestData.txt") into Content
+log Content
+repeat with each line of Content
+	log item 1 of line repeatIndex() of Content
+	log item 2 of line repeatIndex() of Content
+end repeat
+
+---- To access a file which is in centralized location ---------------
+
+put file "D:\TestDoc.txt" into FileContent
+log FileContent
+
+log resourcePath()
+
+
+put file "C:\Users\vijayalaxmi.kummari\Downloads\Team Exercises\EggPlant_TestCode_1.script.txt" into scriptData
+#log scriptData
+
+
+repeat with each line of scriptData
+	log it
+	put -
+end repeat
+
+
+log file resourcePath("TestData.txt")
+
+
+log suiteInfo()
+
+log the files of resourcePath()
+
+
+put file resourcePath("TestData.txt") into fileData
+#log fileData
+put -
+log the number of lines of fileData
+#set the itemDelimiter to ":"
+
+repeat with each line of fileData
+	log item 1 of line repeatIndex() of fileData  -- log item 1 of line 1 of fileData
+	log item 2 of line repeatIndex() of fileData -- log item 2 of line 1 of fileData
+end repeat

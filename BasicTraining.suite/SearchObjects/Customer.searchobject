@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		271,
+		11,
+		92,
+		21
+	],
+	"lastmodifieddate": 1768548081.358,
+	"createddate": 1682399743.8380001,
+	"name": "Customer",
+	"lastfounddate": 1682400047.7309999,
+	"ocrcapturestring": "Customer",
+	"lastfoundlocation": [
+		1259,
+		456,
+		92,
+		21
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Customer",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[46,10]",
+					"Tolerance": "_54",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					271,
+					11,
+					92,
+					21
+				],
+				"name": "Customer.png"
+			}
+	]
+}

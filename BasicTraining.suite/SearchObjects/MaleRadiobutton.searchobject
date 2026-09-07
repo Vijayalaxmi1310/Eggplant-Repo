@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1682399451.3410001,
+	"ocrcapturestring": "o Male",
+	"originalcapturelocation": [
+		750,
+		532,
+		53,
+		19
+	],
+	"createddate": 1682399451.3410001,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "o Male",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_54",
+					"HotSpot": "[26,9]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					750,
+					532,
+					53,
+					19
+				],
+				"name": "MaleRadiobutton.png"
+			}
+	],
+	"name": "MaleRadiobutton"
+}

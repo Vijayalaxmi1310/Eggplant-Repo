@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1718358834.6139998,
+	"ocrcapturestring": "STORE",
+	"originalcapturelocation": [
+		0,
+		2,
+		284,
+		44
+	],
+	"createddate": 1718358834.6139998,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "STORE",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_71",
+					"HotSpot": "[142,22]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					0,
+					2,
+					284,
+					44
+				],
+				"name": "STORE.png"
+			}
+	],
+	"name": "STORE"
+}

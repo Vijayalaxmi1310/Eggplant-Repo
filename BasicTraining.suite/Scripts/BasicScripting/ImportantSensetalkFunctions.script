@@ -1,0 +1,108 @@
+﻿-- ImageLocation() will give the center hotspot coordinates of the text\image----------
+put ImageLocation(text:"Phones") 
+log "Phones Coordinates"&& imageLocation(text:"Phones")
+put ImageLocation("Samsunggalaxys6Mobile")
+log "Samsung Mobile Coordinates"&& imageLocation(imageName:"Samsunggalaxys6Mobile")
+
+------EveryImageLocation() will give the count of multiple instances of the same text -------------
+
+put everyImageLocation(text:"Samsung galaxy s6") into samsung_mobile
+log the number of items of samsung_mobile
+click item 1 of samsung_mobile
+
+
+put everyImageLocation(text:"Samsung galaxy s6")
+
+click item 1 of everyImageLocation(text:"Samsung galaxy s6")
+
+
+put imageRectangle(text:"Favorites")
+
+click item 1 of everyImageLocation(text:"Samsung galaxy s6")
+
+------- ImageFound() will give true if the image/text found on the screen if not give false in the console --------------
+
+put EncodeText("TestFormat", "encodeText") into password
+
+Typetext
+
+
+
+
+log imageLocation(text:"History")
+
+
+click imageLocation(text:"Favorites")
+
+set fvrtsCooord to imageLocation(text:"Favorites")
+if fvrtsCooord is  (159, 630) then Log "Location is correct"
+
+put ImageFound(text:"Monitors") --- Will print True in the console
+
+
+put ImageLocation("ContactsIcon/ContactsIcon")
+
+put everyImageLocation(text:"o") into letters
+log the number of items of letters
+
+log the number of items of everyImageLocation(text:"o")
+
+
+
+log everyImageLocation(text:"Computers",waitFor:3)
+
+click item 2 of everyImageLocation(text:"Computers",waitFor:3)
+
+------------------------------------
+
+put imageLocation(imageName:"ContactsIcon") into cont
+log cont
+
+put ImageLocation("REGISTER_Button1")
+
+
+put ImageLocation("REGISTER_Button")
+
+click imageName:"REGISTER_Button"
+click "REGISTER_Button"
+
+
+click ImageLocation("REGISTER_Button")
+
+put ImageLocation(text:"Electronics")
+
+
+put everyImageLocation(imageName:"signupFormTextbox") into signupLabels
+log the number of items of signupLabels
+
+
+
+---
+
+
+click imageName:"demoblaze_Username_Signup"
+typetext "Testuser"
+click imageName:"demoblaze_Password_Signup"
+TypeHiddenText "Testuser"
+click text:"Sign up"
+
+put EveryImageLocation(text:"Computers") into Computers
+click item 3 of Computers
+
+log the number of items of Computers
+
+
+put ImageFound(text:"Mobiles")
+
+
+if ImageFound(text:"Notebooks")
+	#click FoundImageLocation()
+	click text:"Apple MacBook"
+end if
+
+put ImageLocation(text:"ADD TO CART")
+
+if ImageFound(text:"ADD TO CART") is [973,867,1121,910]
+	LogSuccess "ADD TO CART is in correct place"
+end if
+

@@ -1,0 +1,19 @@
+﻿#Connect "81 SUT"
+wait 5
+
+demoblazeUtils.launchDemoblazeApp  "firefox", "demoblaze.com"
+
+demoblazeUtils.selectProduct "Nokia lumia 1520"
+
+
+demoblazeUtils.addtoCart
+
+
+demoblazeUtils.closeBrowser
+
+
+
+
+
+Run "Modularization/SimpleScriptwithParameters" 5,3
+log the result

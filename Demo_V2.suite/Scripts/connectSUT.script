@@ -1,0 +1,6 @@
+﻿params sutName
+connect sutName
+log ConnectionInfo()
+wait 10
+
+click text:"real Phone",caseSensitive:Yes

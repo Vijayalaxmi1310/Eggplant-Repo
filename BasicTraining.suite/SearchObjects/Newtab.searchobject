@@ -1,0 +1,41 @@
+{
+	"lastmodifieddate": 1679033832.4559999,
+	"ocrcapturestring": "New tab",
+	"originalcapturelocation": [
+		244,
+		32,
+		129,
+		27
+	],
+	"createddate": 1679033832.4559999,
+	"testlocationdata": [
+		{
+				"connectionportnum": 5915,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_57",
+					"HotSpot": "[64,13]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "Newtab.png",
+				"connectionname": "Partner-SUT-6",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					244,
+					32,
+					129,
+					27
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "New tab"
+			}
+	],
+	"name": "Newtab"
+}

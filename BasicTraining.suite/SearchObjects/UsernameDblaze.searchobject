@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		11,
+		76,
+		73,
+		17
+	],
+	"lastmodifieddate": 1681825271.1599998,
+	"createddate": 1681825271.1599998,
+	"name": "UsernameDblaze",
+	"lastfounddate": 1718359110.539,
+	"ocrcapturestring": "Username:",
+	"lastfoundlocation": [
+		717,
+		195,
+		73,
+		17
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Username:",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[40,62]",
+					"Tolerance": "_35",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					11,
+					76,
+					73,
+					17
+				],
+				"name": "UsernameDblaze.png"
+			}
+	]
+}

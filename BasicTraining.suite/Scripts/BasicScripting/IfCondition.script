@@ -1,0 +1,87 @@
+﻿--- If and then statement -----
+if ImageFound(text:"Samsung galaxy s6", waitFor:10) then Click FoundImageLocation()
+
+if ImageFound(text:"Pride and Prejudice", waitFor:1)
+	click text:"Add to Cart"
+else
+	LogError "Product not found"
+end if
+
+
+WaitFor 10, text:"Books"
+click foundImageLocation()
+
+if ImageFound(text:"Monitors", waitFor:2) then click text:"Apple monitor 24"
+
+
+if ImageFound(text:"Apple monitor 24", waitFor:2) then click text:"Apple monitor 24"
+if ImageFound(text:"Apple monitor 24", waitFor:2) then click FoundImageLocation()
+
+click imageName:""
+
+click text:"Gift Cards"
+
+if ImageFound(text:"Apple monitor 24", waitFor:1)
+	Log "Image found"
+	-- read the product price
+	log readText((786,277,863,331))
+	click text:"Add to cart"
+	-- add the product
+else
+	LogWarning "The required product is not found on the screen"
+end if
+
+wait 1
+
+click imageLocation(text:"Jewelry")
+
+put imageFound(text:"Register User",waitFor:0)
+
+-- If Condition with multiple statements ------
+
+if ImageLocation(text:"Phones") is [451,659]
+	Log "Phones in correct positin"
+	Click FoundImageLocation()
+end if
+
+put imageLocation(text:"Register")
+
+put imageLocation(text:"Register",caseSensitive:Yes)
+
+-------If chained statements -----------------
+
+If ImageFound(text:"myStore", waitFor:0)
+	Log "Mystore text found"
+else if ImageFound(text:"Laptops",waitFor:0)
+	Log "Laptops text found"
+	click FoundImageLocation()
+else
+	Log "Neither images found"
+End If
+
+
+------ GUI Validations with conditional statements ------------------
+--- AND Condition Satisfied--------
+if ImageFound(text:"Phones", waitFor:0) and if ImageFound(text:"Monitors", waitFor:0)
+	LogSuccess "Both texts are found on the screen"
+else
+	LogWarning "AND condition not satisfied"
+end if
+
+---- OR condition ------
+if ImageFound(text:"Phones", waitFor:0) or if ImageFound(text:"Product description", waitFor:10)
+	LogSuccess " one of the text is found on the screen"
+	#click text:"Add to cart"
+else
+	LogWarning "Either one of the text is not found"
+end if
+
+-------------- AND Condition Not satisified ------------------------
+if ImageFound(text:"HTC One M9", waitFor:0) and if ImageFound(text:"Samsung galaxy", waitFor:0)
+	LogSuccess "Both texts are found on the screen"
+	click text:"Add to cart"
+else
+	LogWarning "Either one of the text is not found"
+end if
+
+

@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		576,
+		724,
+		140,
+		37
+	],
+	"lastmodifieddate": 1682401349.96,
+	"createddate": 1682401349.96,
+	"name": "REGISTER_Button",
+	"lastfounddate": 1682488137.4400001,
+	"ocrcapturestring": "REGISTER",
+	"lastfoundlocation": [
+		882,
+		683,
+		140,
+		37
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5905,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[78,25]",
+					"Tolerance": "_52",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "REGISTER_Button.png",
+				"connectionname": "Partner-SUT-4",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					576,
+					724,
+					140,
+					37
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "REGISTER"
+			}
+	]
+}

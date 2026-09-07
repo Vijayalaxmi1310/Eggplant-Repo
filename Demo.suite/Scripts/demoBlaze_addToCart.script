@@ -1,0 +1,25 @@
+﻿params sutName
+set sutName to "171 SUT"
+Connect sutName
+wait 5
+typetext windowsKey,r
+typetext "chrome demoblaze.com",returnKey
+waitFor 40,text:"Product Store"
+--- select the product
+click text:"Samsung galaxy s6"
+click text:"Add to Cart",waitFor:30
+if imageFound(text:"Product added",waitFor:20)
+	Log "Product added"
+	click text:"OK"
+end if
+
+click text:"Cart"
+
+if ImageFound(text:"Samsung galaxy s6", waitFor:30)
+	Log "Product added to cart successfully"
+end if
+
+typetext altKey,F4
+
+wait 1
+Disconnect sutName

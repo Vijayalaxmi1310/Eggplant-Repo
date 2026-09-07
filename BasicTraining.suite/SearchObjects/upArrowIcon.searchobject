@@ -1,0 +1,46 @@
+{
+	"lastmodifieddate": 1682424824.678,
+	"lastfoundlocation": [
+		1905,
+		72,
+		14,
+		16
+	],
+	"originalcapturelocation": [
+		1905,
+		72,
+		14,
+		16
+	],
+	"createddate": 1682424824.678,
+	"lastfounddate": 1682424861.8740001,
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[7,8]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "upArrowIcon.png",
+				"connectionname": "192.168.1.171",
+				"type": 1,
+				"capturerect": [
+					1905,
+					72,
+					14,
+					16
+				],
+				"connectiontype": "RDP",
+				"connectionserverid": "192.168.1.171"
+			}
+	],
+	"name": "upArrowIcon"
+}

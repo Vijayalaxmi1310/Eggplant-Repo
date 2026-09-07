@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		1906,
+		1014,
+		14,
+		18
+	],
+	"lastmodifieddate": 1781156296.0110002,
+	"createddate": 1781156296.0110002,
+	"name": "DownArrow_NopCommerce",
+	"lastfounddate": 1782897052.0829999,
+	"ocrcapturestring": "▼",
+	"lastfoundlocation": [
+		1906,
+		1014,
+		14,
+		18
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[7,9]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "DownArrow_NopCommerce.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"connectionserverid": "192.168.1.81",
+				"capturerect": [
+					1906,
+					1014,
+					14,
+					18
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "▼"
+			}
+	]
+}

@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		1476,
+		201,
+		61,
+		14
+	],
+	"lastmodifieddate": 1682399093.829,
+	"createddate": 1682399093.829,
+	"name": "SEARCHButton_Nopcommerce",
+	"lastfounddate": 1682399311.658,
+	"ocrcapturestring": "SEARCH",
+	"lastfoundlocation": [
+		1476,
+		201,
+		61,
+		14
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "SEARCH",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[19,7]",
+					"Tolerance": "_52",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					1476,
+					201,
+					61,
+					14
+				],
+				"name": "SEARCHButton_Nopcommerce.png"
+			}
+	]
+}

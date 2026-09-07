@@ -1,0 +1,12 @@
+Vijayalaxmi,Kummari
+testvijaya@gmail.com
+Female
+9999999999
+13 Oct 2021
+Maths,English,Physics
+Music
+Keysight Technologies,UK
+Telangana
+Hyderabad
+
+

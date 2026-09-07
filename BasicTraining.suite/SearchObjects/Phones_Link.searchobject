@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		417,
+		648,
+		66,
+		19
+	],
+	"lastmodifieddate": 1679296340.4960001,
+	"createddate": 1679296340.4960001,
+	"name": "Phones_Link",
+	"lastfounddate": 1749636391.526,
+	"ocrcapturestring": "Phones",
+	"lastfoundlocation": [
+		418,
+		684,
+		66,
+		19
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Phones",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[39,10]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					417,
+					648,
+					66,
+					19
+				],
+				"name": "Phones_Link.png"
+			}
+	]
+}

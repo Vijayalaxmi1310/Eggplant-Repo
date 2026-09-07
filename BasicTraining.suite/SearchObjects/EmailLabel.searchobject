@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		703,
+		670,
+		42,
+		16
+	],
+	"lastmodifieddate": 1783675539.5669999,
+	"createddate": 1783675539.5669999,
+	"name": "EmailLabel",
+	"lastfounddate": 1783675958.21,
+	"ocrcapturestring": "Email:",
+	"lastfoundlocation": [
+		1035,
+		513,
+		42,
+		16
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Email:",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[98,10]",
+					"Tolerance": "_54",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					703,
+					670,
+					42,
+					16
+				],
+				"name": "EmailLabel.png"
+			}
+	]
+}

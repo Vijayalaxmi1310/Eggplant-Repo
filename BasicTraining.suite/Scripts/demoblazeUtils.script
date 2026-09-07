@@ -1,0 +1,43 @@
+﻿to launchDemoblazeApp browserName,appURL
+	typetext windowsKey,r
+	typetext browserName&&appURL,returnKey
+	WaitFor 40, text:"Product Store"
+end launchDemoblazeApp
+
+
+
+
+to handle selectProduct productName
+	click text:productName
+	waitFor 50, text:"Product description"
+end selectProduct
+
+
+
+to handle addtoCart
+	click text:"Add to cart"
+	if imageFound(text:"Product added",waitFor:1) then click text:"OK"
+end addtoCart
+
+
+to closeBrowser
+	typetext altKey,f4
+end closeBrowser
+
+
+launchDemoblazeApp "chrome","demoblaze.com"
+
+
+function multiplication
+	put 6*5 into num3
+	return num3
+end multiplication
+
+
+put multiplication()
+
+
+
+ListSample
+
+MainScript_DemoBlaze

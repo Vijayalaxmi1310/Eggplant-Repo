@@ -1,0 +1,244 @@
+﻿
+(*
+***********************************************************************************************************************************
+# This script is designed to generate an HTML report using the most recent results from the RunHistory.csv file and the log file associated with the specified script name.
+# You can call this function from any location by providing the script names to the handler for which you expect an HTML report.
+# Modified Date: 05/06/2024
+# Created By: Durgaprasad.Surath@non.keysight.com
+***********************************************************************************************************************************
+*)
+
+
+to GenerateHtmlReport ScriptName
+	Try
+		
+		# Storing the Script Results Folder Path into Variable
+		put SuiteInfo().path&"/Results/" & ScriptName into ScriptResultFolder
+		
+		# Storing the RunHistory.csv file into Variable
+		put file (ScriptResultFolder & "/RunHistory.csv") into RunHistoryFile
+		
+		# Getting the total runs from the RunHistory.csv file 
+		put the number of lines of RunHistoryFile into TotalNumberOfRuns	
+		
+		# Storing all required data into Variables
+		put item 1 of line TotalNumberOfRuns of RunHistoryFile into ExecutionDateRun	
+		put item 2 of line TotalNumberOfRuns of RunHistoryFile into ExecutionStatus	
+		put item 3 of line TotalNumberOfRuns of RunHistoryFile into ExecutionDuration	
+		put item 4 of line TotalNumberOfRuns of RunHistoryFile into ExecutionErrors	
+		put item 5 of line TotalNumberOfRuns of RunHistoryFile into ExecutionWarnings	
+		put item 6 of line TotalNumberOfRuns of RunHistoryFile into ExecutionExceptions	
+		put item 7 of line TotalNumberOfRuns of RunHistoryFile into RelativeLocationOfLogFile	
+		put item 10 of line TotalNumberOfRuns of RunHistoryFile into ExecutionSuccesses 
+		
+		# Removing the quotes from the file path 
+		Delete quote from RelativeLocationOfLogFile
+		
+		# Separating the Run Date to get the Execution Timings
+		put ExecutionDateRun into ExecutionDateTime
+		split ExecutionDateTime by space	
+		put item 1 of ExecutionDateTime into ExecutionDate
+		put item 2 of ExecutionDateTime into ExecutionTimeWithMilliSeconds	
+		split ExecutionTimeWithMilliSeconds by "."
+		put item 1 of ExecutionTimeWithMilliSeconds into ExecutionTimeWithOutMilliSeconds
+		put ExecutionDate && ExecutionTimeWithOutMilliSeconds into ExecutionStartDateTime
+		
+		# Basic calculation for adding the Duration to the Run Time
+		put asTime(ExecutionTimeWithOutMilliSeconds) into WholeExecutionDuration	
+		set [AddHour, AddMinute, AddSecond] to [WholeExecutionDuration.hour, WholeExecutionDuration.minute, WholeExecutionDuration.second]
+		put ExecutionDate && (ExecutionDuration + AddHour hour + AddMinute minute + AddSecond sec) into ExecutionEndTime
+		
+		# Storing the Absoulte Path of Script Log File into Variable
+		put ScriptResultFolder & "/" & RelativeLocationOfLogFile into AbsoluteLogFileLocation
+		
+		# Storing the Run Log file Path into Variable
+		put AbsoluteLogFileLocation into LogFileFolderPath
+		delete "LogFile.txt" from LogFileFolderPath
+		
+		# Storing the Exection Date and Time into Variable which is used as a part of Report Name	
+		put RelativeLocationOfLogFile into RelativeLocationOfLogFilePath
+		split RelativeLocationOfLogFilePath by "/"
+		put item 1 of RelativeLocationOfLogFilePath into ReportGenrationDateTime
+		put ScriptName into TestcaseName 
+		if (TestcaseName contains "/") then replace every occurrence of "/" with "_" in TestcaseName
+		put TestcaseName & "_" & ReportGenrationDateTime & "_Report.html" into ReportName
+		
+		# Storing Log file into Variable
+		put file AbsoluteLogFileLocation into ExecutionLogFile
+		
+		# Creating a element with Test Case Status
+		if (ExecutionStatus is "Failure") then 
+			put "h4 {"&&\
+					"color: #f70505;"&&\
+					"line-height :0px;"&&\
+					"margin: 0"&&\
+					"padding: 0;"&&\
+					"display: inline-block;"&&\
+					"}" into ExecutionStatusProperty
+		else 
+			put "h4 {"&&\
+					"color: #269504;"&&\
+					"line-height :0px;"&&\
+					"margin: 0"&&\
+					"padding: 0;"&&\
+					"display: inline-block;"&&\
+					"}" into ExecutionStatusProperty
+		end if
+		
+		# Creating a Table with all the data from the Log file
+		repeat with each line of ExecutionLogFile
+			put format(it) into singleLine
+			
+			# Storing the required data in to Variables
+			split singleLine by tabKey
+			put item 1 of singleLine into dateTimeOfSingleLine
+			put item 2 of singleLine into eventOfSingleLine
+			put item 3 of singleLine into imageOfSingleLine
+			put item 4 of singleLine into commandOfSingleLine
+			
+			# Checking Image is present or not. If present updating the HTML element which is used HTML script below
+			if (imageOfSingleLine contains ".png") then
+				# Checking Image path having the Absolute path or Relative path
+				if (imageOfSingleLine contains SuiteInfo().path) then 			
+					put "<td><img src=" & quote & "data:image/PNG;base64," & base64Encode(file imageOfSingleLine) & quote & "width=" & quote & "600" & quote & "height="& quote & "300" & quote &"></td>" into ImageRow
+				else 			
+					put "<td><img src=" & quote & "data:image/PNG;base64," & base64Encode(file (LogFileFolderPath&imageOfSingleLine)) & quote & "width=" & quote & "600" & quote & "height="& quote & "300" & quote &"></td>" into ImageRow
+				end if
+			else
+				put "<td>" & imageOfSingleLine & "</td>" into ImageRow
+			end if
+			
+			# Creating the Table Rows
+			put  "<tr style='background-color: #ebebe0;'>"&&\
+					"<td>"& dateTimeOfSingleLine &"</td>"&&\
+					"<td>"& eventOfSingleLine &"</td>"& ImageRow &&\
+					"<td>"& commandOfSingleLine &"</</td>"&&\
+					"</tr>" after TableData
+		end repeat
+		
+		# Storing the whole HTML data in to Variable
+		set HTMLPageContent to "<!DOCTYPE html>"&&\
+				"<html>"&&\
+				"<head>"&&\
+				"<head>"&&\
+				"<title>"& ScriptName &" Report</title>"&&\
+				"<style>"&&\
+				"table {"&&\
+				"width: 100%;"&&\
+				"}"&&\
+				"td {"&&\
+				"width: 05%;"&&\
+				"height: 100%;"&&\
+				"}"&&\
+				"h1{"&&\
+				"line-height :0px;"&&\
+				"margin: 0"&&\
+				"padding: 0;"&&\
+				"text-align: left;"&&\
+				"}"&&\
+				"h3 {"&&\
+				"display: inline-block;"&&\
+				"line-height :0px;"&&\
+				"margin: 0"&&\
+				"padding: 0;"&&\
+				"}"& ExecutionStatusProperty &&\
+				"</style>"&&\
+				"</head>"&&\
+				"</head>"&&\
+				"<body>"&&\
+				"<br>"&&\
+				"<h2>Test Name: "& ScriptName &"</h2>"&&\
+				"<h3>STATUS:</h3>"&&\
+				"<h3><b>"& ExecutionStatus &"</b></h3>"&&\
+				"<br>"&&\
+				"<table>"&&\
+				"<tr style='background-color: #b3e0ff;'>"&&\
+				"<td><b>Run Date&Time</b></td>"&&\
+				"<td><b>Event</b></td>"&&\	
+				"<td><b>Script</b></td>"&&\
+				"</tr>"&&\
+				"<tr style='background-color: #ebebe0;'>"&&\
+				"<td>"& ExecutionStartDateTime &"</td>"&&\
+				"<td>Started</td>"&&\
+				"<td>"& ScriptName &"</td>"&&\
+				"</tr>"&&\
+				"<tr style='background-color: #ffffff;'>"&&\
+				"<td>"& ExecutionEndTime &"</td>"&&\
+				"<td>Finished</td>"&&\
+				"<td>"& ScriptName &"</td>"&&\
+				"</tr>"&&\
+				"</table>"&&\
+				"<br>"&&\
+				"<br>"&&\
+				"<table>"&&\
+				"<tr style='background-color: #b3e0ff;'>"&&\
+				"<td><b>Test Name</b></td>"&&\
+				"<td><b>Start Time</b></td>"&&\
+				"<td><b>End Time</b></td>"&&\
+				"<td><b>Duration</b></td>"&&\
+				"<td><b>Errors</b></td>"&&\
+				"<td><b>Successes</b></td>"&&\
+				"<td><b>Exceptions</b></td>"&&\
+				"<td><b>Warnings</b></td>"&&\
+				"</tr>"&&\
+				"<tr style='background-color: #ffffff;'>"&&\
+				"<td>"& ScriptName &"</td>"&&\
+				"<td>"& ExecutionStartDateTime &"</td>"&&\
+				"<td>"& ExecutionEndTime &"</td>"&&\
+				"<td>"& ExecutionDuration &"</td>"&&\
+				"<td>"& ExecutionErrors &"</td>"&&\
+				"<td>"& ExecutionSuccesses &"</td>"&&\
+				"<td>"& ExecutionExceptions &"</td>"&&\
+				"<td>"& ExecutionWarnings &"</td>"&&\
+				"</tr>"&&\
+				"</table>"&&\
+				"<br>"&&\
+				"<br>"&&\
+				"<table>"&&\
+				"<tr style='background-color: #b3e0ff;'>"&&\
+				"<td><b>Logged At</b></td>"&&\
+				"<td><b>Event</b></td>"&&\
+				"<td><b>Image</b></td>"&&\
+				"<td><b>Message</b></td>"&&\
+				"</tr>"& TableData &&\
+				"</table>"&&\
+				"</body>"&&\
+				"</html>"
+		
+		# Putting whole HTML Code into a file.
+		put HTMLPageContent into file ResourcePath(ReportName)
+		Log "HTML Report got generated and stored in" && ResourcePath(ReportName)
+		put ResourcePath(ReportName) into Global HTMLReportName
+		return 1		
+	Catch theException
+		return 0
+		throw theException
+	End try
+end GenerateHtmlReport
+
+to GeneratePdfReport ReportName
+	set windowsCmdPath to "C:\Windows\System32\cmd.exe"
+	set wkhtmltopdfPath to "C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+	set PdfConvertingOutputPath to SuiteInfo().resultsFolder&"/PdfConvertingOutput.txt"
+	
+	put ReportName into PDFReportName
+	replace ".html" in PDFReportName with ".pdf"	
+	
+	shell windowsCmdPath, "/c" && quote & quote & wkhtmltopdfPath & quote && "--page-size A1" && quote & ReportName & quote && quote & PDFReportName & quote && ">" && quote & PdfConvertingOutputPath & quote && "2>&1" & quote
+	
+	Repeat until file PdfConvertingOutputPath is not exists 
+		Log "Waiting for Output File"
+	End repeat
+	
+	Repeat until file PdfConvertingOutputPath contains "Done"
+		wait 0.5
+	End repeat
+	
+	Log "PDF Report got generated and stored in" && PDFReportName
+end GeneratePdfReport
+
+
+to GenerateReports TCName
+	put GenerateHtmlReport(TCName) into gotoGeneratePDFReport
+	if (gotoGeneratePDFReport is 1) then GeneratePdfReport Global HTMLReportName else Log "Failed to generate PDF report."
+end GenerateReports

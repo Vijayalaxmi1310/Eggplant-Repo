@@ -1,0 +1,26 @@
+﻿------------- Using Random Function to generate random numbers ----------------
+
+Log "Generating the numbers from 1 to 10 ----------"&&Random(10)
+
+----------- To generate random values from a given range ----------------
+
+Log "Numbers from 10 to 50 --------------"&& Random(10,50) 
+
+
+-------- Randomly generating the values from a list -------------------
+
+set myFirstList to ["Vijaya","Laxmi","Sudhakar","Sarojini","Frencho","Camillie","Zordan","Surath"]
+log any item of myFirstList
+
+
+
+
+set myFirstList to ["Vijaya","Laxmi","Sudhakar","Sarojini","Frencho","Camillie","Zordan","Surath"]
+
+put the number of items of myFirstList into Count --- the count number
+
+log item random(Count) of myFirstList
+
+
+
+

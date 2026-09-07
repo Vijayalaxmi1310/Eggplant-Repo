@@ -1,0 +1,104 @@
+{
+	"originalcapturelocation": [
+		516,
+		77,
+		218,
+		31
+	],
+	"lastmodifieddate": 1768541403.6690001,
+	"createddate": 1680695709.2410002,
+	"name": "AddressBar/AddressBar_new",
+	"lastfounddate": 1749637269.619,
+	"ocrcapturestring": "Cl i",
+	"lastfoundlocation": [
+		268,
+		90,
+		261,
+		37
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5925,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[69,24]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "AddressBar/AddressBar_new/AddressBar_new.png",
+				"connectionname": "Partner-SUT-9",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					516,
+					77,
+					218,
+					31
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Cl i"
+			},
+		{
+				"connectionportnum": 5925,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[69,24]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "AddressBar/AddressBar_new/AddressBar_new_1.png",
+				"connectionname": "Partner-SUT-9",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					516,
+					77,
+					218,
+					31
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Cl i"
+			},
+		{
+				"connectionportnum": 5905,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[69,24]",
+					"Tolerance": "_1",
+					"Discrepancy": "_0",
+					"SearchType": "Precise to Pixel"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "AddressBar/AddressBar_new/AddressBar_new_new.png",
+				"connectionname": "Partner-SUT-4",
+				"type": 1,
+				"capturerect": [
+					516,
+					77,
+					218,
+					31
+				],
+				"connectiontype": "rdp",
+				"connectionserverid": "3.8.94.207"
+			}
+	]
+}

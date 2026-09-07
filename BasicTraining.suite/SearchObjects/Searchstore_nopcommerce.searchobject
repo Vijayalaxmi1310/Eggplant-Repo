@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		1191,
+		201,
+		82,
+		14
+	],
+	"lastmodifieddate": 1682399093.418,
+	"createddate": 1682399093.418,
+	"name": "Searchstore_nopcommerce",
+	"lastfounddate": 1682399299.701,
+	"ocrcapturestring": "Search store",
+	"lastfoundlocation": [
+		1191,
+		201,
+		82,
+		14
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Search store",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[67,11]",
+					"Tolerance": "_40",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					1191,
+					201,
+					82,
+					14
+				],
+				"name": "Searchstore_nopcommerce.png"
+			}
+	]
+}

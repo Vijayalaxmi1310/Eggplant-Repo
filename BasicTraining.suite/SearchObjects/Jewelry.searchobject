@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		1215,
+		301,
+		64,
+		21
+	],
+	"lastmodifieddate": 1682399092.405,
+	"createddate": 1682399092.405,
+	"name": "Jewelry",
+	"lastfounddate": 1682487133.4200001,
+	"ocrcapturestring": "Jewelry",
+	"lastfoundlocation": [
+		1215,
+		301,
+		64,
+		21
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Jewelry",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[31,8]",
+					"Tolerance": "_50",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					1215,
+					301,
+					64,
+					21
+				],
+				"name": "Jewelry.png"
+			}
+	]
+}

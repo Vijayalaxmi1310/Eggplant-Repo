@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		0,
+		99,
+		81,
+		93
+	],
+	"lastmodifieddate": 1768541466.253,
+	"createddate": 1679296001.3309999,
+	"name": "ChromeIcon/ChromeIconWhole",
+	"lastfounddate": 1682314647.971,
+	"ocrcapturestring": "a° Google Chrome",
+	"lastfoundlocation": [
+		0,
+		99,
+		81,
+		93
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "a° Google Chrome",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[39,28]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					0,
+					99,
+					81,
+					93
+				],
+				"name": "ChromeIcon/ChromeIconWhole.png"
+			}
+	]
+}

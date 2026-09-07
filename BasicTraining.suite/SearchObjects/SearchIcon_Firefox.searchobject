@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		107,
+		42,
+		50,
+		41
+	],
+	"lastmodifieddate": 1764583027.6729999,
+	"createddate": 1764583027.6729999,
+	"name": "SearchIcon_Firefox",
+	"lastfounddate": 1764583526.3629999,
+	"ocrcapturestring": "2",
+	"lastfoundlocation": [
+		107,
+		42,
+		50,
+		41
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 59600,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[281,20]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"Type": "Single System",
+					"epgw_path": "C:\\EPGW_Latest\\EPGGW_25.4\\epgw.exe"
+				},
+				"name": "SearchIcon_Firefox.png",
+				"connectionname": "OwnSUT",
+				"type": 1,
+				"connectionserverid": "127.0.0.1",
+				"capturerect": [
+					107,
+					42,
+					50,
+					41
+				],
+				"connectiontype": "Single System",
+				"capturedocrtext": "2"
+			}
+	]
+}

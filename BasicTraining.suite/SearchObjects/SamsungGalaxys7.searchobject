@@ -1,0 +1,39 @@
+{
+	"lastmodifieddate": 1681187748.7319999,
+	"lastfoundlocation": [
+		707,
+		577,
+		210,
+		127
+	],
+	"originalcapturelocation": [
+		707,
+		577,
+		210,
+		127
+	],
+	"createddate": 1681187748.7319999,
+	"lastfounddate": 1681825476.214,
+	"testlocationdata": [
+		{
+				"name": "SamsungGalaxys6Mobile.png",
+				"type": 1,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[105,63]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"capturerect": [
+					707,
+					577,
+					210,
+					127
+				]
+			}
+	],
+	"name": "SamsungGalaxys7"
+}

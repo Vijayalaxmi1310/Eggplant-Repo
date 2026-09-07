@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		416,
+		703,
+		72,
+		22
+	],
+	"lastmodifieddate": 1679296340.9949999,
+	"createddate": 1679296340.9949999,
+	"name": "Laptops_Link",
+	"lastfounddate": 1749636396.8899999,
+	"ocrcapturestring": "Laptops",
+	"lastfoundlocation": [
+		417,
+		739,
+		72,
+		22
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Laptops",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[40,11]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					416,
+					703,
+					72,
+					22
+				],
+				"name": "Laptops_Link.png"
+			}
+	]
+}

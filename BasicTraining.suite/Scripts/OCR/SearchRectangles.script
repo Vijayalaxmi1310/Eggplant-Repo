@@ -1,0 +1,82 @@
+﻿---- SearchRectangle with Hard coordinates -------------
+-- By pressing controlKey,c in the SUT copy the coordinates
+
+set the searchRectangle to [315,533,668,847]
+wait 1
+log readtext(the searchRectangle)
+
+
+
+set the searchRectangle to (355,254,1568,324)
+set listOfMenus to ["Computers","Electronics","Books"]
+
+
+repeat with each menu of listOfMenus
+	MoveTo text:menu
+end repeat
+
+set the searchRectangle to empty
+
+click text:"Register"
+
+
+set the searchRectangle to ["nopcommerce_homeScreen_TL","nopcommerce_homeScreen_BR"]
+wait 2
+log ReadText(the searchRectangle)
+
+---- SearchRectangle with Images ---------------------------
+set the searchRectangle to ["Contacts_TopLeft","Contacts_BottomRight"]
+wait 1
+log readtext(the searchRectangle)
+set the searchRectangle to empty
+click text:"Favorites"
+
+
+
+
+--- Navigate to each adn every menu
+set the searchRectangle to (403,246,1550,330)
+click text:"Apparel"
+wait 1
+click text:"Books"
+wait 1
+click text:"Jewelry"
+
+set the searchRectangle to empty
+wait 1
+click text:"Register"
+
+
+set the searchRectangle to ["RegisterScreenTopLeft","RegisterScreenBottomRight"]
+click text:"Female"
+click text:"First name"
+typetext "Vijaya"
+
+
+-- 514,191
+--- 360,251
+
+
+--1544,323
+
+put ImageLocation(imageName:"Logo_nopCommerce") into logo
+set the searchRectangle to [[logo.x-300,log.y+250],[logo.x+1000,log.y+350]]
+wait 5
+
+put imageLocation(text:"Computers") into firstM ---(527, 290)
+click text:"Books",searchRectangle:[[firstM.x-150,firstM.y-60],[firstM.x+1000,firstM.y+50]]
+wait 5
+click text:"Register"
+
+topleft - 358,255,1548,327
+
+
+
+
+click text:"log in",caseSensitive:Yes,waitFor:0
+
+
+
+Click (Text:"REGISTER", caseSensitive:"Yes", WaitFor:168)
+
+

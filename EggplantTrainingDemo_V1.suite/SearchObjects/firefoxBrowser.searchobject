@@ -1,0 +1,46 @@
+{
+	"lastmodifieddate": 1782726395.6139998,
+	"lastfoundlocation": [
+		30,
+		882,
+		14,
+		9
+	],
+	"originalcapturelocation": [
+		95,
+		183,
+		36,
+		31
+	],
+	"createddate": 1782726395.6139998,
+	"lastfounddate": 1782726933.845,
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[18,15]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "firefoxBrowser.png",
+				"connectionname": "171 SUT",
+				"type": 1,
+				"capturerect": [
+					95,
+					183,
+					36,
+					31
+				],
+				"connectiontype": "RDP",
+				"connectionserverid": "192.168.1.171"
+			}
+	],
+	"name": "firefoxBrowser"
+}

@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		334,
+		173,
+		268,
+		52
+	],
+	"lastmodifieddate": 1679633319.355,
+	"createddate": 1679633319.355,
+	"name": "nopCommerceLogoTopLeft",
+	"lastfounddate": 1682400050.2820001,
+	"ocrcapturestring": "nopCommerce",
+	"lastfoundlocation": [
+		334,
+		173,
+		268,
+		52
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5913,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[4,6]",
+					"Tolerance": "_64",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "nopCommerceLogoTopLeft.png",
+				"connectionname": "Partner-SUT-5",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					334,
+					173,
+					268,
+					52
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "nopCommerce"
+			}
+	]
+}

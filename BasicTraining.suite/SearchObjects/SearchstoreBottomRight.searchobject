@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		1177,
+		181,
+		373,
+		52
+	],
+	"lastmodifieddate": 1679633356.076,
+	"createddate": 1679633356.076,
+	"name": "SearchstoreBottomRight",
+	"lastfounddate": 1682399299.704,
+	"ocrcapturestring": "Search store SEARCH",
+	"lastfoundlocation": [
+		1177,
+		181,
+		373,
+		52
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5913,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[359,42]",
+					"Tolerance": "_52",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "SearchstoreBottomRight.png",
+				"connectionname": "Partner-SUT-5",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					1177,
+					181,
+					373,
+					52
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Search store SEARCH"
+			}
+	]
+}

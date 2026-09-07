@@ -1,0 +1,91 @@
+(*** Autosnippet script "AutoScanCaptureArea" generated 2023-03-20 by admin. Keep this comment for use with Eggplant AI. ***)
+(* Already generated snippets can be edited in the script below *)
+(* To customize the snippet generation templates, affecting snippets generated in the future,
+go to Eggplant > Preferences... > Script > General > Customize *)
+
+
+(* Autosnippets for Checkpoint "Log in" (using OCR) *)
+
+to handle Log_in_Validate duration
+    if duration is not a number then set duration to 8
+    WaitFor duration, Text:"Log in"
+end Log_in_Validate
+
+to handle Log_in_IsFound duration
+    if duration is not a number then set duration to 8
+    return imageFound(Text:"Log in", waitFor:duration)
+end Log_in_IsFound
+
+-----------------------------------
+
+
+(* Autosnippets for Field "Username_Demoblaze" *)
+
+to handle Username_Demoblaze_EnterText theValue, terminator
+    // Assumes the hot spot has been set over the text field
+	// and that the field is already empty.
+	
+	// Click the location of the hot spot.
+	Click imageName:"Username_Demoblaze", waitFor:8
+	//Type theValue and optional terminator (such as 'return' or 'tab') into the field.
+    TypeText theValue, terminator
+end Username_Demoblaze_EnterText
+
+to handle Username_Demoblaze_ReadText
+    // Assumes the hot spot has been set over the text field.
+	
+    // Use OCR to read the text around that hot spot point.
+    set theText to readText(imageLocation(imageName:"Username_Demoblaze"))
+    // Any additional cleanup of the text could be done here before returning the value, such as:
+    // set theText to trim(theText) -- remove leading/trailing whitespace
+    return theText
+end Username_Demoblaze_ReadText
+
+-----------------------------------
+
+
+(* Autosnippets for Field "Password_Demoblaze" *)
+
+to handle Password_Demoblaze_EnterText theValue, terminator
+    // Assumes the hot spot has been set over the text field
+	// and that the field is already empty.
+	
+	// Click the location of the hot spot.
+	Click imageName:"Password_Demoblaze", waitFor:8
+	//Type theValue and optional terminator (such as 'return' or 'tab') into the field.
+    TypeText theValue, terminator
+end Password_Demoblaze_EnterText
+
+to handle Password_Demoblaze_ReadText
+    // Assumes the hot spot has been set over the text field.
+	
+    // Use OCR to read the text around that hot spot point.
+    set theText to readText(imageLocation(imageName:"Password_Demoblaze"))
+    // Any additional cleanup of the text could be done here before returning the value, such as:
+    // set theText to trim(theText) -- remove leading/trailing whitespace
+    return theText
+end Password_Demoblaze_ReadText
+
+-----------------------------------
+
+
+(* Autosnippets for Button "Close_Button" *)
+
+to handle Close_Button_Click
+    Click imageName:"Close_Button", waitFor:8
+end Close_Button_Click
+
+-----------------------------------
+
+
+(* Autosnippets for Button "Login_Button_Demoblaze" *)
+
+to handle Login_Button_Demoblaze_Click
+    Click imageName:"Login_Button_Demoblaze", waitFor:8
+end Login_Button_Demoblaze_Click
+
+-----------------------------------
+
+
+(*** End of Autosnippet script AutoScanCaptureArea.script ***)
+

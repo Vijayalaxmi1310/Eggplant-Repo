@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1682399450.3239999,
+	"ocrcapturestring": "SEARCH",
+	"originalcapturelocation": [
+		1463,
+		188,
+		89,
+		40
+	],
+	"createddate": 1682399450.3239999,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "SEARCH",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_52",
+					"HotSpot": "[44,20]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					1463,
+					188,
+					89,
+					40
+				],
+				"name": "SEARCH_Button.png"
+			}
+	],
+	"name": "SEARCH_Button"
+}

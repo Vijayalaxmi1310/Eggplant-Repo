@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1783675538.9630001,
+	"ocrcapturestring": "Last name:",
+	"originalcapturelocation": [
+		672,
+		604,
+		73,
+		30
+	],
+	"createddate": 1783675538.9630001,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Last name:",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_45",
+					"HotSpot": "[136,19]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					672,
+					604,
+					73,
+					30
+				],
+				"name": "lastNameLabel.png"
+			}
+	],
+	"name": "lastNameLabel"
+}

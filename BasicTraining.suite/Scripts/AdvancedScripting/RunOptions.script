@@ -1,0 +1,74 @@
+﻿
+set the mouseClickDelay to 6.0  -- To delay the speed between 2 mouse click actions
+
+click text:"Computers"
+click text:"Log in"
+
+
+set the nextKeyDelay to 2 --- to increase the time between the keystrokes when we type the data
+click text:"Email",hotspot:[60,2]
+typetext "testuser@gmail.com"
+click text:"Password",hotspot:[60,2]
+typetext "testuser@123"
+
+set the remoteWorkInterval to 5 --- To increase the time between the interactions on the SUT
+click text:"Computers"
+Log "Clicked on Computers"
+click text:"Electronics"
+Log "Clicked on Electronics"
+click text:"Books"
+Log "Clicked on Books"
+
+set the mouseMoveDelay to 7
+moveTo text:"Books"
+moveTo text:"Register"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+set the mouseClickDelay to 3
+click text:"Computers"
+click text:"Electronics"
+
+
+set the nextKeyDelay to 3
+typetext windowsKey,r
+typetext "chrome demoblaze.com",return
+
+set the nextKeyDelay to 0.01
+
+
+set the remoteWorkInterval to 4
+typetext windowsKey,r
+typetext "chrome demoblaze.com",return
+click text:"laptops"

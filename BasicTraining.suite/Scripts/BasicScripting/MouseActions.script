@@ -1,0 +1,39 @@
+﻿RightClick imageName:"ChromeIcon"
+MoveTo text:"Nokia lumia"
+wait 3
+Click text:"RecycleBin",IgnoreSpaces:YES
+wait 2
+DragAndDrop "RecycleBin",[73,432]
+click [80,500] -- using the coordinates
+DoubleClick imageName:"ChromeIcon", waitFor:10
+
+
+-----------------------
+
+set the searchRectangle to screen_part_handler.ScreenPart("TopLeftQuadrant")
+wait 3
+click imageName:"AddressBar"
+
+put everyImageLocation(text:"Search Google or type a URL") into addressbar
+log the number of items of addressbar
+
+click item 2 of EveryImageLocation(text:"Search Google or type a URL")
+
+log the number of items of everyImageLocation(text:"Nokia lumia")
+
+moveto item 3 of everyImageLocation(text:"Nokia lumia")
+
+Click "NopcommerceEmail"
+typetext controlKey,a
+typetext "user@gmail.com"
+
+
+Click "￹@imageName￺TP-EPF-TOKEN￻"
+Click text:"￹textToFind￺TP-EPF-TOKEN￻"
+click [1762,663]
+
+
+
+
+
+

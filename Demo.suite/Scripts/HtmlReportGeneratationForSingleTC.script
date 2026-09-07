@@ -1,0 +1,588 @@
+﻿(*
+***********************************************************************************************************************************
+# PURPOSE:
+#   Generates a professional, self-contained HTML execution report for a single Eggplant
+#   Functional test script, using the most recent results from RunHistory.csv and the
+#   associated LogFile.txt, with support for converting the HTML report to PDF.
+#
+# USAGE:
+#   Call GenerateReports(ScriptName) to generate both HTML and PDF reports.
+#   Or call GenerateHtmlReport(ScriptName) to generate only the HTML report.
+#
+# OUTPUT:
+#   A self-contained HTML file (and optional PDF) saved to the suite's Resources folder.
+#   The report includes:
+#     ● Branded header with Eggplant logo and suite metadata
+#     ● Executive KPI cards (Status, Duration, Success Rate, Successes, Errors, Warnings, Exceptions)
+#     ● Latest Execution Summary table with error details
+#     ● Previous Executions History table (parsed from RunHistory.csv)
+#     ● Step-by-step Execution Log table with event badges, handler/script context, line #, and embedded screenshots
+#     ● Interactive log filter search bar and pills
+#     ● Print-ready PDF conversion handler via Edge headless mode
+***********************************************************************************************************************************
+*)
+
+
+to GenerateHtmlReport ScriptName
+	Try
+		
+		# ─────────────────────────────────────────────────────────────────────────────
+		# 1. LOCATE AND PARSE SCRIPT EXECUTION DATA
+		# ─────────────────────────────────────────────────────────────────────────────
+		put SuiteInfo().name into SuiteName
+		put SuiteInfo().path into SuitePath
+		put SuitePath & "/Results/" & ScriptName into ScriptResultFolder
+		put file (ScriptResultFolder & "/RunHistory.csv") into RunHistoryFile
+		
+		put the number of lines of RunHistoryFile into TotalNumberOfRuns
+		
+		# Guard: must have at least 2 lines (header + 1 data row)
+		if TotalNumberOfRuns < 2 then
+			Log "No execution data found in RunHistory.csv for script: " & ScriptName
+			return 0
+		end if
+		
+		# Read latest run (last line of RunHistory.csv)
+		put item 1 of line TotalNumberOfRuns of RunHistoryFile into ExecutionDateRun
+		put item 2 of line TotalNumberOfRuns of RunHistoryFile into ExecutionStatus
+		put item 3 of line TotalNumberOfRuns of RunHistoryFile into ExecutionDuration
+		put item 4 of line TotalNumberOfRuns of RunHistoryFile into ExecutionErrors
+		put item 5 of line TotalNumberOfRuns of RunHistoryFile into ExecutionWarnings
+		put item 6 of line TotalNumberOfRuns of RunHistoryFile into ExecutionExceptions
+		put item 7 of line TotalNumberOfRuns of RunHistoryFile into RelativeLocationOfLogFile
+		put item 9 of line TotalNumberOfRuns of RunHistoryFile into ExecutionErrorMessage
+		put item 10 of line TotalNumberOfRuns of RunHistoryFile into ExecutionSuccesses
+		
+		
+		delete quote from RelativeLocationOfLogFile
+		delete quote from ExecutionStatus
+		delete quote from ExecutionErrorMessage
+		
+		# Format start date & time
+		split ExecutionDateRun by "+"
+		put item 1 of ExecutionDateRun into ExecutionDateRunWithoutZone
+		put ExecutionDateRunWithoutZone into ExecutionDateWithMilliseconds
+		split ExecutionDateWithMilliseconds by "."
+		put item 1 of ExecutionDateWithMilliseconds into ExecutionStartDateTime
+		
+		put ExecutionDateRunWithoutZone into ExecutionStartDateTimeSplit
+		split ExecutionStartDateTimeSplit by space
+		
+		# Calculate end date & time
+		put asTime(ExecutionDuration) into ParsedDuration
+		put item 2 of ExecutionStartDateTimeSplit into ExecutionStartTime
+		put asTime(ExecutionStartTime) into ExecutionStartTimeParsed
+		set [StartHour, StartMinute, StartSecond] to [ExecutionStartTimeParsed.hour, ExecutionStartTimeParsed.minute, ExecutionStartTimeParsed.second]
+		put ParsedDuration + StartHour hour + StartMinute minute + StartSecond sec into ExecutionEndTime
+		put (item 1 of ExecutionStartDateTimeSplit && ExecutionEndTime) into ExecutionEndDateTime
+		
+		# Resolve log file absolute path
+		put ScriptResultFolder & "/" & RelativeLocationOfLogFile into AbsoluteLogFileLocation
+		put AbsoluteLogFileLocation into LogFileFolderPath
+		delete "LogFile.txt" from LogFileFolderPath
+		
+		# Build report output filename
+		put RelativeLocationOfLogFile into TempLogPath
+		delete "LogFile.txt" from TempLogPath
+		delete "/" from TempLogPath
+		put TempLogPath into ReportGenrationDateTime
+		
+		put ScriptName into TestcaseName
+		if (TestcaseName contains "/") then replace every occurrence of "/" with "_" in TestcaseName
+		put TestcaseName & "_" & ReportGenrationDateTime & "_Report.html" into ReportName
+		
+		put file AbsoluteLogFileLocation into ExecutionLogFile
+		
+		# ─────────────────────────────────────────────────────────────────────────────
+		# 2. EMBED EGGPLANT LOGO FROM RESOURCES FOLDER
+		# ─────────────────────────────────────────────────────────────────────────────
+		put ResourcePath("Eggplant_Logo.png") into EggplantLogoPath
+		if there is a file EggplantLogoPath then
+			put "data:image/png;base64," & base64Encode(file EggplantLogoPath) into EggplantLogoBase64
+			put "<img src='" & EggplantLogoBase64 & "' alt='Eggplant' class='header-logo'>" into LogoImgTag
+		else
+			put "<span class='logo-fallback'>Eggplant</span>" into LogoImgTag
+		end if
+		
+		# ─────────────────────────────────────────────────────────────────────────────
+		# 3. CALCULATE KPIs & STATUS STYLING
+		# ─────────────────────────────────────────────────────────────────────────────
+		put (ExecutionSuccesses as number) into SuccessesNum
+		put (ExecutionErrors as number) into ErrorsNum
+		if ((SuccessesNum + ErrorsNum) > 0) then
+			put round((SuccessesNum / (SuccessesNum + ErrorsNum)) * 100) into PassRatePct
+		else
+			put 100 into PassRatePct
+		end if
+		
+		if ExecutionStatus is "Failure" then
+			put "status-fail" into StatusClass
+			put "<tr class='row-fail'>" into SummaryRowStyle
+		else
+			put "status-pass" into StatusClass
+			put "<tr class='row-pass'>" into SummaryRowStyle
+		end if
+		
+		if ExecutionErrorMessage is empty then
+			put "<td class='no-error'>-</td>" into ErrorMessageCellHTML
+		else
+			put "<td class='error-msg'><span class='err-icon'>!</span> " & ExecutionErrorMessage & "</td>" into ErrorMessageCellHTML
+		end if
+		
+		# Duration chip style
+		put ExecutionDuration into DurationSeconds
+		split DurationSeconds by ":"
+		put (item 1 of DurationSeconds * 3600) + (item 2 of DurationSeconds * 60) + item 3 of DurationSeconds into TotalDurationSec
+		if TotalDurationSec < 60 then
+			put "dur-fast" into DurClass
+		else if TotalDurationSec < 300 then
+			put "dur-medium" into DurClass
+		else
+			put "dur-slow" into DurClass
+		end if
+		
+		# ─────────────────────────────────────────────────────────────────────────────
+		# 4. PARSE PREVIOUS EXECUTION HISTORY FROM RUNHISTORY.CSV
+		# ─────────────────────────────────────────────────────────────────────────────
+		set PreviousHistoryRowsHTML to empty
+		set PrevRunCount to 0
+		
+		if TotalNumberOfRuns > 2 then
+			repeat with LineIdx = TotalNumberOfRuns - 1 down to 2
+				set PrevRunCount to PrevRunCount + 1
+				put line LineIdx of RunHistoryFile into PrevRowLine
+				
+				put item 1 of PrevRowLine into PrevDateRun
+				put item 2 of PrevRowLine into PrevStatus
+				put item 3 of PrevRowLine into PrevDuration
+				put item 4 of PrevRowLine into PrevErrors
+				put item 5 of PrevRowLine into PrevWarnings
+				put item 6 of PrevRowLine into PrevExceptions
+				put item 9 of PrevRowLine into PrevErrorMessage
+				put item 10 of PrevRowLine into PrevSuccesses
+				
+				delete quote from PrevStatus
+				delete quote from PrevErrorMessage
+				
+				split PrevDateRun by "+"
+				put item 1 of PrevDateRun into PrevDateNoZone
+				split PrevDateNoZone by "."
+				put item 1 of PrevDateNoZone into PrevStartDateTime
+				
+				if PrevStatus is "Failure" then
+					put "row-fail" into PrevRowClass
+					put "<span class='event-badge event-FAILURE'>Failure</span>" into PrevStatusBadge
+				else
+					put "row-pass" into PrevRowClass
+					put "<span class='event-badge event-SUCCESS'>Success</span>" into PrevStatusBadge
+				end if
+				
+				if PrevErrorMessage is empty then
+					put "<td class='no-error'>-</td>" into PrevErrMsgCell
+				else
+					put "<td class='error-msg'>" & PrevErrorMessage & "</td>" into PrevErrMsgCell
+				end if
+				
+				put "<tr class='" & PrevRowClass & "'>" & \
+						"<td>Run #" & (LineIdx - 1) & "</td>" & \
+						"<td>" & PrevStartDateTime & "</td>" & \
+						"<td>" & PrevStatusBadge & "</td>" & \
+						"<td>" & PrevDuration & "</td>" & \
+						"<td class='cell-fail'>" & PrevErrors & "</td>" & \
+						"<td class='cell-pass'>" & PrevSuccesses & "</td>" & \
+						"<td class='cell-warn'>" & PrevWarnings & "</td>" & \
+						"<td>" & PrevExceptions & "</td>" & \
+						PrevErrMsgCell & \
+						"</tr>" after PreviousHistoryRowsHTML
+			end repeat
+		end if
+		
+		if PrevRunCount > 0 then
+			put "<div class='section-subtitle'>Previous Executions History (" & PrevRunCount & " prior run" & (if PrevRunCount > 1 then "s" else "") & ")</div>" & \
+					"<table class='detail-table prev-history-table'>" & \
+					"<tr>" & \
+					"<td><b>Run #</b></td>" & \
+					"<td><b>Execution Date and Time</b></td>" & \
+					"<td><b>Status</b></td>" & \
+					"<td><b>Duration</b></td>" & \
+					"<td><b>Errors</b></td>" & \
+					"<td><b>Successes</b></td>" & \
+					"<td><b>Warnings</b></td>" & \
+					"<td><b>Exceptions</b></td>" & \
+					"<td><b>Error Message</b></td>" & \
+					"</tr>" & PreviousHistoryRowsHTML & \
+					"</table>" into PreviousHistoryBlockHTML
+		else
+			put "<div class='section-subtitle'>Previous Executions History</div>" & \
+					"<div class='no-history-box'>No previous execution records found for this test case.</div>" into PreviousHistoryBlockHTML
+		end if
+		
+		# ─────────────────────────────────────────────────────────────────────────────
+		# 5. BUILD STEP-BY-STEP LOG TABLE
+		# ─────────────────────────────────────────────────────────────────────────────
+		put "" into LogTableRowsHTML
+		set LogStepCount to 0
+		repeat with each line of ExecutionLogFile
+			put it into LogLine
+			split LogLine by tabKey
+			
+			put item 1 of LogLine into LogTimestamp
+			put item 2 of LogLine into LogEvent
+			put item 3 of LogLine into LogImagePath
+			put item 4 of LogLine into LogMessage
+			put item 5 of LogLine into LogHandlerLineNo
+			put item 6 of LogLine into LogHandlerName
+			put item 7 of LogLine into LogScriptFile
+			
+			set LogStepCount to LogStepCount + 1
+			
+			# Escape HTML special characters to preserve exact raw log content in browser
+			put LogMessage into CleanLogMessage
+			if (CleanLogMessage contains "<") then replace every occurrence of "<" with "&lt;" in CleanLogMessage
+			if (CleanLogMessage contains ">") then replace every occurrence of ">" with "&gt;" in CleanLogMessage
+			
+			put LogImagePath into CleanLogImagePath
+			if (CleanLogImagePath contains "<") then replace every occurrence of "<" with "&lt;" in CleanLogImagePath
+			if (CleanLogImagePath contains ">") then replace every occurrence of ">" with "&gt;" in CleanLogImagePath
+			
+			if LogEvent is "LogError" or LogEvent is "FAILURE" then
+				put "row-log row-log-error" into LogRowClass
+			else if LogEvent is "LogSuccess" or LogEvent is "SUCCESS" then
+				put "row-log row-log-success" into LogRowClass
+			else if LogEvent is "LogWarning" then
+				put "row-log row-log-warning" into LogRowClass
+			else if LogEvent is "START" or LogEvent is "EndTestCase" then
+				put "row-log row-log-info" into LogRowClass
+			else
+				put "row-log" into LogRowClass
+			end if
+			
+			if (LogImagePath contains ".png") or (LogImagePath contains ".jpg") then
+				if LogImagePath does not contain SuiteInfo().path then
+					put LogFileFolderPath & LogImagePath into FullScreenshotPath
+				else
+					put LogImagePath into FullScreenshotPath
+				end if
+				
+				put FullScreenshotPath into TempPath
+				split TempPath by "/"
+				put last item of TempPath into ScreenshotFileName
+				split ScreenshotFileName by "."
+				put item 1 of ScreenshotFileName into ScreenshotDisplayName
+				
+				put "<td><a class='img-link' href=" & quote & "data:image/PNG;base64," & base64Encode(file FullScreenshotPath) & quote & " target='_blank'>" & \
+						"<span class='ss-icon'>📷</span> " & ScreenshotDisplayName & "</a></td>" into LogImageCellHTML
+			else
+				put "<td class='img-ref'>" & CleanLogImagePath & "</td>" into LogImageCellHTML
+			end if
+			
+			put "<tr class='" & LogRowClass & "' data-event='" & LogEvent & "'>" & \
+					"<td class='ts-cell'>" & LogTimestamp & "</td>" & \
+					"<td><span class='event-badge event-" & LogEvent & "'>" & LogEvent & "</span></td>" & \
+					LogImageCellHTML & \
+					"<td class='msg-cell'>" & CleanLogMessage & "</td>" & \
+					"<td class='handler-name'>" & LogHandlerName & "</td>" & \
+					"<td class='script-file'>" & LogScriptFile & "</td>" & \
+					"<td class='line-no'>" & LogHandlerLineNo & "</td>" & \
+					"</tr>" after LogTableRowsHTML
+		end repeat
+		
+		# ─────────────────────────────────────────────────────────────────────────────
+		# 6. ASSEMBLE HTML DOCUMENT
+		# ─────────────────────────────────────────────────────────────────────────────
+		put (the long date) && (the time) into ReportGeneratedOn
+		
+		set HTMLPageContent to "<!DOCTYPE html>" & \
+				"<html lang='en'>" & \
+				"<head>" & \
+				"<meta charset='UTF-8'>" & \
+				"<meta name='viewport' content='width=device-width, initial-scale=1.0'>" & \
+				"<title>" & ScriptName & " - Test Execution Report</title>" & \
+				"<style>" & \
+				"*, *::before, *::after { box-sizing: border-box; }" & \
+				"body { margin: 0; padding: 0; background: #f1f5f9; font-family: 'Segoe UI', sans-serif; color: #1e293b; font-size: 14px; }" & \
+				"a { color: inherit; }" & \
+				".report-header { background: linear-gradient(135deg, #312e81 0%, #4f46e5 55%, #7c3aed 100%); color: #fff; padding: 24px 40px; }" & \
+				".header-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px; }" & \
+				".header-brand { display: flex; align-items: center; gap: 16px; }" & \
+				".header-logo { height: 44px; width: auto; background: #ffffff; padding: 4px 10px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }" & \
+				".logo-fallback { font-size: 22px; font-weight: 800; }" & \
+				".header-text h1 { margin: 0; font-size: 22px; font-weight: 700; }" & \
+				".suite-name { margin: 4px 0 0; font-size: 13px; opacity: 0.75; }" & \
+				".header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }" & \
+				".report-meta { font-size: 12px; opacity: 0.7; }" & \
+				".stats-bar { display: flex; gap: 14px; padding: 20px 40px; flex-wrap: wrap; max-width: 1360px; margin: 0 auto; }" & \
+				".stat-card { flex: 1; min-width: 130px; background: #fff; border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; align-items: center; gap: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }" & \
+				".stat-icon { font-size: 20px; }" & \
+				".stat-value { font-size: 28px; font-weight: 800; color: #1e293b; }" & \
+				".stat-label { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 500; }" & \
+				".stat-rate .stat-value { color: #4f46e5; }" & \
+				".stat-pass .stat-value { color: #16a34a; }" & \
+				".stat-fail .stat-value { color: #dc2626; }" & \
+				".stat-warn .stat-value { color: #d97706; }" & \
+				".stat-exc .stat-value { color: #7c3aed; }" & \
+				".content { max-width: 1360px; margin: 0 auto 32px auto; padding: 0 40px; }" & \
+				".section-subtitle { font-size: 13px; font-weight: 700; color: #475569; text-transform: uppercase; margin: 14px 0 8px 0; }" & \
+				".no-history-box { background: #fff; border: 1.5px dashed #cbd5e1; border-radius: 10px; padding: 14px 18px; color: #64748b; font-size: 13px; font-style: italic; }" & \
+				"table { width: 100%; }" & \
+				".detail-table { border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }" & \
+				".detail-table td, .detail-table th { padding: 9px 13px; font-size: 13px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }" & \
+				".detail-table th { background: #f8fafc; color: #475569; font-weight: 600; text-transform: uppercase; font-size: 11px; }" & \
+				".script-name-cell { font-weight: 600; }" & \
+				".dur-chip { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; font-family: monospace; }" & \
+				".dur-fast { background: #dcfce7; color: #166534; }" & \
+				".dur-medium { background: #fef3c7; color: #92400e; }" & \
+				".dur-slow { background: #fee2e2; color: #991b1b; }" & \
+				".row-pass { background: #f0fdf4; }" & \
+				".row-fail { background: #fff5f5; }" & \
+				".cell-pass { color: #16a34a; font-weight: 700; }" & \
+				".cell-fail { color: #dc2626; font-weight: 700; }" & \
+				".cell-warn { color: #d97706; font-weight: 700; }" & \
+				".no-error { color: #94a3b8; font-style: italic; }" & \
+				".error-msg { color: #b91c1c; font-size: 13px; word-break: break-word; }" & \
+				".log-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 10px 0 8px 0; }" & \
+				".filter-label { font-size: 12px; color: #64748b; font-weight: 600; }" & \
+				".log-filter-input { flex: 1; min-width: 180px; max-width: 320px; padding: 7px 12px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 13px; outline: none; }" & \
+				".filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }" & \
+				".pill { padding: 4px 12px; border-radius: 999px; border: none; font-size: 11px; font-weight: 700; cursor: pointer; }" & \
+				".pill-error { background: #fee2e2; color: #991b1b; }" & \
+				".pill-success { background: #dcfce7; color: #166534; }" & \
+				".pill-warning { background: #fef3c7; color: #92400e; }" & \
+				".pill-info { background: #dbeafe; color: #1e40af; }" & \
+				".pill-clear { background: #f1f5f9; color: #475569; }" & \
+				".log-count-label { font-size: 12px; color: #64748b; margin-left: auto; }" & \
+				".log-table-wrap { max-height: 480px; overflow-y: auto; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }" & \
+				".log-table { border-collapse: collapse; background: #fff; width: 100%; }" & \
+				".log-table td, .log-table th { padding: 8px 12px; font-size: 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }" & \
+				".log-table th { background: #f8fafc; color: #475569; font-weight: 600; text-transform: uppercase; font-size: 11px; }" & \
+				".row-log-error { background: #fff5f5 !important; }" & \
+				".row-log-success { background: #f0fdf4 !important; }" & \
+				".row-log-warning { background: #fffbeb !important; }" & \
+				".row-log-info { background: #eff6ff !important; }" & \
+				".event-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; white-space: nowrap; }" & \
+				".event-LogError, .event-FAILURE { background: #fee2e2; color: #991b1b; }" & \
+				".event-LogSuccess, .event-SUCCESS { background: #dcfce7; color: #166534; }" & \
+				".event-LogWarning { background: #fef3c7; color: #92400e; }" & \
+				".event-START, .event-EndTestCase { background: #dbeafe; color: #1e40af; }" & \
+				".ts-cell { color: #64748b; font-size: 11px; white-space: nowrap; font-family: monospace; }" & \
+				".msg-cell { max-width: 360px; word-break: break-word; }" & \
+				".img-ref { color: #64748b; font-size: 11px; }" & \
+				".line-no { color: #94a3b8; font-size: 11px; text-align: center; font-family: monospace; }" & \
+				".handler-name { color: #4f46e5; font-size: 11px; font-family: monospace; }" & \
+				".script-file { color: #64748b; font-size: 11px; font-family: monospace; }" & \
+				".img-link { color: #4f46e5; text-decoration: none; font-weight: 600; font-size: 12px; }" & \
+				".spacer { height: 16px; }" & \
+				".report-footer { background: #1e293b; color: #94a3b8; padding: 20px 40px; margin-top: 40px; }" & \
+				".footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; max-width: 1360px; margin: 0 auto; }" & \
+				".footer-brand { display: flex; align-items: center; gap: 10px; font-size: 13px; }" & \
+				".footer-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; font-size: 12px; }" & \
+				"@media print { .log-table-wrap { max-height: none !important; overflow: visible !important; } .log-toolbar { display: none !important; } }" & \
+				"</style>" & \
+				"</head>" & \
+				"<body>" & \
+				"<header class='report-header'>" & \
+				"<div class='header-top'>" & \
+				"<div class='header-brand'>" & \
+				LogoImgTag & \
+				"<div class='header-text'>" & \
+				"<h1>Single Test Execution Report</h1>" & \
+				"<p class='suite-name'>Script: " & ScriptName & " | Suite: " & SuiteName & "</p>" & \
+				"</div>" & \
+				"</div>" & \
+				"<div class='header-right'>" & \
+				"<span class='report-meta'>Generated: " & ReportGeneratedOn & "</span>" & \
+				"<span class='report-meta'>Suite path: " & SuitePath & "</span>" & \
+				"</div>" & \
+				"</div>" & \
+				"</header>" & \
+				"<div class='stats-bar'>" & \
+				"<div class='stat-card " & (if ExecutionStatus is "Failure" then "stat-fail" else "stat-pass") & "'>" & \
+				"<span class='stat-value'>" & ExecutionStatus & "</span>" & \
+				"<span class='stat-label'>Status</span>" & \
+				"</div>" & \
+				"<div class='stat-card stat-rate'>" & \
+				"<span class='stat-value'>" & PassRatePct & "%</span>" & \
+				"<span class='stat-label'>Pass Rate</span>" & \
+				"</div>" & \
+				"<div class='stat-card stat-pass'>" & \
+				"<span class='stat-value'>" & ExecutionSuccesses & "</span>" & \
+				"<span class='stat-label'>Successes</span>" & \
+				"</div>" & \
+				"<div class='stat-card stat-fail'>" & \
+				"<span class='stat-value'>" & ExecutionErrors & "</span>" & \
+				"<span class='stat-label'>Errors</span>" & \
+				"</div>" & \
+				"<div class='stat-card stat-warn'>" & \
+				"<span class='stat-value'>" & ExecutionWarnings & "</span>" & \
+				"<span class='stat-label'>Warnings</span>" & \
+				"</div>" & \
+				"<div class='stat-card stat-exc'>" & \
+				"<span class='stat-value'>" & ExecutionExceptions & "</span>" & \
+				"<span class='stat-label'>Exceptions</span>" & \
+				"</div>" & \
+				"</div>" & \
+				"<div class='content'>" & \
+				"<div class='section-subtitle'>Latest Execution Summary</div>" & \
+				"<table class='detail-table'>" & SummaryRowStyle & \
+				"<td><b>Test Name</b></td>" & \
+				"<td><b>Start Time</b></td>" & \
+				"<td><b>End Time</b></td>" & \
+				"<td><b>Duration</b></td>" & \
+				"<td><b>Errors</b></td>" & \
+				"<td><b>Successes</b></td>" & \
+				"<td><b>Exceptions</b></td>" & \
+				"<td><b>Warnings</b></td>" & \
+				"<td><b>Error Message</b></td>" & \
+				"</tr>" & \
+				"<tr>" & \
+				"<td class='script-name-cell'>" & ScriptName & "</td>" & \
+				"<td>" & ExecutionStartDateTime & "</td>" & \
+				"<td>" & ExecutionEndDateTime & "</td>" & \
+				"<td><span class='dur-chip " & DurClass & "'>" & ExecutionDuration & "</span></td>" & \
+				"<td class='cell-fail'>" & ExecutionErrors & "</td>" & \
+				"<td class='cell-pass'>" & ExecutionSuccesses & "</td>" & \
+				"<td>" & ExecutionExceptions & "</td>" & \
+				"<td class='cell-warn'>" & ExecutionWarnings & "</td>" & \
+				ErrorMessageCellHTML & \
+				"</tr>" & \
+				"</table>" & \
+				"<div class='spacer'></div>" & \
+				PreviousHistoryBlockHTML & \
+				"<div class='spacer'></div>" & \
+				"<div class='section-subtitle'>Step-by-Step Execution Log</div>" & \
+				"<div class='log-toolbar'>" & \
+				"<label class='filter-label'>Filter log:</label>" & \
+				"<input type='text' class='log-filter-input' placeholder='Type event or message...' oninput='filterLog(this)'>" & \
+				"<div class='filter-pills'>" & \
+				"<button class='pill pill-error' onclick='setPill(this, " & quote & "LogError" & quote & ")'>Errors</button>" & \
+				"<button class='pill pill-success' onclick='setPill(this, " & quote & "LogSuccess" & quote & ")'>Successes</button>" & \
+				"<button class='pill pill-warning' onclick='setPill(this, " & quote & "LogWarning" & quote & ")'>Warnings</button>" & \
+				"<button class='pill pill-info' onclick='setPill(this, " & quote & "START" & quote & ")'>Start/End</button>" & \
+				"<button class='pill pill-clear' onclick='clearFilter(this)'>Clear</button>" & \
+				"</div>" & \
+				"<span class='log-count-label'>" & LogStepCount & " steps</span>" & \
+				"</div>" & \
+				"<div class='log-table-wrap'>" & \
+				"<table class='detail-table log-table'>" & SummaryRowStyle & \
+				"<td><b>Logged At</b></td>" & \
+				"<td><b>Event</b></td>" & \
+				"<td><b>Image / Screenshot</b></td>" & \
+				"<td><b>Message</b></td>" & \
+				"<td><b>Handler Name</b></td>" & \
+				"<td><b>Script File</b></td>" & \
+				"<td><b>Line #</b></td>" & \
+				"</tr>" & LogTableRowsHTML & \
+				"</table>" & \
+				"</div>" & \
+				"</div>" & \
+				"<footer class='report-footer'>" & \
+				"<div class='footer-inner'>" & \
+				"<div class='footer-brand'>" & \
+				LogoImgTag & \
+				"<span>Generated from Eggplant Functional</span>" & \
+				"</div>" & \
+				"<div class='footer-meta'>" & \
+				"<span>Script: " & ScriptName & " | Suite: " & SuiteName & "</span>" & \
+				"<span>Generated: " & ReportGeneratedOn & "</span>" & \
+				"</div>" & \
+				"</div>" & \
+				"</footer>" & \
+				"<script>" & \
+				"function filterLog(input) {" & \
+				"  var q = input.value.toLowerCase();" & \
+				"  var rows = document.querySelectorAll('.log-table tr.row-log');" & \
+				"  var visible = 0;" & \
+				"  rows.forEach(function(r) {" & \
+				"    var show = q === '' || r.textContent.toLowerCase().indexOf(q) > -1;" & \
+				"    r.style.display = show ? '' : 'none';" & \
+				"    if (show) visible++;" & \
+				"  });" & \
+				"  document.querySelector('.log-count-label').textContent = 'Showing ' + visible + ' of ' + rows.length + ' steps';" & \
+				"}" & \
+				"function setPill(btn, eventType) {" & \
+				"  var inp = document.querySelector('.log-filter-input');" & \
+				"  inp.value = eventType; filterLog(inp);" & \
+				"}" & \
+				"function clearFilter(btn) {" & \
+				"  var inp = document.querySelector('.log-filter-input');" & \
+				"  inp.value = ''; filterLog(inp);" & \
+				"}" & \
+				"</script>" & \
+				"</body>" & \
+				"</html>"
+		
+		# Put HTML Code into ResourcePath file
+		put HTMLPageContent into file ResourcePath(ReportName)
+		Log "HTML Report generated successfully and stored in: " && ResourcePath(ReportName)
+		put ResourcePath(ReportName) into Global HTMLReportName
+		return 1
+	Catch theException
+		Log "GenerateHtmlReport failed with exception: " && theException.reason
+		return 0
+	End try
+end GenerateHtmlReport
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DURATION FORMATTER HELPER
+# ─────────────────────────────────────────────────────────────────────────────
+to FormatFriendlyDuration DurationString
+	Try
+		put DurationString into DurationParts
+		split DurationParts by ":"
+		if (the number of items of DurationParts <> 3) then return DurationString
+		
+		put (item 1 of DurationParts) as number into Hrs
+		put (item 2 of DurationParts) as number into Mins
+		put (item 3 of DurationParts) as number into Secs
+		
+		put "" into FriendlyString
+		if (Hrs > 0) then put Hrs & "h " after FriendlyString
+		if ((Hrs > 0) or (Mins > 0)) then put Mins & "m " after FriendlyString
+		put Secs & "s" after FriendlyString
+		return FriendlyString
+	Catch theException
+		return DurationString
+	End Try
+end FormatFriendlyDuration
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PDF REPORT CONVERSION HANDLER
+# ─────────────────────────────────────────────────────────────────────────────
+to GeneratePdfReport ReportName
+	set windowsCmdPath to "C:\Windows\System32\cmd.exe"
+	set edgePath to "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+	if there is not a file edgePath then set edgePath to "C:\Program Files\Microsoft\Edge\Application\msedge.exe"
+	
+	set PdfConvertingOutputPath to SuiteInfo().resultsFolder&"/PdfConvertingOutput.txt"
+	
+	put ReportName into PDFReportName
+	replace ".html" in PDFReportName with ".pdf"
+	
+	if there is a file PDFReportName then delete file PDFReportName
+	
+	shell windowsCmdPath, "/c" && quote & quote & edgePath & quote && "--headless=new" && "--disable-gpu" && "--no-pdf-header-footer" && "--print-to-pdf="&quote&PDFReportName&quote && quote & ReportName & quote && ">" && quote & PdfConvertingOutputPath & quote && "2>&1" & quote
+	
+	set WaitedSeconds to 0
+	Repeat until (there is a file PDFReportName)
+		Log "Waiting for PDF Output File"
+		wait 2
+		if repeatIndex() >30 then Exit repeat
+	End repeat
+	
+	if there is not a file PDFReportName then
+		Log "PDF conversion failed or timed out. Edge output:" && (file PdfConvertingOutputPath)
+	else
+		Log "PDF Report got generated and stored in" && PDFReportName
+	end if
+end GeneratePdfReport
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# WRAPPER HANDLER FOR BOTH HTML & PDF GENERATION
+# ─────────────────────────────────────────────────────────────────────────────
+to GenerateReports TCName
+	put GenerateHtmlReport(TCName) into gotoGeneratePDFReport
+	if (gotoGeneratePDFReport is 1) then GeneratePdfReport Global HTMLReportName else Log "Failed to generate PDF report."
+end GenerateReports

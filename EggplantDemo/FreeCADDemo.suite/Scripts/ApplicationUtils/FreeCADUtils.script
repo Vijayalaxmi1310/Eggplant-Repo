@@ -1,0 +1,3 @@
+﻿typetext windowsKey,r
+typetext "C:\Program Files\FreeCAD 1.1\bin\freecad.exe",returnKey
+waitFor 50, text:"New File"

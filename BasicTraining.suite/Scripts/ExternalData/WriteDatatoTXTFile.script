@@ -1,0 +1,19 @@
+﻿put "Data added at eof" after file ResourcePath("TestData.txt") --- After the file it wil add the data
+log file ResourcePath("TestData.txt") 
+
+
+put "Data added at the beginning" before file ResourcePath("TestData.txt") -- before keyword is used to prepend the data into file
+log file ResourcePath("TestData.txt")
+
+--- Write data to the text file ------
+put "Recently the last line is added" into MyWrite
+open file ResourcePath("TestData.txt")
+if file ResourcePath("TestData.txt") is empty     
+	write return to file ResourcePath("TestData.txt") at eof
+	seek in file ResourcePath("TestData.txt") at beginning
+	write MyWrite to file ResourcePath("TestData.txt")
+else
+	write return to file ResourcePath("TestData.txt") at eof
+	write MyWrite  to file ResourcePath("TestData.txt")
+end if
+close file ResourcePath("TestData.txt")

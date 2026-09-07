@@ -1,0 +1,95 @@
+﻿DragAndDrop "ScrollBar","DownArrow"
+
+repeat 4 times
+	typetext PageUp
+end repeat
+
+repeat 2 times
+	typetext PageDown
+end repeat
+
+repeat 1 times
+	ScrollWheelDown 4
+	
+end repeat
+
+repeat 2 times
+	
+	click "DownArrow"
+end repeat
+
+
+repeat until imageFound(text:"Follow us",waitFor:3)
+	ScrollWheelDown 4
+	wait 2
+end repeat
+click text:"Follow us"
+
+
+repeat 5 times
+	click imageName:"DownArrow_NopCommerce"
+end repeat
+
+
+---- Typetext commands arrowKeys to scroll the page -----
+
+repeat 6 times
+	typetext downArrow
+end repeat
+
+
+
+repeat 6 times
+	typetext upArrow
+end repeat
+
+--- Use PageUp and PageDown Keys to scroll the page ---
+repeat 4 times
+	typetext pageUp
+end repeat
+
+
+repeat 5 times
+	typetext pageDown -- scroll the page down
+end repeat
+
+
+
+----- Using Images to Scroll the page using DragAndDrop command ----------
+
+DragAndDrop "ScrollBar1","DownArrow_NopCommerce"
+
+
+
+
+
+
+
+ScrollWheelUp 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		323,
+		340,
+		75,
+		38
+	],
+	"lastmodifieddate": 1768547931.556,
+	"createddate": 1679296788.9879999,
+	"name": "Close_Button",
+	"lastfounddate": 1718359110.1789999,
+	"ocrcapturestring": "Close",
+	"lastfoundlocation": [
+		1024,
+		461,
+		75,
+		38
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Close",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[37,19]",
+					"Tolerance": "_62",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					323,
+					340,
+					75,
+					38
+				],
+				"name": "Close_Button.png"
+			}
+	]
+}

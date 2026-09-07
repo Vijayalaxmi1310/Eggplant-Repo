@@ -1,0 +1,81 @@
+﻿
+
+
+(*
+-------------------------------------------------------------------------------
+Handler Name : getPartsDataToMigrate
+
+Author       : Himaja R
+Description  :
+Reads migration part data from the specified Excel sheet and returns
+all records that have not yet been migrated.
+
+
+-------------------------------------------------------------------------------
+*)
+
+(*to getPartsDataToMigrate excelName, excelSheetName
+	try
+		
+		set myExcelDB to {type:"excel", file:excelName, name:excelSheetName, writable:Yes}
+		put the records of myExcelDB where (status is empty) into nonMigrationParts
+		
+		log nonMigrationParts
+		return nonMigrationParts
+		
+	catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	end try
+	
+end getPartsDataToMigrate*)
+to getPartsDataToMigrate excelName,excelSheetName
+	try
+		
+		(*	put FileOperations.readColumDataFrom (excelName, excelSheetName, "partName") into migrationParts
+		log migrationParts*)
+		set myExcelDB to {type: "excel", file: excelName, name:excelSheetName,writable: Yes}
+		put the records of myExcelDB where (status is empty )  into nonMigrationParts
+		log nonMigrationParts
+		return nonMigrationParts
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try	
+	
+end getPartsDataToMigrate
+
+(*Handler Name : sendEmailReport
+Author : Himaja R
+Description :
+This handler sends an automated NX Data Migration email report with the
+input and output Excel files attached.*)
+to sendEmailReport inputFile,outputFile
+	try
+	(*	set inputFile to ResourcePath("PartData_Migration_Batch01_Input.xlsx")
+		set outputFile to ResourcePath("PartData_Migration_Batch01.xlsx")*)
+		put the name of file inputFile into inputFileName
+		put the name of file outputFile into outputFileName
+		
+		set To to "himaja.reddyvari@non.keysight.com"
+		//put "<html><body><h3>NX Data Migration Report</h3></body></html>" into emailBody 
+		(*<p><b>Total Parts:</b> " & totalParts & "<br><b>Passed:</b> " & passedParts & "<br><b>Failed:</b> " & failedParts & "</p><p>Please find the attached migration data file for detailed results.</p><p>Regards,<br>NX Migration Automation Team</p>*)
+		//put "<html><body><h3>NX Data Migration Report</h3><p><b>Input File:</b> " & inputFile & "<br><b>Output File:</b> " & outputFile & "</p></body></html>" into emailBody
+		//put "<html><body><h3>NX Data Migration Report</h3><p><b>Input File:</b> " & inputFile & "<br><b>Output File:</b> " & outputFile & "</p>"  "<div><p>We have attached the migration report file for your reference. Please review it.</p></div><div class='footer'>If you have any questions or require further assistance, don't hesitate to <a href='mailto:himaja.reddyvari@non.keysight.com'>contact us</a>.</p><p><strong>Thank you,</strong><br>Himaja R<br>NX Migration Automation Team</p></div></body></html>" into emailBody
+		
+		put "<html><head><title>NX Data Migration Report</title><style>body {font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;margin:0;padding:0;color:#333} .email-container {width:100%;max-width:650px;margin:0 auto;background-color:#ffffff;padding:30px;border-radius:8px} h1 {font-size:24px;color:#191970;margin-bottom:15px;text-align:center} .footer {font-size:14px;color:#7F8C8D;text-align:left;margin-top:20px} .footer a {color:#191970;text-decoration:none}</style></head><body><div class='email-container'><h1>NX Data Migration Report</h1><p><strong>Input File:</strong> " & inputFileName & "<br><strong>Output File:</strong> " & outputFileName & "</p>" "<div><p>We have attached the migration report file for your reference. Please review it.</p></div><div class='footer'><p>If you have any questions or require further assistance, don't hesitate to <a href='mailto:himaja.reddyvari@non.keysight.com'>contact us</a>.</p><p><strong>Thank you,</strong><br>Himaja R<br>Enovia Eggplant Automation Team</p></div></div></body></html>" into emailBody
+		
+		set the timeformat's date to "%d_%m_%Y"
+		put time into normalTime
+		put formattedTime("%d-%m-%Y", normalTime) into reportTime
+		log reportTime
+		SendMail{to:TO,CC:"himaja.reddyvari@non.keysight.com",subject:"NX Data Migration Report : Date_"&reportTime,body:emailBody,attachment:[inputFile,outputFile],SMTP_HOST:"smtp.cos.is.keysight.com", smtp_port:587,smtp_type:"Anonymous",smtp_user:"Enovia-Regression-Report@keysight.com"}
+
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try	
+end sendEmailReport
+
+

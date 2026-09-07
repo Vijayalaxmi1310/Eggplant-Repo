@@ -1,0 +1,47 @@
+{
+	"lastmodifieddate": 1768548108.2740002,
+	"lastfoundlocation": [
+		1903,
+		966,
+		16,
+		16
+	],
+	"originalcapturelocation": [
+		1903,
+		966,
+		16,
+		16
+	],
+	"createddate": 1680698486.2460001,
+	"lastfounddate": 1681996689.1719999,
+	"testlocationdata": [
+		{
+				"connectionportnum": 5925,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[8,8]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "DownArrow.png",
+				"connectionname": "Partner-SUT-9",
+				"type": 1,
+				"capturerect": [
+					1903,
+					966,
+					16,
+					16
+				],
+				"connectiontype": "rdp",
+				"connectionserverid": "3.8.94.207"
+			}
+	],
+	"name": "DownArrow"
+}

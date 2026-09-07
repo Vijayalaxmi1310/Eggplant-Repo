@@ -1,0 +1,40 @@
+{
+	"lastmodifieddate": 1768543972.9289999,
+	"lastfoundlocation": [
+		1103,
+		148,
+		66,
+		34
+	],
+	"originalcapturelocation": [
+		1103,
+		148,
+		66,
+		34
+	],
+	"createddate": 1681824380.9759998,
+	"lastfounddate": 1681824662.4200001,
+	"testlocationdata": [
+		{
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[27,18]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					1103,
+					148,
+					66,
+					34
+				],
+				"name": "OKButton/OKButton2.png"
+			}
+	],
+	"name": "OKButton/OKButton2"
+}

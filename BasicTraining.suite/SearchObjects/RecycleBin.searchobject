@@ -1,0 +1,75 @@
+{
+	"lastmodifieddate": 1768544018.8759999,
+	"lastfoundlocation": [
+		16,
+		20,
+		34,
+		28
+	],
+	"originalcapturelocation": [
+		16,
+		20,
+		34,
+		28
+	],
+	"createddate": 1678950219.424,
+	"lastfounddate": 1682315283.839,
+	"testlocationdata": [
+		{
+				"connectionportnum": 5913,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[17,14]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "RecycleBin/RecycleBin.png",
+				"connectionname": "Partner-SUT-5",
+				"type": 1,
+				"capturerect": [
+					16,
+					20,
+					34,
+					28
+				],
+				"connectiontype": "rdp",
+				"connectionserverid": "3.8.94.207"
+			},
+		{
+				"connectionportnum": 5915,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[17,14]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "RecycleBin/RecycleBin1.png",
+				"connectionname": "Partner-SUT-6",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					16,
+					20,
+					34,
+					28
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "L"
+			}
+	],
+	"name": "RecycleBin"
+}

@@ -1,0 +1,70 @@
+﻿## -- One-Time Credential Initialization
+--------------------------------------------------------------------------------
+--
+-- Execute this block only once on each execution machine.
+-- After the values are stored in Windows Credential Manager,
+-- this section can be removed or disabled.
+--
+-- NOTE:
+-- The encryption key and original password shown below are examples.
+-- In production environments, these values can be retrieved from:
+--   • Database
+--   • External configuration files
+--   • Runtime parameters
+--
+--------------------------------------------------------------------------------
+
+set PasswordEncryptionKey to "123ABC#"
+set OriginalPassword to "MySecretKey"
+
+put EncodeText(OriginalPassword, PasswordEncryptionKey) into encryptedPassword
+log encryptedPassword
+
+SetVaultValue "3DX_Username", "3DX_User1"
+SetVaultValue "3DX_Password", encryptedPassword
+
+put GetVaultValue("3DX_Username") into userName
+put GetVaultValue("3DX_Password") into encodedPassword
+log userName
+put DecodeText(encodedPassword, PasswordEncryptionKey) into password
+typehiddenText password
+log encodedPassword
+Log "Decoding secure password."
+put DecodeText(encodedPassword, PasswordEncryptionKey) into password
+log password
+
+Log "3DX credentials successfully stored in VaultValues."
+
+
+TypeHiddenText password
+
+
+
+
+## -- Login Handler
+--------------------------------------------------------------------------------
+--
+-- Retrieves credentials from VaultValues and decodes the password
+-- using the supplied encryption key.
+--
+-------------------------------------
+
+to LoginTo3DX PasswordEncryptionKey
+	
+	Log "Retrieving 3DX credentials from VaultValues."
+	put GetVaultValue("3DX_Username") into userName
+	put GetVaultValue("3DX_Password") into encodedPassword
+	log userName
+	log encodedPassword
+	Log "Decoding secure password."
+	put DecodeText(encodedPassword, PasswordEncryptionKey) into password
+	log password
+	Log "Entering login credentials."
+	Click text:"Username"
+	TypeText userName
+	Click text:"Password"
+	TypeHiddenText password   -- Sensitive values are never written to logs.
+	Log "Submitting login request."
+	Click text:"Login"
+	Log "3DX login request completed."
+end LoginTo3DX

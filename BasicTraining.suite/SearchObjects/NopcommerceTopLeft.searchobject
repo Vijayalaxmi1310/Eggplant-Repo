@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		342,
+		744,
+		86,
+		61
+	],
+	"lastmodifieddate": 1679632719.7509999,
+	"createddate": 1679632719.7509999,
+	"name": "NopcommerceTopLeft",
+	"lastfounddate": 1682486629.79,
+	"ocrcapturestring": "Online sho If you have",
+	"lastfoundlocation": [
+		342,
+		778,
+		86,
+		61
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5913,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[1,3]",
+					"Tolerance": "_40",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "NopcommerceTopLeft.png",
+				"connectionname": "Partner-SUT-5",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					342,
+					744,
+					86,
+					61
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Online sho If you have"
+			}
+	]
+}

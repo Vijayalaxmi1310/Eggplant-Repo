@@ -1,0 +1,9 @@
+﻿put reference to file ResourcePath("TestData.txt") into fileData
+repeat with each line of fileData
+	if it is empty
+		log repeatIndex()
+		put "something" into line repeatIndex() of fileData
+	end if
+end repeat
+
+log file ResourcePath("TestData.txt")

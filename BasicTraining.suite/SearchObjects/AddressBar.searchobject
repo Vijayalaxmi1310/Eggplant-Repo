@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		140,
+		45,
+		180,
+		17
+	],
+	"lastmodifieddate": 1678955133.3670001,
+	"createddate": 1678955045.086,
+	"name": "AddressBar",
+	"lastfounddate": 1678955045.474,
+	"ocrcapturestring": "Search Google or type a URL",
+	"lastfoundlocation": [
+		140,
+		45,
+		180,
+		17
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5913,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[36,12]",
+					"Tolerance": "_40",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "AddressBar/AddressBar.png",
+				"connectionname": "Partner-SUT-5",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					140,
+					45,
+					180,
+					17
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "Search Google or type a URL"
+			}
+	]
+}

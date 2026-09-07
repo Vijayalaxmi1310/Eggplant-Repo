@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		1295,
+		937,
+		82,
+		67
+	],
+	"lastmodifieddate": 1781071234.9910002,
+	"createddate": 1781071234.9910002,
+	"name": "NopcommerceBottomright2",
+	"lastfounddate": 1783588605.01,
+	"ocrcapturestring": "in site.",
+	"lastfoundlocation": [
+		1295,
+		937,
+		82,
+		67
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[77,63]",
+					"Tolerance": "_43",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "NopcommerceBottomright.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"connectionserverid": "192.168.1.81",
+				"capturerect": [
+					1295,
+					937,
+					82,
+					67
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "in site."
+			}
+	]
+}

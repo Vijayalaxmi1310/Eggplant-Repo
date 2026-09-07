@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		718,
+		187,
+		87,
+		33
+	],
+	"lastmodifieddate": 1783502649.7869999,
+	"createddate": 1783502649.7869999,
+	"name": "demoblaze_Username_Signup",
+	"lastfounddate": 1783502752.0640001,
+	"ocrcapturestring": "Username:",
+	"lastfoundlocation": [
+		718,
+		187,
+		87,
+		33
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[57,69]",
+					"Tolerance": "_62",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "demoblaze_Username_Signup.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"connectionserverid": "192.168.1.81",
+				"capturerect": [
+					718,
+					187,
+					87,
+					33
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "Username:"
+			}
+	]
+}

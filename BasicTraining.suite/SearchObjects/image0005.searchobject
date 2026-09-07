@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		1105,
+		300,
+		54,
+		19
+	],
+	"lastmodifieddate": 1682399091.993,
+	"createddate": 1682399091.993,
+	"name": "image0005",
+	"lastfounddate": 1682487133.411,
+	"ocrcapturestring": "Books",
+	"lastfoundlocation": [
+		1105,
+		300,
+		54,
+		19
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Books",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[16,15]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					1105,
+					300,
+					54,
+					19
+				],
+				"name": "image0005.png"
+			}
+	]
+}

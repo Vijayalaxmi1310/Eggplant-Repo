@@ -1,0 +1,73 @@
+{
+	"originalcapturelocation": [
+		14,
+		83,
+		96,
+		16
+	],
+	"lastmodifieddate": 1764752803.5209999,
+	"createddate": 1764750623.1040001,
+	"name": "ShowClipboard",
+	"lastfounddate": 1764752098.3540001,
+	"ocrcapturestring": "Show Clipboard",
+	"lastfoundlocation": [
+		15,
+		87,
+		96,
+		16
+	],
+	"testlocationdata": [
+		{
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[6,5]",
+					"Tolerance": "_72",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"Type": "Testplant Screen Image"
+				},
+				"name": "ShowClipboard/ShowClipboard.png",
+				"connectionname": "epf-NonTransparentMenu-118b8f4bfb04f51f22d2ac3e33aa3b07.png",
+				"type": 1,
+				"connectionserverid": "C:/Users/vijayalaxmi.kummari/OneDrive - Ideabytes/Desktop/epf-NonTransparentMenu-118b8f4bfb04f51f22d2ac3e33aa3b07.png",
+				"capturerect": [
+					14,
+					83,
+					96,
+					16
+				],
+				"connectiontype": "Screenshot",
+				"capturedocrtext": "Show Clipboard"
+			},
+		{
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[6,5]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"Type": "Testplant Screen Image"
+				},
+				"name": "ShowClipboard/ShowClipboard_new.png",
+				"connectionname": "epf-TransparentMenu-e843e63fb09220cb40b5cb4546170570.png",
+				"type": 1,
+				"connectionserverid": "C:/Users/vijayalaxmi.kummari/OneDrive - Ideabytes/Desktop/epf-TransparentMenu-e843e63fb09220cb40b5cb4546170570.png",
+				"capturerect": [
+					15,
+					87,
+					96,
+					16
+				],
+				"connectiontype": "Screenshot",
+				"capturedocrtext": "Show Clipboard"
+			}
+	]
+}

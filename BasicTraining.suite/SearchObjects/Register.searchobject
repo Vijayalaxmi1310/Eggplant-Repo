@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1783675536.6269999,
+	"ocrcapturestring": "Register",
+	"originalcapturelocation": [
+		897,
+		365,
+		116,
+		34
+	],
+	"createddate": 1783675536.6269999,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Register",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_54",
+					"HotSpot": "[58,17]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					897,
+					365,
+					116,
+					34
+				],
+				"name": "Register.png"
+			}
+	],
+	"name": "Register"
+}

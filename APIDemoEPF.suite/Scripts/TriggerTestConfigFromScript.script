@@ -1,0 +1,4 @@
+﻿GetAccessTokenAPIScript
+
+put RunTestConfigurations() into APIResponse
+log APIResponse

@@ -1,0 +1,19 @@
+﻿Typetext windowsKey,r
+wait 10 -- Hardwait (It waits 10 seconds and continue the execution)
+Typetext "chrome demoblaze.com",return
+WaitFor 60, text:"Samsung galaxy s6" -- Softwait with the condition, it waits until the condition is satisfied
+click text:"Samsung galaxy s6"
+
+
+
+(*WaitForAll 30, text:{}"Samsung galaxy s6","Add to cart"] -- Waitforall is wait till given multiple conditions are satisfied*)
+#click text:"Add to cart"
+Click "AddtocartButton"
+
+Wait until imageFound(text:"Product added") -- Wait until the condition is satisfied
+
+Click "OKButton"
+
+
+
+click imageName:"AddToCart_New",waitFor:10

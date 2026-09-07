@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		1228,
+		673,
+		262,
+		34
+	],
+	"lastmodifieddate": 1768543935.5739999,
+	"createddate": 1682398324.3959999,
+	"name": "DBProductStore/DBProductStore_center",
+	"lastfounddate": 1682398325.2079999,
+	"ocrcapturestring": "PRODUCT STORE",
+	"lastfoundlocation": [
+		1228,
+		673,
+		262,
+		34
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5905,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[131,17]",
+					"Tolerance": "_65",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "DBProductStore/DBProductStore_center.png",
+				"connectionname": "Partner-SUT-4",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					1228,
+					673,
+					262,
+					34
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "PRODUCT STORE"
+			}
+	]
+}

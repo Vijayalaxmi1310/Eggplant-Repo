@@ -1,0 +1,47 @@
+﻿params value1,value2
+log value1
+log value2
+executingHandler1
+
+to executingHandler1   --- This handler will use StepInto functionality
+	Log "Line 1"
+	Log "Line 2"
+	Log "Line 3"
+	Log "Line 4"
+	Connect "TutorialSUT"
+	click text:"contacts",caseSensitive:On
+	log readtext(5,176,401,337)
+	Log "Line 5"
+	Log "Line 6"
+	click text:"Favorites"
+	log readtext(5,176,401,337)
+	click text:"History"
+	Log readtext(5,176,401,337)
+	executeHandler2 -- When it starts executing this handler it will execute the line and pauses again
+end executingHandler1
+
+
+
+to executeHandler2   --- Will use StepOut Commands to see the debugging process
+	Log "Executing Handler2"
+	Log "Executing Handler2"
+	Log "Executing Handler2"
+	Log "Executing Handler2"
+	Log "Executing Handler2"
+	Log "Executing Handler2"
+	Log "Executing Handler2"
+	Log "Executing Handler2"
+end executeHandler2
+
+
+to executeHandler3
+	Log "Executing Handler3"
+	Log "Executing Handler3"
+	Log "Executing Handler3"
+	Log "Executing Handler3"
+	Log "Executing Handler3"
+	Log "Executing Handler3"
+	Log "Executing Handler3"
+	Log "Executing Handler3"
+	executingHandler1
+end executeHandler3

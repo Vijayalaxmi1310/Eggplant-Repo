@@ -1,0 +1,64 @@
+﻿launchDemoblazeApp "firefox","demoblaze.com"
+
+-- select a product
+selectProduct "Nexus 6"
+
+-- add to cart
+addtoCart
+--- verify cart
+
+
+--- To handler (Generic handler) ---
+
+--- On handler (Command)
+
+--- Function Handler (function handler)
+
+to createHandler
+	log "handler created"
+	log "executing the to handler"
+end createHandler
+
+createHandler
+put createHandler()
+
+On addNums num1,num2,num3
+	put num1+num2 into num3
+	log num3
+End addNums
+
+
+addNums 3,4
+
+put addNums(3,5)
+
+function mulNums n1,n2,n3
+	set n3 to n1*n2
+	return n3
+end mulNums
+
+
+
+
+log mulNums (3,5)
+put mulNums(3,6)
+
+to handle launchDemoblazeApp browserName,appURL
+	typetext windowsKey,r
+	typetext browserName&&appURL,returnKey
+	WaitFor 40, text:"Product Store"
+end launchDemoblazeApp
+
+
+
+to selectProduct productName
+	click text:productName,waitFor:20
+	WaitFor 30, text:"Product Description"
+	
+end selectProduct
+
+to handle addtoCart
+	click text:"Add to cart"
+	if imageFound(text:"Product added") then click text:"OK"
+	Log "product added to cart"
+end addtoCart

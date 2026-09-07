@@ -1,0 +1,85 @@
+﻿(*log ocrVersion()
+set pattern to <not preceded by characters,"Maturity",not followed by characters>
+click text:pattern
+
+
+click text:<not preceded by characters,"Maturity",not followed by characters>
+click text:<not preceded by characters,"Maturity",not followed by " State">
+
+
+
+
+moveTo text:<not preceded by 1 to 12 characters then "Change Notice">
+
+
+log EveryImageLocation(text:"Change Notice",waitFor:10)*)
+
+
+typetext controlKey,l
+typetext altKey,returnKey
+
+Log EveryImageLocation(text:"Door_Lock A")
+
+Log everyImageLocation(text:"Door_Lock A",DPI:144)
+
+click text:<"Door_Lock A",not followed by characters>,DPI:144
+
+Click Text:<"Door_Lock A" then not followed by " (">, dpi:"144", EnableAggressiveTextExtraction:"Yes", LowResolutionMode:"Yes"
+
+
+click text:<"Door_Lock A" then not followed by spacebar>,DPI:144,searchRectangle:(4,115,454,1039),ignoreSpaces:Yes,ignoreUnderscores:Yes
+
+to executeFromDemoSuite
+Log "Executing from Demo suite"
+end executeFromDemoSuite
+
+
+click text:<not preceded by 1 to 12 characters,"Change Notice",not followed by characters>
+
+
+typetext windowsKey,r
+if imageFound(text:"Type the name",waitFor:20)
+	Log "Run Window Opened"
+end if
+typetext "chrome http://localhost:3000",returnKey
+wait 3
+if imageFound(text:"SIEMENS",waitFor:30) then Log "Teamcenter application launched"
+click text:"Teamcenter"
+click text:"User name:",hotspot:[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+put imageRectangle(text:"Analyst") into ECNAnalyst
+set the searchRectangle to [[ECNAnalyst.left,ECNAnalyst.top+600],[ECNAnalyst.bottom,ECNAnalyst.right+100]]
+wait 5
+
+
+
+
+
+put imageLocation(text:"Analyst") into ECNAnalyst
+
+set the searchRectangle to [[ECNAnalyst.x-50,ECNAnalyst.y+30],[ECNAnalyst.x+600,ECNAnalyst.y+100]]
+wait 5
+
+

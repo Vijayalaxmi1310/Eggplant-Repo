@@ -1,0 +1,12 @@
+﻿set the ScriptLogging to Minimal -- We can change the property from Silent to On, Off, Minimal 
+Log "Simple message"
+Log "Simple message"
+Log "Simple message"
+Log "Simple message"
+LogWarning "Warning"
+LogSuccess "Success message"
+LogError "error occured"
+connect "TutorialSUT"
+click text:"Contacts"
+wait 3
+click text:"Downloads"

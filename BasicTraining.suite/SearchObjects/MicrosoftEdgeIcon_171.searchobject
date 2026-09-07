@@ -1,0 +1,46 @@
+{
+	"lastmodifieddate": 1718101020.529,
+	"lastfoundlocation": [
+		22,
+		341,
+		33,
+		33
+	],
+	"originalcapturelocation": [
+		22,
+		341,
+		33,
+		33
+	],
+	"createddate": 1718101020.529,
+	"lastfounddate": 1718101055.2620001,
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[16,16]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown VNC"
+				},
+				"name": "MicrosoftEdgeIcon_171.png",
+				"connectionname": "IB-171",
+				"type": 1,
+				"capturerect": [
+					22,
+					341,
+					33,
+					33
+				],
+				"connectiontype": "RDP",
+				"connectionserverid": "192.168.1.171"
+			}
+	],
+	"name": "MicrosoftEdgeIcon_171"
+}

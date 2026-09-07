@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		376,
+		273,
+		165,
+		84
+	],
+	"lastmodifieddate": 1781071753.299,
+	"createddate": 1781071753.299,
+	"name": "RegisterScreenTopLeft",
+	"lastfounddate": 1783675591.994,
+	"ocrcapturestring": "Compu",
+	"lastfoundlocation": [
+		376,
+		273,
+		165,
+		84
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[-4,52]",
+					"Tolerance": "_54",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "RegisterScreenTopLeft.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"connectionserverid": "192.168.1.81",
+				"capturerect": [
+					376,
+					273,
+					165,
+					84
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "Compu"
+			}
+	]
+}

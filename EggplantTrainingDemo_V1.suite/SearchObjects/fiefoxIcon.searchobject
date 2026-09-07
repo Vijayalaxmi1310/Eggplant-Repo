@@ -1,0 +1,46 @@
+{
+	"lastmodifieddate": 1782727059.154,
+	"lastfoundlocation": [
+		25,
+		705,
+		26,
+		18
+	],
+	"originalcapturelocation": [
+		101,
+		189,
+		26,
+		18
+	],
+	"createddate": 1782727059.154,
+	"lastfounddate": 1782727109.046,
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[13,9]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "fiefoxIcon.png",
+				"connectionname": "171 SUT",
+				"type": 1,
+				"capturerect": [
+					101,
+					189,
+					26,
+					18
+				],
+				"connectiontype": "RDP",
+				"connectionserverid": "192.168.1.171"
+			}
+	],
+	"name": "fiefoxIcon"
+}

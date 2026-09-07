@@ -1,0 +1,40 @@
+{
+	"lastmodifieddate": 1768544000.0970001,
+	"lastfoundlocation": [
+		404,
+		114,
+		52,
+		52
+	],
+	"originalcapturelocation": [
+		15,
+		114,
+		52,
+		52
+	],
+	"createddate": 1681187747.0770001,
+	"lastfounddate": 1681824840.4790001,
+	"testlocationdata": [
+		{
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[26,26]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					15,
+					114,
+					52,
+					52
+				],
+				"name": "PRODUCTSTORE_Logo/DemoblazeLogo.png"
+			}
+	],
+	"name": "PRODUCTSTORE_Logo/DemoblazeLogo"
+}

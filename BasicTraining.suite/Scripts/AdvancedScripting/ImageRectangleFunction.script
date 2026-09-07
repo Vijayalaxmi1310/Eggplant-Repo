@@ -1,0 +1,136 @@
+﻿--- Read the price and log it
+put ImageRectangle(text:"Apple iCam") into Var
+log X of Var
+log top of Var
+log left of Var
+log topLeft of Var
+log bottomRight of Var
+log center of Var(*  *)
+
+
+
+put ImageRectangle(text:"Apple iCam") into Var
+set the SearchRectangle to [[Var.left,Var.top+65],[Var.Right,Var.bottom+80]]
+wait 4
+put ReadText(the SearchRectangle) into Price
+log Price
+
+-- To read the time
+Connect "TutorialSUT"
+wait 2
+put imageRectangle(text:"Carrier") into Carr
+set the searchRectangle to [[Carr.left+150,Carr.top-5],[Carr.Right+200,Carr.bottom+5]]
+wait 5
+
+
+-- To read the text on Favorites Screen
+Click text:"Favorites"
+put imageRectangle(text:"Carrier") into Carr
+set the searchRectangle to [[Carr.left,Carr.top+180],[Carr.Right+200,Carr.bottom+250]]
+wait 1
+set the searchRectangle to empty
+
+click text:"History"
+set the searchRectangle to [[Carr.left,Carr.top+190],[Carr.Right+130,Carr.bottom+220]]
+
+wait 1
+
+set the searchRectangle to empty
+
+
+
+----------- ImageRectangle function usage ------------------------
+-- Nopcommerce login page ----
+typetext windowsKey,r
+typetext "chrome nopcommerce.testplant.com/login",return
+WaitFor 30, text:"Returning Customer"
+
+put imageRectangle(text:"New Customer") into NewCx
+log "top"&&top of NewCx -- 
+log "bottom"&&bottom of NewCx  -- 
+log "left"&&left of NewCx -- 
+log "right"&&right of NewCx
+set the searchRectangle to [[NewCx.left-250,NewCx.top+60],[NewCx.Right+190,NewCx.bottom+100]]
+wait 3
+log readtext(the searchRectangle)
+
+
+
+click text:"Welcome to"
+repeat until ImageFound(text:"Build your own computer", waitFor:2)
+	ScrollWheelDown 4
+end repeat
+click FoundImageLocation()
+
+
+
+click text:"Build your own computer"
+
+
+
+repeat 3 times
+	log "running the repeat loop"&& repeatIndex()
+end repeat
+
+
+
+repeat for 10 seconds
+	Log "running"
+	if repeatIndex() is 5
+		exit repeat
+	end if
+end repeat
+
+
+--- search Rectangles with hard coordinates
+
+
+set the SearchRectangle to (363,254,1568,325)
+click text:"Computers"
+wait 0.5
+click text:"Apparel"
+wait 0.5
+click text:"Digital Downloads"
+wait 0.5
+click text:"Books"
+set the SearchRectangle to empty
+click text:"First Prize Pies",waitFor:1
+
+
+set the searchRectangle to (318,400,647,1031)
+put imageLocation(text:"Computers") into cmp
+set the searchRectangle to [[cmp.x-71,cmp.y+22],[cmp.x+120,cmp.y+150]]
+wait 4
+
+set the searchRectangle to (2,572,427,640)
+click text:"Contacts"
+set the searchRectangle to empty
+click text:"Carrier",waitFor:0
+
+
+
+
+
+
+
+
+
+
+
+
+log ReadText((691,781,932,860))
+
+
+typetext controlKey,l
+typetext controlKey,c
+put RemoteClipboard() into currentURL
+log currentURL
+
+
+
+
+
+
+
+
+

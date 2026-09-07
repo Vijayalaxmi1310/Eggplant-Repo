@@ -1,0 +1,26 @@
+﻿params SuccessMessage
+log SuccessMessage
+-- If the SUT details are not provided within the script, Provide them with Command Line execution
+TraceScreen On
+
+Connect serverID:"TutorialSUT", portNum:5900, type:"VNC" --- When executing from the command line if SUT Connection is required provide the Connection Details inside the script
+wait 5
+click text:"Contacts"
+wait 2
+Click text:"Favorites"
+
+Log "Executing the script from commandline"
+
+Log "Script 1 Executed"
+
+
+
+
+
+log ConnectionInfo()
+
+
+
+
+Disconnect
+put OCRVersion()

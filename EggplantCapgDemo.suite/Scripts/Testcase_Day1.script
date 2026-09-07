@@ -1,0 +1,50 @@
+﻿DoubleClick imageName:"ChromeIcon", waitFor:10
+
+click imageName:"addressBar"
+typetext "demo.nopcommerce.com",returnKey
+
+# open browser and application from run Window
+
+TypeText windowsKey, "r"
+# 2 different kinds of waits  (Hardwait)
+WaitFor 30, text:"Type the name"
+typetext "chrome demo.nopcommerce.com",returnKey
+
+
+RightClick imageName:"ChromeIcon"
+
+
+typetext windowsKey, "e"
+
+TypeText returnKey
+
+typetext enterKey
+typetext tabKey
+
+typetext controlKey,l
+typetext controlKey,c
+put RemoteClipboard() into appURL
+log appURL
+
+
+TypeHiddenText "hiddenpassword"
+
+TypeText windowsKey, "r"
+# 2 different kinds of waits  (Hardwait)
+WaitFor 30, text:"Type the name"
+typetext "chrome demo.nopcommerce.com",returnKey
+WaitFor 60, text:"Welcome to our store"
+Log "Nopcommerce application launched successfully"
+
+
+repeat until imageFound(text:"HTC Smartphone",waitFor:2)
+	ScrollWheelDown 5
+	
+end repeat 
+
+click FoundImageLocation()
+click text:"Add to Cart"
+
+
+
+

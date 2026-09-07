@@ -1,0 +1,46 @@
+{
+	"lastmodifieddate": 1782897050.7360001,
+	"lastfoundlocation": [
+		1905,
+		1015,
+		15,
+		18
+	],
+	"originalcapturelocation": [
+		1905,
+		1015,
+		15,
+		18
+	],
+	"createddate": 1782897050.7360001,
+	"lastfounddate": 1782897077.211,
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[7,9]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "scrollDownArrow.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"capturerect": [
+					1905,
+					1015,
+					15,
+					18
+				],
+				"connectiontype": "RDP",
+				"connectionserverid": "192.168.1.81"
+			}
+	],
+	"name": "scrollDownArrow"
+}

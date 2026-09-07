@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		77,
+		43,
+		37,
+		37
+	],
+	"lastmodifieddate": 1780985288.6069999,
+	"createddate": 1780985288.6069999,
+	"name": "addressBar",
+	"lastfounddate": 1780985549.7610002,
+	"ocrcapturestring": "3",
+	"lastfoundlocation": [
+		77,
+		43,
+		37,
+		37
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 57549,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[131,20]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"Type": "Single System",
+					"epgw_path": "C:\\Program Files\\Eggplant\\Eggplant.app\\Resources\\epgw\\x64\\bin\\epgw.exe"
+				},
+				"name": "addressBar.png",
+				"connectionname": "SingleSystem",
+				"type": 1,
+				"connectionserverid": "127.0.0.1",
+				"capturerect": [
+					77,
+					43,
+					37,
+					37
+				],
+				"connectiontype": "Single System",
+				"capturedocrtext": "3"
+			}
+	]
+}

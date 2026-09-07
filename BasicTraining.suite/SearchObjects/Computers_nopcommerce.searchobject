@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		481,
+		301,
+		90,
+		21
+	],
+	"lastmodifieddate": 1768547937.566,
+	"createddate": 1682399090.5570002,
+	"name": "Computers_nopcommerce",
+	"lastfounddate": 1682487159.0700002,
+	"ocrcapturestring": "Computers",
+	"lastfoundlocation": [
+		481,
+		301,
+		90,
+		21
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Computers",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[34,12]",
+					"Tolerance": "_50",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					481,
+					301,
+					90,
+					21
+				],
+				"name": "Computers_nopcommerce.png"
+			}
+	]
+}

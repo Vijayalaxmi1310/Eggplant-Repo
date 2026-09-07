@@ -1,0 +1,44 @@
+﻿#WebConnect host:"127.0.0.1", browser:"chrome", url:"demoblaze.com"
+
+
+typetext windowsKey,r
+typetext "cmd",returnKey
+typetext windowsKey,upArrow
+
+wait 3
+typetext "cd C:\SeleniumWebDriverEPF",returnKey
+wait 2
+typetext "RunSeleniumServer.bat",returnKey
+
+wait until imageFound(text:"4444")
+Log "Selenium Server started with 4444 Port number"
+
+-- Minimizing the cmd prompt
+(*typetext altKey,escape
+keydown altKey,spaceKey
+keyup "n"
+
+typetext altKey,spaceKey,"n"*)
+
+
+WebConnect host: "localhost", browser: "chrome", url:"http://www.demoblaze.com",name:"EPFChromeWebDriver" // Uses the desiredCapabilities property to request specific capabilities from the WebDriver connection
+
+Set the WebDriver's windowSize to "max"
+
+
+---- If you call the WebDriver() function without parameters, it returns the WebDriverConnection object of the active WebDriver connection, or it returns no information if there is no active connection.
+
+put WebDriver()
+
+---- 
+put the webdriver's cookies // Displays all the cookies
+
+
+put the webdriver's capabilities // Displays all the capabilities
+
+
+
+
+WebDisconnect All // Disconnects all WebDriver connections
+
+click text:<not preceded by whitespace character or "_" then "V" then not followed by characters>,caseSensitive:yes,searchRectangle:(276,360,754,1013)

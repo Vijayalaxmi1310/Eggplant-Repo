@@ -1,0 +1,50 @@
+﻿--------------- It captures the entire screen with the given name in default folder (C:\Users\<username>\Documents) ------------------------
+CaptureScreen name:"HTC One M8 Android Mobile",increment:Yes
+
+
+----------------- It captures the entire screen with the default name into default folder (C:\Users\<username>\Documents) -------------------
+CaptureScreen
+
+
+captureScreen name:"Nopcommerce Registration Page",rectangle:(509,326,1433,1025),increment:Yes
+
+log suiteInfo()
+
+log suiteInfo().imagesFolder
+
+log suiteInfo().resultsFolder
+----------- To capture the SUT screen into Suites Images folder ----------------
+
+CaptureScreen {name:suiteInfo().resultsFolder & slash & NopcommerceAppScreenshots_Results & slash & "Registration Screen"}
+
+-- D:/Vijayalaxmi/EPF_Git/BasicTraining.suite/Images/NopcommerceAppScreenshots/HTC One M8
+
+--------- CaptureScreen with Specific rectangle coordinates --------------------
+
+CaptureScreen {Name:SuiteInfo().ImagesFolder & slash & NopcommerceAppScreenshots_Results & slash & "Desktop products", Rectangle: (653,401,1686,1021), increment:Yes}
+
+
+------- CaptureScreen command with increment Property ------------------
+
+CaptureScreen name:"C:\Users\vijayalaxmi.kummari\OneDrive - Ideabytes\Desktop\Screenshots_EPF"&slash&"DemoblazeAppScreen"
+
+CaptureScreen {Name: "HTC One M9 Mobile", Rectangle: [57,252,416,493], increment:Yes}
+
+
+CaptureScreen {Name:"TutorialSUT",increment:Yes}
+
+log SuiteInfo()
+
+--------------------------
+typetext windowsKey,r
+typetext "Chrome demoblaze.com",return
+
+CaptureScreen name:"Run Window"
+WaitFor 60, text:"PRODUCT STORE"
+CaptureScreen {name:SuiteInfo().ImagesFolder & slash & DemoblazeAppScreenshots & slash & "DemoblazeHomePage"}
+click imageName:"Samsunggalaxys6Mobile/Samsunggalaxys6_2"
+CaptureScreen {Name: "Samsung Galaxy Mobile", Rectangle: [57,252,416,493]}
+click text:"Add to cart"
+CaptureScreen {Name: "Samsung Galaxy Mobile", Rectangle: [57,252,416,493],increment:Yes}
+
+

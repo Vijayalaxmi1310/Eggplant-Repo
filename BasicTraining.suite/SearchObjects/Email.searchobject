@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		46,
+		92,
+		42,
+		16
+	],
+	"lastmodifieddate": 1682399744.5039999,
+	"createddate": 1682399744.5039999,
+	"name": "Email",
+	"lastfounddate": 1682400047.7620001,
+	"ocrcapturestring": "Email:",
+	"lastfoundlocation": [
+		1034,
+		537,
+		42,
+		16
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Email:",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[113,12]",
+					"Tolerance": "_54",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					46,
+					92,
+					42,
+					16
+				],
+				"name": "Email.png"
+			}
+	]
+}

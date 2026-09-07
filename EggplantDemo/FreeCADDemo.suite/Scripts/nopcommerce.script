@@ -1,0 +1,39 @@
+﻿typetext windowsKey,r
+typetext "chrome demo.nopcommerce.com",returnKey
+typetext windowsKey,uparrow
+-- imageFound validation
+if imageFound(text:"Verify you are human",waitFor:15)
+	--click text:"Verify you are human"
+	click FoundImageLocation()
+end if
+if ImageFound(text:"Welcome to our store", waitFor:40)
+	Log "Application launched successfully"
+else
+	LogError "Application not launched successfully"
+end if
+
+--- Navigate to specific menu
+(*MoveTo text:"Computers", waitFor:10
+Click text:"Desktops"
+-- add validation
+WaitFor 40, text:"Sort by"*)
+
+
+--- click on a product
+click text:"HTC smartphone"
+
+
+repeat until ImageFound(text:"HTC smartphone", waitFor:1)
+	ScrollWheelDown 4
+	wait 2
+end repeat
+wait 2
+click FoundImageLocation()
+
+Answer "Where is my machine" with "Single sytem" or "Another VM" or "None of it" title "Questoin Box"
+
+
+Log ""
+
+
+wait until not ImageFound(text:"somerefText")

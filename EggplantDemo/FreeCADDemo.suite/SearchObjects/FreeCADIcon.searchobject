@@ -1,0 +1,75 @@
+{
+	"originalcapturelocation": [
+		21,
+		411,
+		31,
+		34
+	],
+	"lastmodifieddate": 1783418598.125,
+	"createddate": 1783416490.0310001,
+	"name": "FreeCADIcon",
+	"lastfounddate": 1783418550.8140001,
+	"ocrcapturestring": "F",
+	"lastfoundlocation": [
+		97,
+		411,
+		31,
+		34
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 59162,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[15,17]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"Type": "Single System",
+					"epgw_path": "C:\\Program Files\\Eggplant\\Eggplant.app\\Resources\\epgw\\x64\\bin\\epgw.exe"
+				},
+				"name": "FreeCADIcon.png",
+				"connectionname": "SingleSystem",
+				"type": 1,
+				"capturerect": [
+					21,
+					411,
+					31,
+					34
+				],
+				"connectiontype": "Single System",
+				"connectionserverid": "127.0.0.1"
+			},
+		{
+				"connectionportnum": 59162,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[15,17]",
+					"Tolerance": 80,
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"Type": "Single System",
+					"epgw_path": "C:\\Program Files\\Eggplant\\Eggplant.app\\Resources\\epgw\\x64\\bin\\epgw.exe"
+				},
+				"name": "FreeCADIcon.png",
+				"connectionname": "SingleSystem",
+				"type": 1,
+				"capturerect": [
+					21,
+					411,
+					31,
+					34
+				],
+				"connectiontype": "Single System",
+				"connectionserverid": "127.0.0.1"
+			}
+	]
+}

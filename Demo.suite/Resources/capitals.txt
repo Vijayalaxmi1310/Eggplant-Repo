@@ -193,3 +193,7 @@ Zambia, Lusaka
 Zimbabwe, Harare
 Canada, Ottawa
 Austria, Vienna
+Nowhere#Nowhere City
+Nothing Land#Nothingville
+Canada#Ottawa
+Austria#Vienna

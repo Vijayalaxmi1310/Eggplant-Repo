@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		54,
+		35,
+		35,
+		31
+	],
+	"lastmodifieddate": 1718101451.898,
+	"createddate": 1718101451.898,
+	"name": "AddressBar_Edge",
+	"lastfounddate": 1718101487.168,
+	"ocrcapturestring": "T5",
+	"lastfoundlocation": [
+		886,
+		642,
+		21,
+		18
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[322,16]",
+					"Tolerance": "_1",
+					"Discrepancy": "_0",
+					"SearchType": "Precise to Pixel"
+				},
+				"sutinfo": {
+					"type": "Unknown VNC"
+				},
+				"name": "AddressBar_Edge.png",
+				"connectionname": "IB-171",
+				"type": 1,
+				"connectionserverid": "192.168.1.171",
+				"capturerect": [
+					54,
+					35,
+					35,
+					31
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "T5"
+			}
+	]
+}

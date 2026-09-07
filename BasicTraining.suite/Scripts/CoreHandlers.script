@@ -1,0 +1,209 @@
+﻿to connectSut
+	params IPaddress, SUT_username, SUT_Pwd, portNum ,SUTtype,width, height,
+	
+	Connect serverID:IPaddress, Username: SUT_username,password:SUT_Pwd, portNum:portNum,  type:SUTtype,width:width,Height:height,
+	
+	put ConnectionInfo() into Sutconnection
+	if  Sutconnection.Availability is "Active"
+		LogSuccess IPaddress&& "SUT Connected successfully "
+	else
+		LogWarning "Unable to connect SUT kindly Check your connection details"
+		
+	end if
+end connectSut
+
+--connectSut "192.168.1.81","Testingserver", "Te$t!ng2022",3389, "RDP", 1920, 1080
+connectSut "192.168.1.171","Testing-SRV","Ideabytes",3389, "RDP", 1920, 1080
+
+
+to handle connectToSUT 
+	params sutName
+	
+	connect sutName
+	
+	if sutName is not empty then
+		Connect sutName
+	else 
+		LogError "Provide sutName"
+	end if
+	
+end connectToSUT
+
+connectToSUT "Partner-SUT-2" --> This handler is work for SUT which is already added in Connection list
+
+
+to handle LaunchBrowser
+	params Browser, AppURL
+	typetext windowsKey,"r"
+	wait 0.6
+	typetext Browser && AppURL,returnKey
+	typetext windowskey, upArrow
+	wait 0.6
+	log Browser&&AppURL&&  "Launched Successfully"
+end LaunchBrowser
+
+connectToSUT "Partner-SUT-2"
+LaunchBrowser "chrome", "demoblaze.com" --> Browser launched in normal Window
+
+connectToSUT "192.168.1.171"
+LaunchBrowser "chrome --incognito", "demoblaze.com" -->  Browser launched in incognito Window
+
+
+to closeCurrentab 
+	typetext controlkey,"w"
+	log "Current tab Closed"
+end closeCurrentab
+
+connectToSUT "192.168.1.171"
+LaunchBrowser "chrome", "demoblaze.com"
+closeCurrentab
+
+
+to handle currentWindow
+	typetext altKey,f4
+	Log "Current Window closed successfully" 
+end currentWindow
+
+connectToSUT "192.168.1.171"
+LaunchBrowser "chrome", "demoblaze.com"
+currentWindow
+
+
+to closeBrowser
+	log "Close browser shortcut"
+	typetext controlkey,shiftkey,"w"
+	wait 2
+end closeBrowser
+
+to back 	
+	wait 0.5
+	typetext altkey,leftarrow
+	log "you are on previous page"
+end back
+
+connectToSUT "192.168.1.171"
+LaunchBrowser "chrome", "demoblaze.com"
+clickText "Laptops","LeftHalf"
+scrollForText "Dell i7 8gb","down","3","6","BottomHalf"
+clickText "Dell i7 8gb"
+back
+
+
+to scrollForText
+	params textToFind,scroll,amountOfScroll,maxRepeatCount,area
+	
+	if area is not empty then set the SearchRectangle to screen_part_handler.ScreenPart(area) 
+	repeat until ImageFound(0, text:textToFind, waitfor:universal pageWait)
+		if maxRepeatCount is not empty then
+			if repeatIndex() is greater than maxRepeatCount then 
+				LogError textToFind&"- text is not found on the page"
+				exit repeat
+			end if
+		end if 
+		if scroll is "up" then 
+			ScrollWheelUp amountOfScroll
+		else if scroll is "down" then 
+			ScrollWheelDown amountOfScroll
+		end if
+	end repeat
+end scrollForText	
+
+
+to setUp
+	set universal pageWait to 30
+end setUp
+
+to scrollForImage
+	params imagetoFind,scroll,amountOfScroll,maxRepeatCount,area
+	
+	if area is not empty then set the SearchRectangle to screen_part_handler.ScreenPart(area) 
+	repeat until ImageFound(0, imageName:imagetoFind, waitfor:universal pageWait)
+		if maxRepeatCount is not empty then
+			if repeatIndex() is greater than maxRepeatCount then 
+				LogError imagetoFind&"- text is not found on the page"
+				exit repeat
+			end if
+		end if 
+		if scroll is "up" then 
+			ScrollWheelUp amountOfScroll
+		else if scroll is "down" then 
+			ScrollWheelDown amountOfScroll
+		end if
+	end repeat
+end scrollForImage	
+
+
+
+to textEntry 
+	params input
+	wait 0.5
+	typetext controlkey,"a"
+	wait 0.4
+	typetext input,escapeKey
+	wait 0.3
+end textEntry
+
+
+
+to pageLoad
+	params RefreshIcon
+	wait 0.5
+	waitfor universal pageWait, image:RefreshIcon
+end pageLoad
+
+to copyAndLog
+	typetext controlkey, "c"
+	log remoteclipboard()
+end copyAndLog
+
+
+
+to clickText
+	params textToClick,area
+	wait 0.3
+	if area is not empty then set the SearchRectangle to screen_part_handler.screenpart(area) 
+	Click text:textToClick, waitFor:universal pageWait	
+	
+end clickText
+
+clickText "Samsung galaxy","LeftHalf"
+
+to clickImage
+	params image,area
+	if area is not empty then set the SearchRectangle to screen_part_handler.screenpart(area) 
+	Click imageName:image, waitfor:universal pageWait
+end clickImage
+
+to doubleClickElement
+	params word, area
+	
+	if area is not empty then set the SearchRectangle to screen_part_handler.screenpart(area) 
+	DoubleClick text:word, waitfor:universal pageWait
+end doubleClickElement
+
+doubleClickElement "MacBook","TopHalf"
+typetext controlKey,c
+log RemoteClipboard()
+
+
+to tripleClick
+	params word, area
+	if area is not empty then set the SearchRectangle to screen_part_handler.screenpart(area) 
+	doubleClick text:word
+	Click text:word
+end tripleClick
+
+to waitforText
+	params textToWait,area 
+	if area is not empty then set the SearchRectangle to screen_part_handler.screenpart(area) 
+	waitfor universal pageWait,{text:textToWait}
+end waitforText
+
+waitforText "Product Description","tophalf"
+
+to waitforImage
+	params imageToWait,area 
+	if area is not empty then set the SearchRectangle to screen_part_handler.screenpart(area) 
+	waitfor universal pageWait,{imageName:imageToWait}
+end waitforImage
+

@@ -1,4 +1,4 @@
-﻿log ocrVersion()
+﻿(*log ocrVersion()
 set pattern to <not preceded by characters,"Maturity",not followed by characters>
 click text:pattern
 
@@ -7,7 +7,146 @@ click text:<not preceded by characters,"Maturity",not followed by characters>
 click text:<not preceded by characters,"Maturity",not followed by " State">
 
 
+
+
+
 moveTo text:<not preceded by 1 to 12 characters then "Change Notice">
 
 
-log EveryImageLocation(text:"Change Notice",waitFor:10)
+log EveryImageLocation(text:"Change Notice",waitFor:10)*)
+
+VariablesConcept
+log global firstName
+
+log universal firstName
+
+
+log suiteName
+
+
+click text:"Downloads"
+WaitFor 10, text:"The phone is a lie"
+
+
+WaitFor 10, imageName:"Chrome"
+
+log FoundImageInfo()
+
+
+put TextRectangle(text:"Media") into mRect
+
+set the SearchRectangle to [mRect.Left - 50,
+	mRect.Top - 20,
+	mRect.Right + 300,
+	mRect.Bottom + 100]
+
+
+set the searchRectangle to imagerectangle(text:"Samsung galaxy s6")+[-60,30,-20,40]
+wait 4
+
+log ocrversion()
+
+
+
+
+typetext controlKey,l
+typetext altKey,returnKey
+
+Log EveryImageLocation(text:"Door_Lock A")
+
+Log everyImageLocation(text:"Door_Lock A",DPI:144)
+
+click text:<"Door_Lock A",not followed by characters>,DPI:144
+
+Click Text:<"Door_Lock A" then not followed by " (">, dpi:"144", EnableAggressiveTextExtraction:"Yes", LowResolutionMode:"Yes"
+
+
+click text:<"Door_Lock A" then not followed by spacebar>,DPI:144,searchRectangle:(4,115,454,1039),ignoreSpaces:Yes,ignoreUnderscores:Yes
+
+to executeFromDemoSuite
+	Log "Executing from Demo suite"
+end executeFromDemoSuite
+
+
+click text:<not preceded by 1 to 12 characters,"Change Notice",not followed by characters>
+
+
+launchTeamcenterApplication
+
+KeyUp ShiftKey
+KeyUp ControlKey
+KeyUp AltKey
+
+set the sendShiftForCaps to No
+typetext "enter the name of the trainer"
+
+repeat for 30 seconds
+	insert newline after content
+	insert readText((151,764,721,908)) after content
+end repeat
+
+log content
+
+
+
+typetext windowsKey,r
+typetext "notepad",returnKey
+
+
+
+
+
+
+
+
+TypeText "C:\Users\vijayalaxmi.kummari\Downloads\Training_Exercises\Web Pages for Training\Web Pages for Training\responsive_form.html"
+typetext enterKey
+
+
+
+
+
+
+
+put imageRectangle(text:"Analyst") into ECNAnalyst
+set the searchRectangle to [[ECNAnalyst.left,ECNAnalyst.top+600],[ECNAnalyst.bottom,ECNAnalyst.right+100]]
+wait 5
+
+
+
+
+
+put imageLocation(text:"Analyst") into ECNAnalyst
+
+set the searchRectangle to [[ECNAnalyst.x-50,ECNAnalyst.y+30],[ECNAnalyst.x+600,ECNAnalyst.y+100]]
+wait 5
+
+
+-------------------------------------------
+typetext windowsKey,r
+typetext "chrome file:///C:/Users/vijayalaxmi.kummari/Downloads/Training_Exercises/Web%20Pages%20for%20Training/Web%20Pages%20for%20Training/Debugging.html",returnKey
+
+
+
+
+
+
+Click "GoogleText"
+
+click text:"ask google",caseSensitive:yes,waitFor:1
+
+
+
+
+to handle launchTeamcenterApplication
+	typetext windowsKey,r
+	if imageFound(text:"Type the name",waitFor:20)
+		Log "Run Window Opened"
+	end if
+	typetext "chrome http://localhost:3000",returnKey
+	wait 3
+	if imageFound(text:"SIEMENS",waitFor:30) then Log "Teamcenter application launched"
+	click text:"Teamcenter"
+	click text:"User name:",hotspot:[]
+
+end launchTeamcenterApplication

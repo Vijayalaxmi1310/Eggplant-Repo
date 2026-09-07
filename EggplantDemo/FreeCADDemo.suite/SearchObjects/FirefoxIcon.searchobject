@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		71,
+		304,
+		79,
+		76
+	],
+	"lastmodifieddate": 1783418669.2979999,
+	"createddate": 1783418620.454,
+	"name": "FirefoxIcon",
+	"lastfounddate": 1783418669.3299999,
+	"ocrcapturestring": "Firefox",
+	"lastfoundlocation": [
+		71,
+		304,
+		79,
+		76
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 59162,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[39,38]",
+					"Tolerance": "_73",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"sutinfo": {
+					"Type": "Single System",
+					"epgw_path": "C:\\Program Files\\Eggplant\\Eggplant.app\\Resources\\epgw\\x64\\bin\\epgw.exe"
+				},
+				"name": "FirefoxIcon.png",
+				"connectionname": "SingleSystem",
+				"type": 1,
+				"connectionserverid": "127.0.0.1",
+				"capturerect": [
+					71,
+					304,
+					79,
+					76
+				],
+				"connectiontype": "Single System",
+				"capturedocrtext": "Firefox"
+			}
+	]
+}

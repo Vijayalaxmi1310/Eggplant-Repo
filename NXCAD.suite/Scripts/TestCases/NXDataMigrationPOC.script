@@ -1,0 +1,32 @@
+﻿
+
+StartMovie "NXDataMigrationPOC_DataMigration_Batch03_Version2"
+try
+	// 3dx web app cleanup 
+	commonEnovia.cleanup
+	NXLaunch.killNxApp
+	NXLaunch.launchNXApp
+	
+	// 3dx launch 
+	LaunchApp .launchURL
+	set userName to "SDE-SRS"
+	CommonEnovia.loginEnovia userName,"FileOperations".getcredentials(userName).password
+	CommonEnovia.clickHome "Tasks"
+	
+	NXLaunch.launch3dxDesignLauncher
+	NXLaunch.openNXAppAndLogin
+	
+	put ResourcePath("PartData_Migration_Batch05.xlsx")  into global excelName 
+	put ResourcePath("PartData_Migration_Batch05.xlsx")  into global outputfile 
+	set global inputFile to ResourcePath("PartData_Migration_Input.xlsx")
+	set global excelSheetName to "MigrationData_Batch05"
+	
+	NXMigrater.migrateAndValidatePart global excelName,global excelSheetName
+	
+	NXFileReport.sendEmailReport inputFile,excelName
+Catch theException
+	NXFileReport.sendEmailReport inputFile,excelName
+	"exceptionHandling".failedHandlerNavigation(callStack())
+	"exceptionHandling".errorCapture theException
+End try
+StopMovie

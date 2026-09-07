@@ -1,0 +1,14 @@
+{\rtf1\ansi\ansicpg1252\cocoartf102Suite Snippets->launchTeamcenterApplication\par
+@Template\par
+typetext windowsKey,r\par
+if imageFound(text:"Type the name",waitFor:20)\par
+\tab Log "Run Window Opened"\par
+end if\par
+typetext "chrome http://localhost:3000",returnKey\par
+wait 3\par
+if imageFound(text:"SIEMENS",waitFor:30) then Log "Teamcenter application launched"\par
+@Documentation\par
+@Description\par
+\par
+@@@\par
+}

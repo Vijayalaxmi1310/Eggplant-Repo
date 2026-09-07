@@ -1,0 +1,6 @@
+﻿params envName,envURL,userName,password
+
+log envName
+log envURL
+log userName
+log password

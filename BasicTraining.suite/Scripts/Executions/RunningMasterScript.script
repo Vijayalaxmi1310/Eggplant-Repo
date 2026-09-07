@@ -1,0 +1,5 @@
+﻿set the ScriptLogging to On
+set SetOfTests to ["Script1","AdvancedScripting/ConcatenatingValues","AdvancedScripting/AccessingLists"]
+repeat with each test of SetOfTests
+	RunWithNewResults test
+end repeat

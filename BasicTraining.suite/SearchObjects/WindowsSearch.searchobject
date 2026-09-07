@@ -1,0 +1,47 @@
+{
+	"lastmodifieddate": 1764582488.3280001,
+	"lastfoundlocation": [
+		7,
+		1037,
+		46,
+		39
+	],
+	"originalcapturelocation": [
+		7,
+		1037,
+		46,
+		39
+	],
+	"createddate": 1764582488.3280001,
+	"lastfounddate": 1764582904.868,
+	"testlocationdata": [
+		{
+				"connectionportnum": 59600,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[117,19]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"Type": "Single System",
+					"epgw_path": "C:\\EPGW_Latest\\EPGGW_25.4\\epgw.exe"
+				},
+				"name": "WindowsSearch.png",
+				"connectionname": "OwnSUT",
+				"type": 1,
+				"capturerect": [
+					7,
+					1037,
+					46,
+					39
+				],
+				"connectiontype": "Single System",
+				"connectionserverid": "127.0.0.1"
+			}
+	],
+	"name": "WindowsSearch"
+}

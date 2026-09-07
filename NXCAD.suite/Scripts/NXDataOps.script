@@ -1,0 +1,469 @@
+﻿function getSearchRect Portion
+	//set up an easy-to-maintain property list that stores the necessary multipliers for the specified screen portion parameter value
+	Set screenPortions to {
+		toolBarArea:[0,26,1608,153],
+		topHalfScreen:[20,5,1919,537],
+		fileActionsArea:[0,49,209,584],
+		fileActionsExtensionArea:[198,56,734,591],
+		fileExplorerArea:[11,0,966,986],
+		NXDisplay:[338,174,1872,996],
+		threeDXOptionsArea:[2,53,1550,134],
+		closeOptions:[203,53,773,633],
+		saveBtnPopup:[1051,432,1877,1015],
+		workInProgress:[336,842,630,1024],
+		rightHalfNxDisplay:[1039,129,1917,1006],
+		loadingTextArea:[566,254,1479,849],
+		mysessionWindow:[329,138,1865,619]
+
+	}
+	set multiplier to screenPortions.(Portion) //retrives the value for the key in the property list. the name of the key is passes as a parameter into the function.
+	//test
+	// Error handling is needed in the event that an unrecognized parameter is passes to the function
+	set searchRectangle to screenPortions.(Portion)
+	return searchRectangle 
+End getSearchRect
+
+(**
+@HandlerName: openFileAndPart
+@Author : Himaja
+@HandlerDescription : 
+**)
+to openFileAndPart partName
+	try
+		if ImageFound(text:"File",searchRectangle:getSearchRect(toolBarArea),waitfor:60)
+			Click FoundImageLocation()
+			common.success "File Selected"
+			common.ClickBtnByText  "Open", 30,getSearchRect(fileActionsArea),yes
+			common.isTextPresentInSearchRect "File name",60,yes,getSearchRect(fileExplorerArea)   
+			//set partName to "1205-1354_B.prt"
+			typetext partName
+			wait 5
+			common.CaptureScreenshot
+			typetext returnKey
+			waitfor3DEXProcessing
+			
+			if imagefound(text:"Don't display this message again",waitfor:10,SearchRectangle:getSearchRect(NXDisplay) )
+				click FoundImageLocation()
+				typetext returnKey
+			end if 
+			
+			(*repeat 7 times
+				if imagefound(Image: "icons/ok_Warning",waitfor:4,SearchRectangle:getSearchRect(NXDisplay))
+					put readtext(getSearchRect(NXDisplay)) into readWarnings
+					common.success "Ok button found with a warning - "&readWarnings&&"iteration -"&repeatindex()
+					click FoundImageLocation()
+				end if
+			end repeat*)
+			NXDataOps.processOkDilouge
+			
+			if imagefound(text:"View",searchRectangle:getSearchRect(toolBarArea),waitfor:40)
+				common.success "Part Opened successfully"
+			else if imagefound(text:"Don't display this message again",waitfor:30,SearchRectangle:getSearchRect(NXDisplay) )
+				common.success "Don't display this message again is displayed"
+				click FoundImageLocation()
+				typetext returnKey
+				wait 2
+				
+			else if imagefound(text:"Don't display this message again",waitfor:60,SearchRectangle:getSearchRect(NXDisplay) )
+				common.success "Don't display this message again is displayed"
+				click FoundImageLocation()
+				typetext returnKey
+				wait 3
+			else
+				common.error "Unable to open Part",yes
+			end if
+			
+			put common.isTextPresentInSearchRect ("View",40,yes,getSearchRect(toolBarArea)) into flagLoc
+			if flagLoc is not empty or flagLoc is not "flagLoc"
+				common.success "Part Opened successfully"
+			else
+				common.error "Unable to open Part",yes
+			end if
+		else
+			common.error "Unable to find text File",yes
+		end if
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end openFileAndPart
+
+
+
+(**
+@HandlerName: savePart
+@Author : Himaja
+@HandlerDescription : 
+**)
+to savePart partName
+	try
+		set status to empty
+		common.ClickBtnByText "Active",40,getSearchRect(threeDXOptionsArea),yes
+		
+		/// Code if the model is already saved
+		-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+		if imagefound(text:"No models need to be saved",waitfor:20,SearchRectangle:getSearchRect(NXDisplay))
+			typetext returnKey
+			wait 4
+			common.success "Model pre-saved/pre-migrated"
+			set status to "Pre-Migrated"
+			log "Status is set to Pre-Migrated"
+			closeInformationWindow
+			return status
+		else
+			---- to handle popups
+			NXDataOps.processOkDilouge
+		end if
+		-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+		
+		
+		/// Code for part to saved
+		if imagefound(text:"3DEXPERIENCE Save Active",waitfor:120,SearchRectangle:getSearchRect(NXDisplay))
+			//"Work in Progress"
+			waitForWorkInProgress
+			common.ClickBtnByText "Save",30,getSearchRect(saveBtnPopup),yes
+			waitForWorkInProgress
+			repeat 3 times
+				if imagefound(Image: "icons/ok_Warning",waitfor:5,SearchRectangle:getSearchRect(NXDisplay))
+					put readtext(getSearchRect(NXDisplay)) into readWarnings
+					common.success "Ok button found with a warning - "&readWarnings&&"iteration -"&repeatindex()
+					click FoundImageLocation()
+				end if
+			end repeat
+			
+			if imagefound(text:"Physical product",waitfor:30,SearchRectangle:getSearchRect(NXDisplay))
+				common.success "Successfull saved part"&&partName
+				set status to "Migration Pass"
+				log "Status is set to Migration Pass"
+				-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+				-- close opened windows
+				wait 3
+				typetext altkey,f4
+				wait 3
+				closeInformationWindow
+				-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+			else
+				put errorAndCaptureFailure (partName) into status
+			end if
+		else
+			put errorAndCaptureFailure (partName) into status
+		end if 
+		return status
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end savePart
+
+
+to errorAndCaptureFailure partName
+	try
+		common.error "unable to save Part due to some failures and continues with next data"
+		delete ".prt" from partName
+		capturescreen "Failed for Part "&&partName
+		set status to "Migration Failed"
+		log "Status is set to Migration Failed"
+		processOkDilouge
+		closeInformationWindow
+		closeAllParts
+		NXLaunch.switchTo3DX
+		return status
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end errorAndCaptureFailure
+
+(**
+@HandlerName: openMysession
+@Author : Himaja
+@HandlerDescription : 
+**)
+to openMysession
+	try
+		
+		if imagefound(text:"MySession",waitfor:20,searchRectangle:getSearchRect(threeDXOptionsArea))
+			click FoundImageLocation()
+			common.success "Mysession found and clicked"
+		else
+			Common.error "Mysession not found",yes
+		end if
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end openMysession
+(**
+@HandlerName: closeMysession
+@Author : Himaja
+@HandlerDescription : 
+**)
+to closeMysession
+	try
+		
+		if imagefound(image:"MySession_Close",waitfor:20,searchRectangle:getSearchRect(mysessionWindow))
+			click FoundImageLocation()
+			common.success "Mysession found and closed"
+		else
+			Common.error "Mysession not found /closed",yes
+		end if
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end closeMysession
+
+(**
+@HandlerName: closeMysession
+@Author : Himaja
+@HandlerDescription : 
+**)
+to closePropertiesPage
+	try
+		if imagefound(image:"Properties_Close",waitfor:20,searchRectangle:getSearchRect(mysessionWindow))
+			click FoundImageLocation()
+			common.success "Properties page found and closed"
+		else
+			Common.error "Properties page not found /closed",yes
+		end if
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end closePropertiesPage
+(**
+@HandlerName: readPrdNumAndRev
+@Author : Himaja
+@HandlerDescription : 
+**)
+to readPrdNumAndRev partName
+	try
+		
+		NXDataOps.openMysession
+		NXDataOps.waitForLoading
+		set the TextStyle to {DPI:144}
+		put common.isTextPresentInSearchRect ("ENOVIA MySession",40,yes,getSearchRect(NXDisplay)) into textLoc
+		set the TextStyle to empty
+		Put textLoc + [-140,-30] into loc1
+		Put textLoc + [600,650] into loc2
+		log readtext(loc1,loc2)
+		put common.IsImagePresentOnScreen ("icons/icn_Part",30,[loc1,loc2],yes) into loc
+		EnoviaSearch.selectRightClickOptions loc,"Properties",,,
+		NXDataOps.waitForLoading
+		put common.isTextPresentInSearchRect ("Attributes",70,yes,getSearchRect(NXDisplay)) into textLoc
+		Put textLoc + [-140,-30] into loc1
+		Put textLoc + [600,500] into loc2
+		log readtext(loc1,loc2)
+		set the searchrectangle to [loc1,loc2]
+		put common.TodoTripleClickWRTText( "Name",220,0,15) into prdNum
+		common.success "Read PrdNum for part:"&partName&&"is :"&prdNum
+		put common.TodoTripleClickWRTText( "Revision",220,0,15) into revNum
+		common.success "Read RevNum for part:"&partName&&"is :"&revNum
+		set the searchrectangle to empty
+		(*wait 2
+		typetext altKey,f4
+		wait 2*)
+		
+		NXDataOps.closePropertiesPage
+		NXDataOps.waitForLoading
+		set the TextStyle to {DPI:144}  --to close properties window
+		put common.isTextPresentInSearchRect ("ENOVIA MySession",40,yes,getSearchRect(NXDisplay)) into textLoc
+		set the TextStyle to empty
+		(*wait 5
+		typetext altKey,f4 -- to close mysession window
+		wait 4*)
+		
+		NXDataOps.closeMysession
+		
+		repeat until not imagefound(text:"ENOVIA MySession",waitfor:6,SearchRectangle:getSearchRect(NXDisplay),DPI:144)
+			wait 2
+			if repeatindex() is greater than 7
+				common.error "ENOVIA MySession Window not closed"
+				NXDataOps.closeMysession
+				wait 10
+				exit repeat
+			end if
+		end repeat
+		common.CaptureScreenshot "ENOVIA MySession is closed or open"
+		
+		return [prdNum,revNum]
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end readPrdNumAndRev
+
+
+(**
+@HandlerName: readPrdNumAndRev
+@Author : Himaja
+@HandlerDescription : 
+**)
+to closeAllParts
+	try
+		if ImageFound(text:"File",searchRectangle:getSearchRect(toolBarArea),waitfor:60)
+			Click FoundImageLocation()
+			common.success "File Selected"
+			common.ClickBtnByText  "Close", 30,getSearchRect(fileActionsArea),yes
+			common.isTextPresentInSearchRect "All Parts",60,yes,getSearchRect(closeOptions)  
+			Click FoundImageLocation()
+			
+			if imagefound(text:"Do you really want to save and close all parts",waitfor:40,searchRectangle:getSearchRect(NxDisplay))
+				click FoundImageLocation()
+				common.success "Saved and Closed all parts"
+				wait 2
+				typetext returnkey
+				wait 4
+			end if
+		else
+			common.error "File is not found",yes
+		end if 
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end closeAllParts
+
+(**  waitForLoading - Waits for the Loading Dialogue to disappear **) 
+to waitForWorkInProgress SR:getSearchRect(workInProgress)
+	try
+		//repeat while imagefound(text:"Click Stop to interrupt", searchRectangle:SR, waitfor:2)
+		repeat while imagefound(image:"icons/icn_wrkInProgress", searchRectangle:SR, waitfor:10)
+			wait 2
+			if repeatindex() is greater than 300
+				//common.error "The application failed Save"
+				common.error "The application failed Save"
+				exit repeat
+			end if
+		end repeat
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end waitForWorkInProgress
+
+(**
+@HandlerName: closeInformationWindow
+@Author : Himaja
+@HandlerDescription : 
+**)
+to closeInformationWindow
+	try
+	(*if imagefound(text:"Information",waitfor:7,SearchRectangle:getSearchRect(rightHalfNxDisplay)) or imagefound(image:"icons/info_Edit",waitfor:6,SearchRectangle:common.commonScreenPart(RightHalf))
+			
+			common.ClickBtnByImage "icons/bt_Close", 7,getSearchRect(rightHalfNxDisplay),yes
+			//typetext altKey,f4
+		else
+			if imagefound(Image:"icons/bt_Close",waitfor:3,SearchRectangle:getSearchRect(rightHalfNxDisplay))
+				click FoundImageLocation()
+				common.CaptureScreenshot
+				
+			end if 
+		end if *)
+		
+		if imagefound(image:"icons/info_Edit",waitfor:6,SearchRectangle:common.commonScreenPart(RightHalf))
+			
+			common.ClickBtnByImage "icons/bt_Close", 7,getSearchRect(rightHalfNxDisplay),yes
+			//typetext altKey,f4
+		else
+			if imagefound(Image:"icons/bt_Close",waitfor:3,SearchRectangle:getSearchRect(rightHalfNxDisplay))
+				click FoundImageLocation()
+				common.CaptureScreenshot
+				
+			end if 
+		end if
+		
+		repeat while imagefound((*image:"icons/info_Edit",*)text:"Information",waitfor:6,SearchRectangle:getSearchRect(rightHalfNxDisplay))
+			wait 1
+			if repeatindex() is greater than 4
+				common.error "Info Window not closed"
+				exit repeat
+			end if
+		end repeat
+		common.CaptureScreenshot "infowindow"
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end closeInformationWindow
+
+
+(**
+@HandlerName: waitfor3DEXPprocessing
+@Author : Himaja
+@HandlerDescription : 
+**)
+to waitfor3DEXProcessing
+	try
+		wait 2
+		repeat while imagefound(text:"3DEXPERIENCE Progress",waitfor:6,SearchRectangle:getSearchRect("NXDisplay"))
+			wait 1
+			if repeatindex() is greater than 4
+				common.error "Info Window not closed"
+				exit repeat
+			end if
+		end repeat
+		common.CaptureScreenshot "3DEXPERIENCE Progress"
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end waitfor3DEXProcessing
+
+
+(**
+@HandlerName: waitForLoading
+@Author : Himaja
+@HandlerDescription : 
+**)
+(**  waitForLoading - Waits for the Loading Dialogue to disappear **) 
+to waitForLoading 
+	//set screenRectangle1 to configEnovia[].searchRectangles.loadingDialogue
+	try
+		wait 4
+		//repeat while imagefound(text:"Loading", waitfor:5 ,searchRectangle:screenRectangle)
+		//repeat until not imagefound(text:"Loading", waitfor:5 ,SearchRectangle:[566,254,1479,849])
+		repeat until not imagefound(image:"icons/Loading_Data", waitfor:5 ,SearchRectangle:[566,254,1479,849])
+			wait 1
+			if repeatindex() is greater than 100
+				common.Error "The application failed to load",yes
+				exit repeat
+			end if
+		end repeat
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end waitForLoading
+
+(**
+@HandlerName: waitForLoading
+@Author : Himaja
+@HandlerDescription : 
+**)
+to processOkDilouge
+	try
+		repeat until not imagefound(Image: "icons/ok_Warning",waitfor:10,SearchRectangle:getSearchRect(NXDisplay))
+			wait 1
+			if imagefound(Image: "icons/ok_Warning",waitfor:3,SearchRectangle:getSearchRect(NXDisplay))
+				put readtext(getSearchRect(NXDisplay)) into readWarnings
+				common.success "Ok button found with a warning - "&readWarnings&&"iteration -"&repeatindex()
+				click FoundImageLocation()
+			end if
+			if repeatindex() is greater than 10
+				common.success "unable to find ok warnings"
+				exit repeat
+			end if
+		end repeat
+		
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end processOkDilouge

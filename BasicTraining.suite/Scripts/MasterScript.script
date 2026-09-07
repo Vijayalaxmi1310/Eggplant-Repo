@@ -1,0 +1,35 @@
+﻿
+set the ScriptLogging to On
+set SetOfTests to ["Script1","AdvancedScripting/ConcatenatingValues","AdvancedScripting/AccessingLists"]
+repeat with each test of SetOfTests
+	RunWithNewResults test
+end repeat
+
+
+
+set TestList to ["Script1","AdvancedScripting/ConcatenatingValues","AdvancedScripting/AccessingLists"]-- Creates a series of script executions to be used later
+RunWithNewResults "InitialTest"
+set Outcome to the result
+if the status of Outcome is not "Success" -- If the result of "InitialTest" is not "Success", gets the date and time of the run...
+then
+	convert Outcome's runDate to date and long time
+	sendMail (to: "administrator@yourcompany.com", from: "JoeTester@yourcompany.com", subject: "Initial Test Failed", body: "Test run at" && rundate of Outcome && "had" && errors of Outcome && "errors") -- Sends email to report the date and errors of the execution. (&& joins text strings with a space between them.)
+else -- Otherwise...
+	repeat with each testScript of TestList -- For every script in TestList,
+		RunWithNewResults testScript -- Runs the script, then...
+		set Outcome to the result -- Puts the results into Outcome
+		SendMail to:"testing@gmail.com", subject:"Execition tatus ofTestcase", message:testmessage, attachment:""
+		
+		put testScript & ":" && status of Outcome && Return after currentReport -- Adds "Script: Status", then a return character to currentReport
+		if the status of Outcome is "Failure" then -- If the status property is Failure...
+			run "CleanupScript" -- Runs CleanupScript to reset the test environment
+		end if
+	end repeat -- Ends after the final test in TestList
+	Log "Final Results:" -- Logs "Final Results:" text
+	repeat with each line of currentReport
+		log it -- Logs each line in currentReport
+	end repeat
+end if
+
+
+

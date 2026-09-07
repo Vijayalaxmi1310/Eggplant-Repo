@@ -1,0 +1,4 @@
+﻿typetext windowsKey,r
+typetext "firefox demo.nopcommerce.com",returnKey
+waitFor 50, text:"Welcome to our store"
+

@@ -1,0 +1,10 @@
+﻿--- Return from a command -------
+Run "Modularization/SimpleScriptwithParameters" "12","15" 
+log the result  -- This command will receive the return values and print it on the console
+put the result into Total
+log Total
+
+
+--- Return from a function ----------
+put "Modularization/SimpleScriptwithParameters"("10","15")
+

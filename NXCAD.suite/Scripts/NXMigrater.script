@@ -1,0 +1,75 @@
+﻿
+(**
+@HandlerName: switchTo3DX
+@Author : Himaja
+@HandlerDescription : 
+**)
+
+to migrateAndValidatePart  excelName, excelSheetName
+	try
+	(*set excelName to ResourcePath("PartData_Migration_Batch01.xlsx")
+		set excelSheetName to "MigrationData_Batch01"*)
+		
+		put NXFileReport.getPartsDataToMigrate( excelName,excelSheetName) into nonMigratedPartsData
+		if nonMigratedPartsData is empty
+			common.success "No data available to migrate"
+			exit handler
+		end if
+		Repeat with each item of nonMigratedPartsData
+			put repeatindex() into rowNum
+			put it.partName into partName
+			log "Part Name is :"&partName
+			set myExcelDB to {type: "excel", file: excelName, name:excelSheetName,writable: Yes}
+			put the records of myExcelDB where (partname is partName and status is empty)  into partData
+			log partData
+			
+			//put "Migration Pass" into x.status
+			
+			NXDataOps.openFileAndPart partName
+			
+			NXLaunch.switchTo3DX
+			put NXDataOps.savePart(partName) into migrationStatus
+			
+			if migrationStatus is "Pre-Migrated" and if it.prdNum is empty
+				put NXDataOps.readPrdNumAndRev (partName) into partNameAndRev
+				put item 1 of partNameAndRev into prdNum
+				put item 2 of partNameAndRev into revNum
+				put prdNum into partData.prdNum
+				put revNum into partData.revNum
+				put "Pre-Migrated" into partData.status
+			end if
+			
+			if migrationStatus is "Migration Pass"
+				put NXDataOps.readPrdNumAndRev (partName) into partNameAndRev
+				put item 1 of partNameAndRev into prdNum
+				put item 2 of partNameAndRev into revNum
+				put prdNum into partData.prdNum
+				put revNum into partData.revNum
+				put "Migration Pass" into partData.status
+			end if
+			if migrationStatus is "Migration Failed"
+				put "Migration Failed" into partData.status
+				NXLaunch.killNxApp
+				NXLaunch.launchNXApp
+				NXLaunch.openNXAppAndLogin no
+			end if
+			log "iteration:"&repeatIndex()
+			
+			if repeatIndex() mod 20 = 0 then
+				insert  repeatIndex() into list
+				log "Closing all the opened parts after processing at - iteration:"&repeatIndex()
+				NXDataOps.closeAllParts
+				NXLaunch.switchTo3DX
+			end if
+		end repeat
+		
+		
+	Catch theException
+		"exceptionHandling".failedHandlerNavigation(callStack())
+		"exceptionHandling".errorCapture theException
+	End try
+end migrateAndValidatePart
+
+
+
+

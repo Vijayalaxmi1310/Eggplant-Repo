@@ -1,0 +1,130 @@
+﻿---- To read the data from .txt file within in suite line by line ----------------
+put file resourcePath("TestData.txt") into Content
+repeat with each line of Content
+	wait 1
+	log it
+end repeat
+
+
+---- To read the data from .txt file outside the suite/ centralized location -----------------
+
+put file "C:\Users\vijayalaxmi.kummari\OneDrive - Ideabytes\Documents\Eggplant.plist" into FileContent
+
+repeat with each line of FileContent
+	log it
+end repeat
+
+
+
+
+--- To read data from .csv file within the suite line by line ------------------
+
+put file ResourcePath("addresses.csv") into FileData
+repeat with each line of FileData
+	log it
+end repeat
+repeat with each line of FileData
+	insert it after UserData
+end repeat
+log UserData
+
+
+--- To read the data from .csv file outside the suite/ from centralized location -------------------
+
+put file "C:\Users\admin\Downloads\taxables.csv" into FileContent
+
+repeat with each line of FileContent
+	log it
+end repeat
+
+
+
+
+---- Setting itemdelimiter to other then default delimiter -----------------
+
+put file resourcePath("TestData.txt") into Content
+log Content
+#set the itemDelimiter to "#"  --- In the .txt file item separator is "#"
+log the number of items of second line of Content
+Log "========================"
+log the first item of second line of Content
+log item 1 of line 2 of Content
+log the second item of second line of Content
+Log "**********************************"
+repeat with each line of Content
+	log it
+end repeat
+
+
+
+
+put file resourcePath("TestData.txt") into TestData -- Storing the content of the text file which is located within the suite into TestData Variable
+log the number of items of first line of TestData
+#log TestData
+set the itemDelimiter to "#"
+log the number of items of first line of TestData
+put the first line of TestData into Headers
+#log Headers
+log the first item of Headers
+log the second item of Headers
+
+log the number of items of Headers
+repeat with each line of second line of TestData
+	log it
+end repeat
+
+
+put file resourcePath("StudentDetails.txt") into studentData
+repeat with each line of studentData
+	if repeatIndex() is ...
+	
+		"1": 
+			set firstName to item 1 of line repeatIndex() of studentData
+			set lastName to item 2 of line repeatIndex() of studentData 
+		"2": set Email to item 1 of line repeatIndex() of studentData
+		"3": set Gender to item 1 of line repeatIndex() of studentData
+		"4": set mobileNo to item 1 of line repeatIndex() of studentData
+		"5": set dateOfBirth to  item 1 of line repeatIndex() of studentData
+		"6": set Subjects to item 1 of line repeatIndex() of studentData&","&item 2 of line repeatIndex() of studentData&","&item 3 of line repeatIndex() of studentData
+		"7": set Hobby to item 1 of line repeatIndex() of studentData
+		"8": set Address to item 1 of line repeatIndex() of studentData && item 2 of line repeatIndex() of studentData
+		"9": set state to item 1 of line repeatIndex() of studentData
+		"10": set City to item 1 of line repeatIndex() of studentData
+	end if
+end repeat
+
+(*
+typetext windowsKey,r
+typetext "chrome https://demoqa.com/automation-practice-form",returnKey
+WaitFor 30, text:"Student Registration Form"
+*)
+
+wait 3
+click text:"First Name"
+typetext firstName
+click text:"Last Name"
+typetext lastName
+click text:"Email",hotspot:[350,2]
+typetext Email
+click text:Gender
+click text:"Mobile Number"
+typetext mobileNo
+click text:"Date of Birth",hotspot:[320,2]
+typetext controlKey,a
+typetext dateOfBirth,returnKey
+click text:"Subjects",hotspot:[350,2]
+typetext Subjects
+click text:Hobby
+click text:"Current Address",hotspot:[350,2]
+typetext Address
+click text:"Select State"
+typetext state,returnKey
+click text:"Select City"
+typetext City,returnKey
+
+
+
+
+
+
+

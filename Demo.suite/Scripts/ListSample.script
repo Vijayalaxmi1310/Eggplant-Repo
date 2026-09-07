@@ -1,3 +1,4 @@
+
 put "What is a List?"
 // - an ordered sequence of values
 // - don't confuse a list with its representation
@@ -11,7 +12,6 @@ put [rabbit,dog,cat] into animals2
 put animals1
 put animals2
 put animals1 is equal to animals2
-
 put - // used to divide the sections of the script
 
 (* Section 1: Accessing List Items *)

@@ -1,0 +1,41 @@
+﻿
+to handle I_launch_an_application
+	typetext windowskey,r
+	typetext "chrome demoblaze.com",return
+end I_launch_an_application
+
+
+
+to handle I_verify_the_homepage
+	if ImageFound(text:"PRODUCT STORE", waitFor:30)
+		logSuccess "Application launched"
+	end if
+end I_verify_the_homepage
+
+
+
+to handle verify_a_mobile_product
+	WaitFor 20, text:"Samsung galaxy s6"
+	
+end verify_a_mobile_product
+
+
+
+
+to handle click_on_product
+	click text:"Samsung galaxy s6"
+end click_on_product
+
+
+
+to handle add_a_product_to_cart
+	WaitFor 20, text:"Add to cart"
+	click text:"Add to cart"
+end add_a_product_to_cart
+
+
+
+
+to handle I_close_the_browser
+	typetext altKey,f4
+end I_close_the_browser

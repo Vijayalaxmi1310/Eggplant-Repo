@@ -1,0 +1,46 @@
+{
+	"lastmodifieddate": 1781156358.2719998,
+	"lastfoundlocation": [
+		974,
+		854,
+		5,
+		42
+	],
+	"originalcapturelocation": [
+		1910,
+		652,
+		5,
+		42
+	],
+	"createddate": 1781156358.2719998,
+	"lastfounddate": 1782899970.9579999,
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[2,11]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "ScrollBar1.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"capturerect": [
+					1910,
+					652,
+					5,
+					42
+				],
+				"connectiontype": "RDP",
+				"connectionserverid": "192.168.1.81"
+			}
+	],
+	"name": "ScrollBar2"
+}

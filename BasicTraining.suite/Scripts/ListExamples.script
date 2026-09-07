@@ -1,0 +1,15 @@
+﻿repeat with each item idx of (1 to 10)	
+	do  !"set val_[[idx]] to [[idx]]"
+end repeat
+
+
+
+log val_1  // 1
+log val_2  // 2
+log val_3
+log val_4
+
+
+
+log universal username
+

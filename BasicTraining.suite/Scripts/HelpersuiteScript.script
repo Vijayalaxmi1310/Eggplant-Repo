@@ -1,0 +1,9 @@
+﻿to action1
+	Log "Executing Helper sutie"
+	
+end action1
+
+to action2
+	log "Executing handler 2"
+	
+end action2

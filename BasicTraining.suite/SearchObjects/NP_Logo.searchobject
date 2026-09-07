@@ -1,0 +1,39 @@
+{
+	"lastmodifieddate": 1682399449.385,
+	"lastfoundlocation": [
+		353,
+		185,
+		61,
+		47
+	],
+	"originalcapturelocation": [
+		353,
+		185,
+		61,
+		47
+	],
+	"createddate": 1682399449.385,
+	"lastfounddate": 1682400050.2869999,
+	"testlocationdata": [
+		{
+				"name": "NP_Logo.png",
+				"type": 1,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[30,23]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"capturerect": [
+					353,
+					185,
+					61,
+					47
+				]
+			}
+	],
+	"name": "NP_Logo"
+}

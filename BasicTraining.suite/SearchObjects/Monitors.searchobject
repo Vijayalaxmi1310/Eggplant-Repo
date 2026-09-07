@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		417,
+		756,
+		84,
+		22
+	],
+	"lastmodifieddate": 1681825046.197,
+	"createddate": 1681825046.197,
+	"name": "Monitors",
+	"lastfounddate": 1749636398.0939999,
+	"ocrcapturestring": "Monitors",
+	"lastfoundlocation": [
+		418,
+		792,
+		84,
+		22
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Monitors",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[42,11]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					417,
+					756,
+					84,
+					22
+				],
+				"name": "Monitors.png"
+			}
+	]
+}

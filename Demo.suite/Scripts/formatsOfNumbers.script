@@ -1,0 +1,3 @@
+﻿set the numberFormat to "base8"
+put "0x122324453446464" as hexadecimal into no
+log no

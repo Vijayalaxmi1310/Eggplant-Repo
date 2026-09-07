@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		585,
+		569,
+		17,
+		19
+	],
+	"lastmodifieddate": 1682422587.0869999,
+	"createddate": 1682422587.0869999,
+	"name": "formfacadecheckbox",
+	"lastfounddate": 1682422858.6859999,
+	"ocrcapturestring": "J",
+	"lastfoundlocation": [
+		585,
+		364,
+		17,
+		19
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[8,9]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "formfacadecheckbox.png",
+				"connectionname": "192.168.1.171",
+				"type": 1,
+				"connectionserverid": "192.168.1.171",
+				"capturerect": [
+					585,
+					569,
+					17,
+					19
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "J"
+			}
+	]
+}

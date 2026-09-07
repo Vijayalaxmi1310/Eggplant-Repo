@@ -1,0 +1,21 @@
+﻿click text:"Eggplant",waitFor:2
+
+click text:"computers",caseSensitive:Yes,waitFor:1
+
+Log "Script started"
+Log "Script is still in execution"
+
+
+Log "Script paused"
+Log "Click on Continue"
+
+
+click imageName:"AddressBar"
+
+
+repeat 5 times
+	if repeatIndex() is 2
+		logError "Loop exceeded"
+		exit repeat
+	end if
+end repeat

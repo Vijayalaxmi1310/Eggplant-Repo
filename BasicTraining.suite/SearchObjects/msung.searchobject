@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		728,
+		736,
+		69,
+		19
+	],
+	"lastmodifieddate": 1681825046.773,
+	"createddate": 1681825046.773,
+	"name": "msung",
+	"lastfounddate": 1749636782.8699999,
+	"ocrcapturestring": "msung",
+	"lastfoundlocation": [
+		729,
+		773,
+		69,
+		19
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "msung",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[34,9]",
+					"Tolerance": "_73",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					728,
+					736,
+					69,
+					19
+				],
+				"name": "msung.png"
+			}
+	]
+}

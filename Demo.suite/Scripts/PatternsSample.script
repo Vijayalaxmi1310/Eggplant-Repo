@@ -1,4 +1,4 @@
-// Simple patterns can be useful in your scripts
+﻿// Simple patterns can be useful in your scripts
 // Add some break points to step through code and see how SenseTalk is working
 
 (* Section 1: Basic Pattern Matching *)
@@ -41,11 +41,11 @@ set SSN to <3 digits, "-", 2 digits, "-", 4 digits>
 set EIN to <2 digits then dash then 6 or more digits>
 set TIN to <SSN or EIN>
 repeat with each entry in ["808-43-5678", "77-435679084", "666-14-123"]
-    if entry matches TIN then
-        put entry & " is a valid TIN"
-    else
-        put entry & " is NOT valid"
-    end if
+	if entry matches TIN then
+		put entry & " is a valid TIN"
+	else
+		put entry & " is NOT valid"
+	end if
 end repeat
 
 put - // used to divide the sections of the script
@@ -69,3 +69,28 @@ Grace 454.555.0982
 put every occurrence of PhoneNum in phoneList
 
 put "End of Patterns Demo"
+
+
+
+
+Put "abcdefghijklmno" into myText
+
+set myPattern to <at least 2 and preferably more characters of mytext>
+
+Put EveryImageLocation(text:myPattern)
+
+set myPatternList to {
+	<at least 2 and preferably more characters of mytext>,
+	<preferably more characters of mytext>,
+	<2 to 10 characters of mytext greedily>,
+	<more characters of mytext greedily>,
+	<maximum characters of mytext greedily>
+}
+
+
+Repeat with each item myPattern of myPatternList
+	Repeat with each item myRectangle of EveryImageRectangle(text:myPattern)
+		HighlightRectangle myRectangle, (duration:2)
+		Wait 2
+	End Repeat
+End Repeat

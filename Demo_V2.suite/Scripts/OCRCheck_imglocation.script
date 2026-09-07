@@ -1,0 +1,4 @@
+﻿log OCRVersion()
+#log imageLocation(text:"Assembly station A A", contrastColor:"AutoDetect", contrast:"On", WaitFor:8, contrastTolerance:"45")
+
+log imageLocation(text:"Assembly station A A",ignorenewlines:off,searchRectangle:(1,114,398,668))

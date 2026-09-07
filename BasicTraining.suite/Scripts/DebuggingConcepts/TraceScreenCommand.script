@@ -1,0 +1,5 @@
+﻿TraceScreen on
+click text:"Contacts"
+click text:"History"
+click text:"Favorites"
+click text:"Downloads"

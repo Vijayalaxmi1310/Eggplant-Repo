@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?><TableScript xmlns="http://www.testplant.com/xmlns/TableScript/2014">
+<Lines>
+<Line><Action
+  >TypeText</Action
+><Arguments
+  >WindowsKey,r</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >TypeText</Action
+><Arguments
+  >"chrome demo.nopcommerce.com",return</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >WaitFor</Action
+><Arguments
+  >30, text:"Computers"</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >MoveTo</Action
+><Arguments
+  >text:"Electronics"</Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >WaitFor</Action
+><Arguments
+  ></Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >Click</Action
+><Arguments
+  ></Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+<Line><Action
+  >AdvancedScripting/AccessingLists</Action
+><Arguments
+  ></Arguments
+><ExpectedValueExpression
+  ></ExpectedValueExpression
+><Comment
+  ></Comment
+></Line>
+</Lines>
+</TableScript>

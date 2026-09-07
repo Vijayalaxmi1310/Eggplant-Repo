@@ -1,0 +1,49 @@
+{
+	"originalcapturelocation": [
+		19,
+		105,
+		34,
+		45
+	],
+	"lastmodifieddate": 1768541466.9400001,
+	"createddate": 1681185675.6500001,
+	"name": "ChromeIcon/ChromeIcon4",
+	"lastfounddate": 1682398717.4559999,
+	"ocrcapturestring": "p",
+	"lastfoundlocation": [
+		19,
+		105,
+		34,
+		45
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 5905,
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[17,22]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "ChromeIcon/ChromeIcon4.png",
+				"connectionname": "Partner-SUT-4",
+				"type": 1,
+				"connectionserverid": "3.8.94.207",
+				"capturerect": [
+					19,
+					105,
+					34,
+					45
+				],
+				"connectiontype": "rdp",
+				"capturedocrtext": "p"
+			}
+	]
+}

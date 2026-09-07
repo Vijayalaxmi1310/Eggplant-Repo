@@ -1,0 +1,48 @@
+{
+	"originalcapturelocation": [
+		1290,
+		933,
+		77,
+		50
+	],
+	"lastmodifieddate": 1783588491.598,
+	"createddate": 1783588491.598,
+	"name": "nopcommerce_homeScreen_BR",
+	"lastfounddate": 1783588605.0050001,
+	"ocrcapturestring": "nin site.",
+	"lastfoundlocation": [
+		1290,
+		933,
+		77,
+		50
+	],
+	"testlocationdata": [
+		{
+				"connectionportnum": 3389,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[138,74]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"sutinfo": {
+					"type": "Unknown RDP"
+				},
+				"name": "nopcommerce_homeScreen_BR.png",
+				"connectionname": "81 SUT",
+				"type": 1,
+				"connectionserverid": "192.168.1.81",
+				"capturerect": [
+					1290,
+					933,
+					77,
+					50
+				],
+				"connectiontype": "RDP",
+				"capturedocrtext": "nin site."
+			}
+	]
+}

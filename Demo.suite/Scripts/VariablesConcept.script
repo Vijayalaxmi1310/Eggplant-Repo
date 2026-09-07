@@ -1,0 +1,25 @@
+﻿(*typetext windowsKey,r
+waitFor 50,text:"Type the name"
+typetext "C:\Users\vijayalaxmi.kummari\OneDrive - Ideabytes\Documents\Eggplant\My Eggplant Performance Workspace\dynaTraceSystemProfiles.csv", returnKey*)
+
+
+put "Vijaya" into global firstName
+log global firstName
+
+
+set lastName to "Laxmi"
+log lastName
+
+set mobileNumber to 9999999999
+log mobileNumber
+
+set numberNumber to "5666666444"
+log numberNumber
+
+set universal firstName to "TestingUser"
+
+log universal firstName
+
+set the suiteVariables.suiteName to "firstEggplant Suite"
+
+log suiteName

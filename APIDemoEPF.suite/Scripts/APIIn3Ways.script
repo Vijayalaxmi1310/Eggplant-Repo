@@ -1,0 +1,35 @@
+﻿// Calling the API test from the script and getting the response
+put DummyAPI().responseBody into Response
+log Response
+#put JSONValue(Response) into file "D:/Vijayalaxmi/JSONFiles/APIJson.json"
+put JSONValue(Response) into ResponseValue
+//log ResponseValue
+log ResponseValue.status
+put ResponseValue.data into EmpData
+
+put item 1 of EmpData into Emp1
+log Emp1.id
+put Emp1.id into Global EmpID
+
+#put Global EmpID into EmpID
+#log EmpID
+
+// Getting the specific value from the above API and using it in the below API Request
+put GetDummySpecificEmpDetails().responseBody into APIResponse
+log APIResponse
+
+
+//ResponseData -- {"status":"success","data":{"id":1,"employee_name":"Tiger Nixon","employee_salary":320800,"employee_age":61,"profile_image":""},"message":"Successfully! Record has been fetched."}
+
+//put JSONValue(APIResponse) into ResponseValue1
+//log ResponseValue1
+
+
+//Creating an API to get the specific employee details from the script
+GetEmployeeData "https://dummy.restapiexample.com/api/v1/employee/2"
+
+to GetEmployeeData URL
+	put URL into authURL
+	get url URL
+	log it
+end GetEmployeeData

@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		1110,
+		176,
+		48,
+		28
+	],
+	"lastmodifieddate": 1718358349.267,
+	"createddate": 1718358349.267,
+	"name": "OKButton_Db",
+	"lastfounddate": 1749636281.9170001,
+	"ocrcapturestring": "OK",
+	"lastfoundlocation": [
+		1110,
+		176,
+		48,
+		28
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "OK",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[22,15]",
+					"Tolerance": "_45",
+					"Discrepancy": "_0",
+					"SearchType": "Tolerant of Background"
+				},
+				"type": 1,
+				"capturerect": [
+					1110,
+					176,
+					48,
+					28
+				],
+				"name": "OKButton_Db.png"
+			}
+	]
+}

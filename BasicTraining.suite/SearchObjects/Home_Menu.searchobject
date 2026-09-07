@@ -1,0 +1,39 @@
+{
+	"lastmodifieddate": 1679296339.451,
+	"lastfoundlocation": [
+		1011,
+		115,
+		48,
+		20
+	],
+	"originalcapturelocation": [
+		1011,
+		131,
+		48,
+		20
+	],
+	"createddate": 1679296339.451,
+	"lastfounddate": 1718360078.654,
+	"testlocationdata": [
+		{
+				"name": "Home_Menu.png",
+				"type": 1,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[85,9]",
+					"Tolerance": "_63",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"capturerect": [
+					1011,
+					131,
+					48,
+					20
+				]
+			}
+	],
+	"name": "Home_Menu"
+}

@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		179,
+		11,
+		90,
+		25
+	],
+	"lastmodifieddate": 1682399743.1670001,
+	"createddate": 1682399743.1670001,
+	"name": "Returning",
+	"lastfounddate": 1682400048.6719999,
+	"ocrcapturestring": "Returning",
+	"lastfoundlocation": [
+		1167,
+		456,
+		90,
+		25
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Returning",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[45,12]",
+					"Tolerance": "_54",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					179,
+					11,
+					90,
+					25
+				],
+				"name": "Returning.png"
+			}
+	]
+}

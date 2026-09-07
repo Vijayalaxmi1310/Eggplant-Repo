@@ -1,0 +1,34 @@
+{
+	"lastmodifieddate": 1682399451.825,
+	"ocrcapturestring": "O Female",
+	"originalcapturelocation": [
+		813,
+		532,
+		70,
+		19
+	],
+	"createddate": 1682399451.825,
+	"testlocationdata": [
+		{
+				"capturedocrtext": "O Female",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Tolerance": "_54",
+					"HotSpot": "[35,9]",
+					"Scale": "    1",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					813,
+					532,
+					70,
+					19
+				],
+				"name": "FemaleRadioButton.png"
+			}
+	],
+	"name": "FemaleRadioButton"
+}

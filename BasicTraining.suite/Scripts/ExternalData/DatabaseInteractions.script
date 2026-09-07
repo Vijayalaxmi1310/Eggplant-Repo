@@ -1,0 +1,120 @@
+﻿Log "Database Interactions from EPF"
+Log "============================="
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"moviedb"} -- Defines the database connection.
+set actorTable to table "actor" of myDB -- Sets the personTable variable to be a table object which refers to the table "Persons". Has not yet retrieved the records.
+
+put the records of actorTable into data
+log data
+
+
+set myDB to {type:"odbc",DSN:"VijayaTestDSN",user:"root",password:"root",readable:yes,writable:yes,name:"moviedb"}
+
+set actorTable to table "actor" of myDB
+set the columnsToFetch of actorTable to ["first_name","last_name"]
+log the record of actorTable where last_name is "ZELLWEGER"
+#set newActor to {actor_id:201,first_name:"Vijaya",last_name:"Lakshmi",last_update:"2027-07-03 04:34:33"}
+#add record newActor to actorTable
+delete record of actorTable where last_name is "Lakshmi"
+
+put the records of actorTable
+
+Log "============================="
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"sakila"} -- Defines the database connection.
+set actorTable to table "actor" of myDB
+set the columnsToFetch of actorTable to ["first_name","last_name"] -- Uses the columnsToFetch table property to specify columns of interest.
+put the records of actorTable into CurrentPersons -- Retrieves all records of the table "Persons" (referred to by the table object personTable) and stores them in the variable CurrentPersons.
+log CurrentPersons -- Prints the records of persons table in EPF Console
+
+
+-------------------------------------------------------------------------- Fetch the records using Where clause ---------
+Log "============================="
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"sakila"} -- Defines the database connection.
+set actorTable to table "actor" of myDB
+log first_name of the record of actorTable where last_name is "CHASE"
+get first_name of the record of actorTable where last_name is "CHASE" -- Accesses the First Name of a specific Employee using the Get command
+if it is "ED" then log "Record is correct!"
+
+------------------------------------------------------------------------ Fetching Single record using where clause and storing it in Variable ---------------
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"sakila"} -- Defines the database connection.
+set actorTable to table "actor" of myDB
+set EmpRecord to the record of actorTable where lastName is "Medameni" 
+log EmpRecord
+
+
+---------- Writing to a database ---------------
+
+--- ==== Adding New Records to the database ==== --------
+
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"moviedb"} -- Defines the database connection.
+set actorTable to table "actor" of myDB
+Set newPerson to {actor_id:201,first_name:"Anu", last_name:"Kranthi",last_update:"2026-07-09 04:34:33"}
+add record newPerson to actorTable -- newPerson must have all required values and in the order too. personTable refers to the table Persons of the myDB database.
+put the records of actorTable into CurrentPersons -- Retrieves all records of the table "Persons" (referred to by the table object personTable) and stores them in the variable CurrentPersons.
+log CurrentPersons
+
+---====== Deleting the record from the database ============
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"moviedb"} -- Defines the database connection.
+set actorTable to table "actor" of myDB
+#put the records of personTable where LastName is "Kanth" into recordToDelete
+delete record of actorTable where last_name is "Kranthi"
+put the records of actorTable into CurrentPersons -- Retrieves all records of the table "Persons" (referred to by the table object personTable) and stores them in the variable CurrentPersons.
+log CurrentPersons
+
+
+---=========== Updating the data to records in Database =================
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"sakila"} -- Defines the database connection.
+set actorTable to table "actor" of myDB
+set EmpRecord1 to the record of actorTable where LastName is "Kanth" -- -- Using the where clause to select a record based on specific values
+add 5000 to EmpRecord1's Salary  -- This will add the value in the "Salary" column of that specific member record in the database
+
+
+---------------- Using ExecuteSQL() Function to execute sql queries directly --------------------
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"moviedb"} -- Defines the database connection.
+log "EmpID 1 Record"
+#log executeSQL(myDB, "show tables")
+log executeSQL(myDB, "select* from actor where actor_id='12'")
+log executeSQL(myDB,"select* from Persons where LastName='Medameni'")
+
+
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"sakila"} -- Defines the database connection.
+
+set memberTable to table "Members" of myDB
+log the records of memberTable
+
+
+
+
+
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"sakila"} -- Defines the database connection.
+log "EmpID 1 Record"
+
+
+
+
+
+
+
+
+
+--- ==== Adding the fresh data to the column in database ======= ------
+set myDB to {type:"odbc", DSN:"VijayaTestDSNVijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"sakila"} -- Defines the database connection.
+set personTable to table "employeedata" of myDB
+log the records of personTable
+set EmpRecord1 to the record of personTable where LastName is "Durgaprasad" -- -- Using the where clause to select a record based on specific values
+add "2023-04-05" to EmpRecord1's JoiningDate
+
+
+
+set var to ["test","msg"]
+
+typetext controlKey,a
+typetext trimall(var,"[ ,],@")
+
+
+
+
+
+set myDB to {type:"odbc", DSN:"VijayaTestDSN", user:"root", password:"root",readable:"yes",writable:"yes",name:"moviedb"} -- Defines the database connection.
+log "EmpID 1 Record"
+#log executeSQL(myDB, "show tables")
+log executeSQL(myDB, "select* from actor where actor_id='12'")

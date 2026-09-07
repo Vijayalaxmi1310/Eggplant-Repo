@@ -1,0 +1,42 @@
+{
+	"originalcapturelocation": [
+		384,
+		598,
+		105,
+		17
+	],
+	"lastmodifieddate": 1768547854.2950001,
+	"createddate": 1682398852.9070001,
+	"name": "Cameraphoto",
+	"lastfounddate": 1682398900.02,
+	"ocrcapturestring": "Camera & photo",
+	"lastfoundlocation": [
+		384,
+		598,
+		105,
+		17
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Camera & photo",
+				"deleted": true,
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[54,6]",
+					"Tolerance": "_54",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					384,
+					598,
+					105,
+					17
+				],
+				"name": "Cameraphoto.png"
+			}
+	]
+}

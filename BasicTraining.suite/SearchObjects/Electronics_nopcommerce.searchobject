@@ -1,0 +1,41 @@
+{
+	"originalcapturelocation": [
+		631,
+		301,
+		89,
+		17
+	],
+	"lastmodifieddate": 1682399090.9520001,
+	"createddate": 1682399090.9520001,
+	"name": "Electronics_nopcommerce",
+	"lastfounddate": 1682487143.9630001,
+	"ocrcapturestring": "Electronics",
+	"lastfoundlocation": [
+		631,
+		301,
+		89,
+		17
+	],
+	"testlocationdata": [
+		{
+				"capturedocrtext": "Electronics",
+				"properties": {
+					"CropRectangle": "[0,0,0,0]",
+					"Rotate": 0,
+					"Scale": "    1",
+					"HotSpot": "[54,6]",
+					"Tolerance": "_50",
+					"Discrepancy": "_0",
+					"SearchType": "Smoothed for Text"
+				},
+				"type": 1,
+				"capturerect": [
+					631,
+					301,
+					89,
+					17
+				],
+				"name": "Electronics_nopcommerce.png"
+			}
+	]
+}
